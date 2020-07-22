@@ -16,6 +16,7 @@ cd public/
 git add -A
 git commit -m 'deploy'
 git remote add github git@github.com:guojun49/blog.git
+git checkout -b gh-pages
 git push -u github master -f
 
 # 如果发布到 https://<USERNAME>.github.io
@@ -24,3 +25,4 @@ git push -u github master -f
 # 如果发布到 https://<USERNAME>.github.io/<REPO>
 
 cd -
+
