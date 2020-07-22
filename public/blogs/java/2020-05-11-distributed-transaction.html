@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>分布式事务解决方案 | 说传</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="优雅的学习">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <link rel="preload" href="/assets/css/0.styles.0a2f2fd5.css" as="style"><link rel="preload" href="/assets/js/app.c04f84a9.js" as="script"><link rel="preload" href="/assets/js/3.fece3067.js" as="script"><link rel="preload" href="/assets/js/1.92f905c2.js" as="script"><link rel="preload" href="/assets/js/34.2e58009b.js" as="script"><link rel="prefetch" href="/assets/js/10.8bfdcd99.js"><link rel="prefetch" href="/assets/js/11.690d8419.js"><link rel="prefetch" href="/assets/js/12.834e37df.js"><link rel="prefetch" href="/assets/js/13.60d523e2.js"><link rel="prefetch" href="/assets/js/14.125bf9ab.js"><link rel="prefetch" href="/assets/js/15.f3b45d9a.js"><link rel="prefetch" href="/assets/js/16.664971ff.js"><link rel="prefetch" href="/assets/js/17.90b33026.js"><link rel="prefetch" href="/assets/js/18.59eb760a.js"><link rel="prefetch" href="/assets/js/19.6170412e.js"><link rel="prefetch" href="/assets/js/20.89ea9514.js"><link rel="prefetch" href="/assets/js/21.4f4af87e.js"><link rel="prefetch" href="/assets/js/22.c9e6bbdf.js"><link rel="prefetch" href="/assets/js/23.af52e8b3.js"><link rel="prefetch" href="/assets/js/24.ef2948b1.js"><link rel="prefetch" href="/assets/js/25.bab44cfb.js"><link rel="prefetch" href="/assets/js/26.07871491.js"><link rel="prefetch" href="/assets/js/27.4278e490.js"><link rel="prefetch" href="/assets/js/28.f9fd1736.js"><link rel="prefetch" href="/assets/js/29.4dbd801e.js"><link rel="prefetch" href="/assets/js/30.b5402d8e.js"><link rel="prefetch" href="/assets/js/31.9ee93e74.js"><link rel="prefetch" href="/assets/js/32.b0329a43.js"><link rel="prefetch" href="/assets/js/33.a9d42757.js"><link rel="prefetch" href="/assets/js/35.3bf7878e.js"><link rel="prefetch" href="/assets/js/36.45061c59.js"><link rel="prefetch" href="/assets/js/37.bfdc1725.js"><link rel="prefetch" href="/assets/js/38.9489c196.js"><link rel="prefetch" href="/assets/js/39.6c2abfd5.js"><link rel="prefetch" href="/assets/js/4.4bbc0cfe.js"><link rel="prefetch" href="/assets/js/40.bc7dc436.js"><link rel="prefetch" href="/assets/js/41.78010e7e.js"><link rel="prefetch" href="/assets/js/42.fc50d2e8.js"><link rel="prefetch" href="/assets/js/43.751a1fd1.js"><link rel="prefetch" href="/assets/js/44.6f42a29c.js"><link rel="prefetch" href="/assets/js/45.484afbf9.js"><link rel="prefetch" href="/assets/js/46.891c75f2.js"><link rel="prefetch" href="/assets/js/47.f2bd0669.js"><link rel="prefetch" href="/assets/js/48.f9c5bfd1.js"><link rel="prefetch" href="/assets/js/49.282ccf4c.js"><link rel="prefetch" href="/assets/js/5.7dd9ea2d.js"><link rel="prefetch" href="/assets/js/50.e9f00246.js"><link rel="prefetch" href="/assets/js/51.89c528e3.js"><link rel="prefetch" href="/assets/js/52.2ef2fbef.js"><link rel="prefetch" href="/assets/js/53.dc56dab1.js"><link rel="prefetch" href="/assets/js/54.5e67c403.js"><link rel="prefetch" href="/assets/js/55.636328e4.js"><link rel="prefetch" href="/assets/js/56.eb27126b.js"><link rel="prefetch" href="/assets/js/57.8dc1521a.js"><link rel="prefetch" href="/assets/js/58.fbd54184.js"><link rel="prefetch" href="/assets/js/59.607d4e59.js"><link rel="prefetch" href="/assets/js/6.855dc458.js"><link rel="prefetch" href="/assets/js/60.ffc8495d.js"><link rel="prefetch" href="/assets/js/61.aa58cbbb.js"><link rel="prefetch" href="/assets/js/62.dfeea6a4.js"><link rel="prefetch" href="/assets/js/63.7b523f28.js"><link rel="prefetch" href="/assets/js/64.f6f6865c.js"><link rel="prefetch" href="/assets/js/65.538ec4d6.js"><link rel="prefetch" href="/assets/js/66.7e70f322.js"><link rel="prefetch" href="/assets/js/67.66faadb1.js"><link rel="prefetch" href="/assets/js/68.3131e032.js"><link rel="prefetch" href="/assets/js/69.b65e059c.js"><link rel="prefetch" href="/assets/js/7.3a57aece.js"><link rel="prefetch" href="/assets/js/70.cea14fc7.js"><link rel="prefetch" href="/assets/js/71.89592515.js"><link rel="prefetch" href="/assets/js/72.15f701dc.js"><link rel="prefetch" href="/assets/js/73.31246d72.js"><link rel="prefetch" href="/assets/js/74.99964056.js"><link rel="prefetch" href="/assets/js/75.4ace70b4.js"><link rel="prefetch" href="/assets/js/76.a217b152.js"><link rel="prefetch" href="/assets/js/77.a6094a67.js"><link rel="prefetch" href="/assets/js/78.f9e387e9.js"><link rel="prefetch" href="/assets/js/79.35bd56a2.js"><link rel="prefetch" href="/assets/js/8.07e2dd98.js"><link rel="prefetch" href="/assets/js/80.a6ece043.js"><link rel="prefetch" href="/assets/js/81.1bbeeaae.js"><link rel="prefetch" href="/assets/js/82.36e3c50d.js"><link rel="prefetch" href="/assets/js/83.59c3f138.js"><link rel="prefetch" href="/assets/js/84.be181f4c.js"><link rel="prefetch" href="/assets/js/85.c45f41b5.js"><link rel="prefetch" href="/assets/js/86.ba059e5a.js"><link rel="prefetch" href="/assets/js/87.e3fd3d61.js"><link rel="prefetch" href="/assets/js/88.d43b3a54.js"><link rel="prefetch" href="/assets/js/89.68e06791.js"><link rel="prefetch" href="/assets/js/9.0b2028f6.js"><link rel="prefetch" href="/assets/js/90.844b4f1f.js"><link rel="prefetch" href="/assets/js/91.8b5c013d.js"><link rel="prefetch" href="/assets/js/92.f0955062.js"><link rel="prefetch" href="/assets/js/93.d28a27a1.js"><link rel="prefetch" href="/assets/js/94.86dfa6bf.js"><link rel="prefetch" href="/assets/js/95.f5f3b941.js"><link rel="prefetch" href="/assets/js/96.433629c2.js"><link rel="prefetch" href="/assets/js/97.53e5890f.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0a2f2fd5.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-dad8a512><div data-v-dad8a512><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-dad8a512 data-v-dad8a512><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-64685f0e data-v-dad8a512 data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>说传</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>GuoJun</span>
+            
+          <span data-v-64685f0e>2017 - </span>
+          2020
+        </a></span></div></div> <div class="hide" data-v-dad8a512><header class="navbar" data-v-dad8a512><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="说传" class="logo"> <span class="site-name">说传</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/idea/" class="nav-link"><i class="iconfont undefined"></i>
+  idea
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ext/" class="nav-link"><i class="iconfont undefined"></i>
+  ext
+</a></li><li class="dropdown-item"><!----> <a href="/categories/java/" class="nav-link"><i class="iconfont undefined"></i>
+  java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/linux/" class="nav-link"><i class="iconfont undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/life/" class="nav-link"><i class="iconfont undefined"></i>
+  life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/tools/" class="nav-link"><i class="iconfont undefined"></i>
+  tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="iconfont undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/vue/" class="nav-link"><i class="iconfont undefined"></i>
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/springboot/" class="nav-link"><i class="iconfont undefined"></i>
+  springboot
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/theme-reco/" class="nav-link"><i class="iconfont undefined"></i>
+  vuepress-reco
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系方式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/guojun49" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-dad8a512></div> <aside class="sidebar" data-v-dad8a512><div class="personal-info-wrapper" data-v-ca798c94 data-v-dad8a512><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-ca798c94> <h3 class="name" data-v-ca798c94>
+    GuoJun
+  </h3> <div class="num" data-v-ca798c94><div data-v-ca798c94><h3 data-v-ca798c94>78</h3> <h6 data-v-ca798c94>Article</h6></div> <div data-v-ca798c94><h3 data-v-ca798c94>25</h3> <h6 data-v-ca798c94>Tag</h6></div></div> <hr data-v-ca798c94></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/idea/" class="nav-link"><i class="iconfont undefined"></i>
+  idea
+</a></li><li class="dropdown-item"><!----> <a href="/categories/ext/" class="nav-link"><i class="iconfont undefined"></i>
+  ext
+</a></li><li class="dropdown-item"><!----> <a href="/categories/java/" class="nav-link"><i class="iconfont undefined"></i>
+  java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/linux/" class="nav-link"><i class="iconfont undefined"></i>
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/life/" class="nav-link"><i class="iconfont undefined"></i>
+  life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/tools/" class="nav-link"><i class="iconfont undefined"></i>
+  tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/git/" class="nav-link"><i class="iconfont undefined"></i>
+  git
+</a></li><li class="dropdown-item"><!----> <a href="/categories/vue/" class="nav-link"><i class="iconfont undefined"></i>
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/categories/springboot/" class="nav-link"><i class="iconfont undefined"></i>
+  springboot
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/theme-reco/" class="nav-link"><i class="iconfont undefined"></i>
+  vuepress-reco
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      联系方式
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/guojun49" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-64685f0e data-v-dad8a512><h3 class="title" style="display:none;" data-v-64685f0e data-v-64685f0e>分布式事务解决方案</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-64685f0e data-v-64685f0e><input type="password" value="" data-v-64685f0e> <span data-v-64685f0e>Konck! Knock!</span> <button data-v-64685f0e>OK</button></label> <div class="footer" style="display:none;" data-v-64685f0e data-v-64685f0e><span data-v-64685f0e><i class="iconfont reco-theme" data-v-64685f0e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-64685f0e>vuePress-theme-reco</a></span> <span data-v-64685f0e><i class="iconfont reco-copyright" data-v-64685f0e></i> <a data-v-64685f0e><span data-v-64685f0e>GuoJun</span>
+            
+          <span data-v-64685f0e>2017 - </span>
+          2020
+        </a></span></div></div> <div data-v-dad8a512><main class="page"><div class="page-title" style="display:none;"><h1>分布式事务解决方案</h1> <hr> <div data-v-aa64b9d0><i class="iconfont reco-account" data-v-aa64b9d0><span data-v-aa64b9d0>GuoJun</span></i> <i class="iconfont reco-date" data-v-aa64b9d0><span data-v-aa64b9d0>2020-05-11</span></i> <!----> <i class="iconfont reco-tag tags" data-v-aa64b9d0><span class="tag-item" data-v-aa64b9d0>java</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="一-分布式事务产生的场景"><a href="#一-分布式事务产生的场景" class="header-anchor">#</a> 一.分布式事务产生的场景</h2> <ul><li><p>微服务之间通过远程调用完成事务操作
+<img src="https://gitee.com/guojun49/images/raw/master/blog-img/2020/06/20200609173848.png" alt=""></p></li> <li><p>单体系统访问多个数据库实例
+<img src="https://gitee.com/guojun49/images/raw/master/blog-img/2020/06/20200609173856.png" alt=""></p></li> <li><p>多服务访问同一个数据库实例
+<img src="https://gitee.com/guojun49/images/raw/master/blog-img/2020/06/20200609173859.png" alt=""></p></li></ul> <h2 id="二-分布式事务理论基础"><a href="#二-分布式事务理论基础" class="header-anchor">#</a> 二.分布式事务理论基础</h2> <h3 id="_2-1-cap理论"><a href="#_2-1-cap理论" class="header-anchor">#</a> 2.1 CAP理论</h3> <p>CAP是Consistency、Availability、Partition tolerance三个词语的缩写，分别表示一致性、可用性、分区容忍
+性。
+<img src="https://gitee.com/guojun49/images/raw/master/blog-img/2020/06/20200609174033.png" alt="">
+整体执行流程如下：
+1、商品服务请求主数据库写入商品信息（添加商品、修改商品、删除商品）
+2、主数据库向商品服务响应写入成功。
+3、商品服务请求从数据库读取商品信息。</p> <p>C - Consistency：
+一致性是指写操作后的读操作可以读取到最新的数据状态，当数据分布在多个节点上，从任意结点读取到的数据都
+是最新的状态。
+分布式系统一致性的特点：
+1、由于存在数据同步的过程，写操作的响应会有一定的延迟。
+2、为了保证数据一致性会对资源暂时锁定，待数据同步完成释放锁定资源。
+3、如果请求数据同步失败的结点则会返回错误信息，一定不会返回旧数据。</p> <p>A - Availability ：
+可用性是指任何事务操作都可以得到响应结果，且不会出现响应超时或响应错误。
+分布式系统可用性的特点：
+1、所有请求都有响应，且不会出现响应超时或响应错误。</p> <p>P - Partition tolerance
+通常分布式系统的各各结点部署在不同的子网，这就是网络分区，不可避免的会出现由于网络问题而导致结点之间
+通信失败，此时仍可对外提供服务，这叫分区容忍性。
+分布式分区容忍性的特点：
+1、分区容忍性分是布式系统具备的基本能力。</p> <p>CAP是一个已经被证实的理论：一个分布式系统最多只能同时满足
+一致性（Consistency）、可用性（Availability）和分区容忍性（Partition tolerance）这三项中的两项。它可以作
+为我们进行架构设计、技术选型的考量标准。对于多数大型互联网应用的场景，结点众多、部署分散，而且现在的
+集群规模越来越大，所以节点故障、网络故障是常态，而且要保证服务可用性达到N个9（99.99..%），并要达到良
+好的响应性能来提高用户体验，因此一般都会做出如下选择：保证P和A，舍弃C强一致，保证最终一致性。</p> <h3 id="_2-2-base理论"><a href="#_2-2-base理论" class="header-anchor">#</a> 2.2 BASE理论</h3> <p>BASE 是Basically Available(基本可用)、Soft state(软状态)和Eventually consistent (最终一致性)三个短语的缩
+写。BASE理论是对CAP中AP的一个扩展，通过牺牲强一致性来获得可用性，当出现故障允许部分不可用但要保证
+核心功能可用，允许数据在一段时间内是不一致的，但最终达到一致状态。满足BASE理论的事务，我们称之为“柔
+性事务”。</p> <ul><li>基本可用:分布式系统在出现故障时，允许损失部分可用功能，保证核心功能可用。如，电商网站交易付款出
+现问题了，商品依然可以正常浏览。</li> <li>软状态:由于不要求强一致性，所以BASE允许系统中存在中间状态（也叫软状态），这个状态不影响系统可用
+性，如订单的&quot;支付中&quot;、“数据同步中”等状态，待数据最终一致后状态改为“成功”状态。</li> <li>最终一致:最终一致是指经过一段时间后，所有节点数据都将会达到一致。如订单的&quot;支付中&quot;状态，最终会变
+为“支付成功”或者&quot;支付失败&quot;，使订单状态与实际交易结果达成一致，但需要一定时间的延迟、等待。</li></ul> <h3 id="分布式id生成"><a href="#分布式id生成" class="header-anchor">#</a> 分布式Id生成</h3> <ul><li><p>数据库自增</p></li> <li><p>uuid</p></li> <li><p>借助全局redis</p></li> <li><p>雪花算法</p> <p><img src="https://gitee.com/guojun49/images/raw/master/blog-img/2020/06/20200615114815.png" alt="image-20200615114808886"></p></li></ul> <h4 id="可靠消息一致性"><a href="#可靠消息一致性" class="header-anchor">#</a> 可靠消息一致性</h4></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-40a3448a><li class="level-2" data-v-40a3448a><a href="/blogs/java/2020-05-11-distributed-transaction.html#一-分布式事务产生的场景" class="sidebar-link" data-v-40a3448a>一.分布式事务产生的场景</a></li><li class="level-2" data-v-40a3448a><a href="/blogs/java/2020-05-11-distributed-transaction.html#二-分布式事务理论基础" class="sidebar-link" data-v-40a3448a>二.分布式事务理论基础</a></li><li class="level-3" data-v-40a3448a><a href="/blogs/java/2020-05-11-distributed-transaction.html#_2-1-cap理论" class="sidebar-link" data-v-40a3448a>2.1 CAP理论</a></li><li class="level-3" data-v-40a3448a><a href="/blogs/java/2020-05-11-distributed-transaction.html#_2-2-base理论" class="sidebar-link" data-v-40a3448a>2.2 BASE理论</a></li><li class="level-3" data-v-40a3448a><a href="/blogs/java/2020-05-11-distributed-transaction.html#分布式id生成" class="sidebar-link" data-v-40a3448a>分布式Id生成</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-6f76602d data-v-6f76602d><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-6f76602d><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-6f76602d></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-6f76602d></path></svg></div></div></div>
+    <script src="/assets/js/app.c04f84a9.js" defer></script><script src="/assets/js/3.fece3067.js" defer></script><script src="/assets/js/1.92f905c2.js" defer></script><script src="/assets/js/34.2e58009b.js" defer></script>
+  </body>
+</html>

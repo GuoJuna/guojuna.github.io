@@ -1,0 +1,37 @@
+---
+layout: post
+title: Linux 使用总结
+date: 2020-01-01
+categories: linux
+tags: 
+    - linux
+excerpt: 心有猛虎,心系蔷薇 
+---
+
+## 常用命令
+
+1. Linux查看版本当前操作系统内核信息）
+```
+uname －a   
+```
+2. Linux查看当前操作系统版本信息
+```
+cat /proc/version
+```
+3. Linux查看版本当前操作系统发行版信息
+```
+cat /etc/issue  或cat /etc/redhat-release
+```
+
+4. 查询9090端口进程
+netstat -anp | grep "9090"
+
+5. 结束进程
+kill -9 pid
+
+## 同步时间
+1. 查询当前时间
+```
+date
+```
+
