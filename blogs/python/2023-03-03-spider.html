@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>python 高性能爬虫 | 说传</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/img/favicon.ico">
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = 'https://hm.baidu.com/hm.js?43353c326536410d4dfbfb2b18c31a9a';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    <meta name="description" content="路漫漫其修远兮，吾将上下而求索">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.66de3528.css" as="style"><link rel="preload" href="/assets/js/app.2802de7f.js" as="script"><link rel="preload" href="/assets/js/3.fd724599.js" as="script"><link rel="preload" href="/assets/js/1.0af14d1f.js" as="script"><link rel="preload" href="/assets/js/122.9dedd265.js" as="script"><link rel="prefetch" href="/assets/js/10.5a64835b.js"><link rel="prefetch" href="/assets/js/100.5eaeb0f0.js"><link rel="prefetch" href="/assets/js/101.2182827c.js"><link rel="prefetch" href="/assets/js/102.540ebd42.js"><link rel="prefetch" href="/assets/js/103.03ddbce1.js"><link rel="prefetch" href="/assets/js/104.08776b7a.js"><link rel="prefetch" href="/assets/js/105.9f849480.js"><link rel="prefetch" href="/assets/js/106.4c818c59.js"><link rel="prefetch" href="/assets/js/107.222bb2a4.js"><link rel="prefetch" href="/assets/js/108.7f2246f8.js"><link rel="prefetch" href="/assets/js/109.e182451d.js"><link rel="prefetch" href="/assets/js/11.487916de.js"><link rel="prefetch" href="/assets/js/110.8b4037c8.js"><link rel="prefetch" href="/assets/js/111.270bd234.js"><link rel="prefetch" href="/assets/js/112.5defa6ad.js"><link rel="prefetch" href="/assets/js/113.f7263b53.js"><link rel="prefetch" href="/assets/js/114.4834677c.js"><link rel="prefetch" href="/assets/js/115.bd4b0626.js"><link rel="prefetch" href="/assets/js/116.9ce20827.js"><link rel="prefetch" href="/assets/js/117.863392d2.js"><link rel="prefetch" href="/assets/js/118.1a9b51e5.js"><link rel="prefetch" href="/assets/js/119.5e1441ed.js"><link rel="prefetch" href="/assets/js/12.9be43492.js"><link rel="prefetch" href="/assets/js/120.92ebe296.js"><link rel="prefetch" href="/assets/js/121.8e4692cf.js"><link rel="prefetch" href="/assets/js/123.2b9a0444.js"><link rel="prefetch" href="/assets/js/124.b48e689f.js"><link rel="prefetch" href="/assets/js/125.68eb8aaf.js"><link rel="prefetch" href="/assets/js/126.66994e05.js"><link rel="prefetch" href="/assets/js/127.90378248.js"><link rel="prefetch" href="/assets/js/128.69b68fae.js"><link rel="prefetch" href="/assets/js/129.a1eb49be.js"><link rel="prefetch" href="/assets/js/13.4229ddd0.js"><link rel="prefetch" href="/assets/js/130.2d295299.js"><link rel="prefetch" href="/assets/js/131.f01bb6f0.js"><link rel="prefetch" href="/assets/js/132.17d49e3d.js"><link rel="prefetch" href="/assets/js/133.ba5ecd9f.js"><link rel="prefetch" href="/assets/js/134.b9d0dd55.js"><link rel="prefetch" href="/assets/js/135.b18f709f.js"><link rel="prefetch" href="/assets/js/136.6d5acd5a.js"><link rel="prefetch" href="/assets/js/137.4855022c.js"><link rel="prefetch" href="/assets/js/138.0ac3e571.js"><link rel="prefetch" href="/assets/js/139.7a5f0a1b.js"><link rel="prefetch" href="/assets/js/14.859631c8.js"><link rel="prefetch" href="/assets/js/140.376abda2.js"><link rel="prefetch" href="/assets/js/141.11439496.js"><link rel="prefetch" href="/assets/js/142.fa128a93.js"><link rel="prefetch" href="/assets/js/143.54098c91.js"><link rel="prefetch" href="/assets/js/144.775667c2.js"><link rel="prefetch" href="/assets/js/145.37382bf5.js"><link rel="prefetch" href="/assets/js/146.5a7cec5f.js"><link rel="prefetch" href="/assets/js/147.8b2511b6.js"><link rel="prefetch" href="/assets/js/148.091a7f5d.js"><link rel="prefetch" href="/assets/js/149.22a96232.js"><link rel="prefetch" href="/assets/js/15.2c0a2fc9.js"><link rel="prefetch" href="/assets/js/150.edb85c8a.js"><link rel="prefetch" href="/assets/js/151.51ff8d2a.js"><link rel="prefetch" href="/assets/js/152.6ea8823d.js"><link rel="prefetch" href="/assets/js/153.8fa08dc2.js"><link rel="prefetch" href="/assets/js/154.10f0a7fe.js"><link rel="prefetch" href="/assets/js/155.fac7fcb9.js"><link rel="prefetch" href="/assets/js/156.54b11ea8.js"><link rel="prefetch" href="/assets/js/157.a16c749e.js"><link rel="prefetch" href="/assets/js/158.febe26e7.js"><link rel="prefetch" href="/assets/js/159.a1245f91.js"><link rel="prefetch" href="/assets/js/16.dbe37e8f.js"><link rel="prefetch" href="/assets/js/160.8fdb86d8.js"><link rel="prefetch" href="/assets/js/161.1a884642.js"><link rel="prefetch" href="/assets/js/162.54ce17b7.js"><link rel="prefetch" href="/assets/js/163.4c9e62b5.js"><link rel="prefetch" href="/assets/js/164.437a9240.js"><link rel="prefetch" href="/assets/js/165.c43f7d12.js"><link rel="prefetch" href="/assets/js/166.ed026d82.js"><link rel="prefetch" href="/assets/js/167.10f63809.js"><link rel="prefetch" href="/assets/js/168.3a76752d.js"><link rel="prefetch" href="/assets/js/169.ecbef1c2.js"><link rel="prefetch" href="/assets/js/17.610e8bc7.js"><link rel="prefetch" href="/assets/js/170.c3d9f9f4.js"><link rel="prefetch" href="/assets/js/171.1fb6cff5.js"><link rel="prefetch" href="/assets/js/172.d3600211.js"><link rel="prefetch" href="/assets/js/173.cfcfede9.js"><link rel="prefetch" href="/assets/js/174.3a96e901.js"><link rel="prefetch" href="/assets/js/175.7e5ad73d.js"><link rel="prefetch" href="/assets/js/176.cdd44a3e.js"><link rel="prefetch" href="/assets/js/177.d220b7de.js"><link rel="prefetch" href="/assets/js/178.3a169790.js"><link rel="prefetch" href="/assets/js/179.ceefa0a4.js"><link rel="prefetch" href="/assets/js/18.3b5e5736.js"><link rel="prefetch" href="/assets/js/180.ebc78c1b.js"><link rel="prefetch" href="/assets/js/181.8c9cde06.js"><link rel="prefetch" href="/assets/js/182.cbfd63e3.js"><link rel="prefetch" href="/assets/js/183.e7335f79.js"><link rel="prefetch" href="/assets/js/184.aa9b67bf.js"><link rel="prefetch" href="/assets/js/185.70bf0e06.js"><link rel="prefetch" href="/assets/js/186.48bf1759.js"><link rel="prefetch" href="/assets/js/187.8eb020bb.js"><link rel="prefetch" href="/assets/js/188.26ffbc60.js"><link rel="prefetch" href="/assets/js/189.aa04b02e.js"><link rel="prefetch" href="/assets/js/19.ea56ba6b.js"><link rel="prefetch" href="/assets/js/190.48b6bb53.js"><link rel="prefetch" href="/assets/js/191.5dbd87c4.js"><link rel="prefetch" href="/assets/js/192.a94c4e2a.js"><link rel="prefetch" href="/assets/js/193.35e0bac5.js"><link rel="prefetch" href="/assets/js/194.d25207ee.js"><link rel="prefetch" href="/assets/js/195.2664cdf8.js"><link rel="prefetch" href="/assets/js/196.8392953a.js"><link rel="prefetch" href="/assets/js/197.22908854.js"><link rel="prefetch" href="/assets/js/198.4d668b40.js"><link rel="prefetch" href="/assets/js/199.c38cfa72.js"><link rel="prefetch" href="/assets/js/20.fed1596b.js"><link rel="prefetch" href="/assets/js/200.f040bff6.js"><link rel="prefetch" href="/assets/js/201.eda0c453.js"><link rel="prefetch" href="/assets/js/202.d33092cc.js"><link rel="prefetch" href="/assets/js/203.375e83b5.js"><link rel="prefetch" href="/assets/js/204.db44a902.js"><link rel="prefetch" href="/assets/js/205.f9c1d90b.js"><link rel="prefetch" href="/assets/js/206.41b05d8f.js"><link rel="prefetch" href="/assets/js/207.8e367da9.js"><link rel="prefetch" href="/assets/js/208.800e5099.js"><link rel="prefetch" href="/assets/js/209.1647c1ee.js"><link rel="prefetch" href="/assets/js/21.128d8911.js"><link rel="prefetch" href="/assets/js/210.0240e182.js"><link rel="prefetch" href="/assets/js/211.abd45502.js"><link rel="prefetch" href="/assets/js/212.098c2f63.js"><link rel="prefetch" href="/assets/js/213.2adf383e.js"><link rel="prefetch" href="/assets/js/214.0c3f6c4a.js"><link rel="prefetch" href="/assets/js/215.7d7d7c3b.js"><link rel="prefetch" href="/assets/js/216.8be227b6.js"><link rel="prefetch" href="/assets/js/217.c05636fd.js"><link rel="prefetch" href="/assets/js/22.4ed59c00.js"><link rel="prefetch" href="/assets/js/23.2ee6d40f.js"><link rel="prefetch" href="/assets/js/24.134fb639.js"><link rel="prefetch" href="/assets/js/25.03fbae3f.js"><link rel="prefetch" href="/assets/js/26.2896df2f.js"><link rel="prefetch" href="/assets/js/27.9459fe1b.js"><link rel="prefetch" href="/assets/js/28.0381e701.js"><link rel="prefetch" href="/assets/js/29.05690783.js"><link rel="prefetch" href="/assets/js/30.03831ad6.js"><link rel="prefetch" href="/assets/js/31.bf70bc53.js"><link rel="prefetch" href="/assets/js/32.3ad8d777.js"><link rel="prefetch" href="/assets/js/33.4dca64e8.js"><link rel="prefetch" href="/assets/js/34.b3a2988f.js"><link rel="prefetch" href="/assets/js/35.48544f26.js"><link rel="prefetch" href="/assets/js/36.7cbb23f5.js"><link rel="prefetch" href="/assets/js/37.ef3055d1.js"><link rel="prefetch" href="/assets/js/38.e202c1d9.js"><link rel="prefetch" href="/assets/js/39.98ed3f60.js"><link rel="prefetch" href="/assets/js/4.2987042c.js"><link rel="prefetch" href="/assets/js/40.00d0398b.js"><link rel="prefetch" href="/assets/js/41.8a4dfdd9.js"><link rel="prefetch" href="/assets/js/42.e4391f90.js"><link rel="prefetch" href="/assets/js/43.d60722ed.js"><link rel="prefetch" href="/assets/js/44.844ba2dd.js"><link rel="prefetch" href="/assets/js/45.19abe1fa.js"><link rel="prefetch" href="/assets/js/46.e7cf22ed.js"><link rel="prefetch" href="/assets/js/47.0097c49a.js"><link rel="prefetch" href="/assets/js/48.644217ec.js"><link rel="prefetch" href="/assets/js/49.d2ed3d93.js"><link rel="prefetch" href="/assets/js/5.543482dc.js"><link rel="prefetch" href="/assets/js/50.035f07d3.js"><link rel="prefetch" href="/assets/js/51.360faa16.js"><link rel="prefetch" href="/assets/js/52.6332f8a6.js"><link rel="prefetch" href="/assets/js/53.a13097d4.js"><link rel="prefetch" href="/assets/js/54.d35b05b3.js"><link rel="prefetch" href="/assets/js/55.7f6be7ac.js"><link rel="prefetch" href="/assets/js/56.643522ab.js"><link rel="prefetch" href="/assets/js/57.07005b3a.js"><link rel="prefetch" href="/assets/js/58.e1e03853.js"><link rel="prefetch" href="/assets/js/59.6f80e8ef.js"><link rel="prefetch" href="/assets/js/6.26a015ea.js"><link rel="prefetch" href="/assets/js/60.b3f964e3.js"><link rel="prefetch" href="/assets/js/61.df8cbb4a.js"><link rel="prefetch" href="/assets/js/62.0f65108f.js"><link rel="prefetch" href="/assets/js/63.1e27e7b4.js"><link rel="prefetch" href="/assets/js/64.f95b4e8f.js"><link rel="prefetch" href="/assets/js/65.229fe8fe.js"><link rel="prefetch" href="/assets/js/66.5526c510.js"><link rel="prefetch" href="/assets/js/67.745ba079.js"><link rel="prefetch" href="/assets/js/68.1c388e80.js"><link rel="prefetch" href="/assets/js/69.991ed696.js"><link rel="prefetch" href="/assets/js/7.8d3f9ec4.js"><link rel="prefetch" href="/assets/js/70.ab660e4e.js"><link rel="prefetch" href="/assets/js/71.97a52e92.js"><link rel="prefetch" href="/assets/js/72.a350275b.js"><link rel="prefetch" href="/assets/js/73.d5241652.js"><link rel="prefetch" href="/assets/js/74.ff77c6de.js"><link rel="prefetch" href="/assets/js/75.9d407007.js"><link rel="prefetch" href="/assets/js/76.6cefa69f.js"><link rel="prefetch" href="/assets/js/77.285db2e5.js"><link rel="prefetch" href="/assets/js/78.818d48ff.js"><link rel="prefetch" href="/assets/js/79.1e3a8f9c.js"><link rel="prefetch" href="/assets/js/8.59b18b65.js"><link rel="prefetch" href="/assets/js/80.bfc203a9.js"><link rel="prefetch" href="/assets/js/81.a861a67f.js"><link rel="prefetch" href="/assets/js/82.c969e1c2.js"><link rel="prefetch" href="/assets/js/83.d724118c.js"><link rel="prefetch" href="/assets/js/84.c2632755.js"><link rel="prefetch" href="/assets/js/85.6374caab.js"><link rel="prefetch" href="/assets/js/86.93037213.js"><link rel="prefetch" href="/assets/js/87.5e1e7b4a.js"><link rel="prefetch" href="/assets/js/88.660d87af.js"><link rel="prefetch" href="/assets/js/89.abc87472.js"><link rel="prefetch" href="/assets/js/9.765d24b9.js"><link rel="prefetch" href="/assets/js/90.1728981a.js"><link rel="prefetch" href="/assets/js/91.aa19ce0f.js"><link rel="prefetch" href="/assets/js/92.d6a8f6d6.js"><link rel="prefetch" href="/assets/js/93.acf746bb.js"><link rel="prefetch" href="/assets/js/94.eab8a652.js"><link rel="prefetch" href="/assets/js/95.60197c4d.js"><link rel="prefetch" href="/assets/js/96.60d660d2.js"><link rel="prefetch" href="/assets/js/97.de1f986d.js"><link rel="prefetch" href="/assets/js/98.43b9d954.js"><link rel="prefetch" href="/assets/js/99.ed18a021.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.66de3528.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-8c445ae8><div data-v-8c445ae8><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-8c445ae8 data-v-8c445ae8><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-5cb9a64e data-v-8c445ae8 data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>说传</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2023
+        </a></span></div></div> <div class="hide" data-v-8c445ae8><header class="navbar" data-v-8c445ae8><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_p.png" alt="说传" class="logo"> <span class="site-name">说传</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-8c445ae8></div> <aside class="sidebar" data-v-8c445ae8><div class="personal-info-wrapper" data-v-03833281 data-v-8c445ae8><img src="/img/avatar.png" alt="author-avatar" class="personal-img" data-v-03833281> <h3 class="name" data-v-03833281>
+    GuoJun
+  </h3> <div class="num" data-v-03833281><div data-v-03833281><h3 data-v-03833281>176</h3> <h6 data-v-03833281>Article</h6></div> <div data-v-03833281><h3 data-v-03833281>58</h3> <h6 data-v-03833281>Tag</h6></div></div> <hr data-v-03833281></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-5cb9a64e data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>python 高性能爬虫</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2023
+        </a></span></div></div> <div data-v-8c445ae8><main class="page"><div class="page-title" style="display:none;"><h1>python 高性能爬虫</h1> <hr> <div data-v-2f089fa6><i class="iconfont reco-account" data-v-2f089fa6><span data-v-2f089fa6>GuoJun</span></i> <i class="iconfont reco-date" data-v-2f089fa6><span data-v-2f089fa6>2023-03-03</span></i> <!----> <i class="iconfont reco-tag tags" data-v-2f089fa6><span class="tag-item" data-v-2f089fa6>Python</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="一、单线程爬虫实现"><a href="#一、单线程爬虫实现" class="header-anchor">#</a> 一、单线程爬虫实现</h2> <div class="language- extra-class"><pre><code>回顾之前我们完成的爬虫任务，都是单线程爬虫我们来看一下单线程完成的代码耗时
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>import requests
+import pymongo
+
+
+class Aqiyi(object):
+    def __init__(self):
+        self.client = pymongo.MongoClient(host='127.0.0.1', port=27017)
+        self.collection = self.client['spider']['aqy']
+        self.headers = {
+            'referer': 'https://list.iqiyi.com/www/2/15-------------11-1-1-iqiyi--.html?s_source=PCW_SC',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+            'x-requested-with': 'XMLHttpRequest'
+        }
+        self.url = 'https://pcw-api.iqiyi.com/search/recommend/list'
+
+
+    def get_data(self, params):
+        response = requests.get(self.url, headers=self.headers, params=params)
+        return response.json()
+
+    def parse_data(self, data):
+        categoryVideos = data['data']['list']
+        for video in categoryVideos:
+            item = {}
+            item['title'] = video['title']
+            item['playUrl'] = video['playUrl']
+            item['description'] = video['description']
+            print(item)
+            self.save_data(item)
+
+    def save_data(self, item):
+        self.collection.insert_one(item)
+
+
+    def main(self):
+        for page in range(1, 2):
+            params = {
+                'channel_id': '2',
+                'data_type': '1',
+                'mode': '11',
+                'page_id': page,
+                'ret_num': '48',
+                'session': 'fc7d98794f15b224b169d328bf8f9f13',
+                'three_category_id': '15;must',
+            }
+            data = self.get_data(params)
+            self.parse_data(data)
+
+
+
+if __name__ == '__main__':
+    t1 = time.time()
+    yk = Aqiyi()
+    yk.main()
+    print(&quot;total cost:&quot;, time.time() - t1)
+</code></pre></div><h2 id="二、多线程爬虫实现"><a href="#二、多线程爬虫实现" class="header-anchor">#</a> 二、多线程爬虫实现</h2> <blockquote><p>在前面爬虫基础知识案例中我们发现请求回来的总数据不是太多,时间性对来说还是比较快的,那么如果该网站有大量数据等待爬虫爬取,我们是不是需要使用多线程并发来操作爬虫的网络请求呢?</p></blockquote> <h3 id="_1-回顾多线程的方法使用"><a href="#_1-回顾多线程的方法使用" class="header-anchor">#</a> 1.回顾多线程的方法使用</h3> <p>在python3中，主线程主进程结束，子线程，子进程不会结束</p> <p>为了能够让主线程回收子线程，可以把子线程设置为守护线程,即该线程不重要，主线程结束，子线程结束</p> <div class="language- extra-class"><pre class="language-text"><code>t1 = threading.Thread(targe=func,args=(,))
+t1.setDaemon(True)
+t1.start() #此时线程才会启动
+
+</code></pre></div><h3 id="_2-回顾队列模块的使用"><a href="#_2-回顾队列模块的使用" class="header-anchor">#</a> 2.回顾队列模块的使用</h3> <div class="language- extra-class"><pre class="language-text"><code>from queue import Queue
+q = Queue(maxsize=100)
+item = {}
+q.put_nowait(item) #不等待直接放，队列满的时候会报错
+q.put(item) #放入数据，队列满的时候回等待
+q.get_nowait() #不等待直接取，队列空的时候会报错
+q.get() #取出数据，队列为空的时候会等待
+q.qsize() #获取队列中现存数据的个数 
+q.join() #队列中维持了一个计数，计数不为0时候让主线程阻塞等待，队列计数为0的时候才会继续往后执行
+q.task_done() 
+# put的时候计数+1，get不会-1，get需要和task_done 一起使用才会-1
+</code></pre></div><h3 id="_3-多线程实现思路剖析"><a href="#_3-多线程实现思路剖析" class="header-anchor">#</a> 3.多线程实现思路剖析</h3> <ol><li>把爬虫中的每个步骤封装成函数，分别用线程去执行</li> <li>不同的函数通过队列相互通信，函数间解耦 <img src="imgs/05-01.png" alt="img"></li></ol> <h3 id="_4-具体代码实现"><a href="#_4-具体代码实现" class="header-anchor">#</a> 4.具体代码实现</h3> <div class="language- extra-class"><pre class="language-text"><code>import threading
+import requests
+import pymongo
+import time
+from queue import Queue
+
+class Aqiyi(object):
+    def __init__(self):
+        self.client = pymongo.MongoClient(host='127.0.0.1', port=27017)
+        self.collection = self.client['spider']['aqy']
+        self.headers = {
+            'referer': 'https://list.iqiyi.com/www/2/15-------------11-1-1-iqiyi--.html?s_source=PCW_SC',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+            'x-requested-with': 'XMLHttpRequest'
+        }
+        self.url = 'https://pcw-api.iqiyi.com/search/recommend/list?channel_id=2&amp;data_type=1&amp;mode=11&amp;page_id={}&amp;ret_num=48&amp;session=85dd981b69cead4b60f6d980438a5664&amp;three_category_id=15;must'
+        self.url_queue = Queue()
+        self.json_queue = Queue()
+        self.content_list_queue = Queue()
+
+    def get_url(self):
+        # print(2222222222222)
+        for i in range(1, 3):
+            self.url_queue.put(self.url.format(i))
+
+
+    def get_data(self):
+        while True:
+            url = self.url_queue.get()
+            # print(url)
+            response = requests.get(url, headers=self.headers)
+            time.sleep(1)
+            print(response.json())
+            self.json_queue.put(response.json())
+            self.url_queue.task_done()
+
+    def parse_data(self):
+        while True:
+            data = self.json_queue.get()
+            print(data)
+            categoryVideos = data['data']['list']
+            for video in categoryVideos:
+                item = {}
+                item['title'] = video['title']
+                item['playUrl'] = video['playUrl']
+                item['description'] = video['description']
+                self.content_list_queue.put(item)
+            self.json_queue.task_done()
+
+    def save_data(self):
+
+        while True:
+            item = self.content_list_queue.get()
+            print(item)
+            self.collection.insert_one(item)
+            self.content_list_queue.task_done()
+
+
+    def main(self):
+        thread_list = []
+        # 1.url_list
+        t_url = threading.Thread(target=self.get_url)
+        thread_list.append(t_url)
+        # 2.遍历，发送请求，
+        # print(1111)
+        for i in range(3):  # 三个线程发送请求
+            t_parse = threading.Thread(target=self.get_data)
+            thread_list.append(t_parse)
+        # 3.提取数据
+        t_content = threading.Thread(target=self.parse_data)
+        thread_list.append(t_content)
+        # 4.保存
+        t_save = threading.Thread(target=self.save_data)
+        thread_list.append(t_save)
+        # print(1111)
+        for t in thread_list:
+            t.setDaemon(True)  # 把子线程设置为守护线程，当前这个线程不重要，主线程结束，子线程结束
+            t.start()
+            # print(11111111111)
+
+        for q in [self.url_queue, self.json_queue, self.content_list_queue]:
+            q.join()  # 让主线程阻塞，等待队列的计数为0，
+
+        print(&quot;主线程结束&quot;)
+
+if __name__ == '__main__':
+    t1 = time.time()
+    yk = Aqiyi()
+    yk.main()
+    print(&quot;total cost:&quot;, time.time() - t1)
+</code></pre></div><h5 id="注意点"><a href="#注意点" class="header-anchor">#</a> 注意点：</h5> <ul><li>put会让队列的计数+1，但是单纯的使用get不会让其-1，需要和task_done同时使用才能够-1</li> <li>task_done不能放在另一个队列的put之前，否则可能会出现数据没有处理完成，程序结束的情况</li></ul> <h2 id="三、线程池实现爬虫"><a href="#三、线程池实现爬虫" class="header-anchor">#</a> 三、线程池实现爬虫</h2> <h3 id="_1-线程池使用方法介绍"><a href="#_1-线程池使用方法介绍" class="header-anchor">#</a> 1.线程池使用方法介绍</h3> <ol><li><p>线程池，是一种线程的使用模式，它为了降低线程使用中频繁的创建和销毁所带来的资源消耗与代价。通过创建一定数量的线程，让他们时刻准备就绪等待新任务的到达，而任务执行结束之后再重新回来继续待命</p></li> <li><p>实例化线程池对象</p> <div class="language- extra-class"><pre class="language-text"><code>from concurrent.futures import ThreadPoolExecutor 
+def crawl(url): 
+	print(url) 
+if __name__ == '__main__0': 
+	base_url = 'https://jobs.51job.com/pachongkaifa/p{}/' 
+	with ThreadPoolExecutor(10) as f: 
+	for i in range(1,15): 
+		f.submit(crawl,url=base_url.format(i))
+</code></pre></div></li> <li><p>使用线程池来执行线程任务的步骤如下：</p> <ol><li>调用 ThreadPoolExecutor 类的构造器创建一个线程池。</li> <li>定义一个普通函数作为线程任务。</li> <li>调用 ThreadPoolExecutor 对象的 submit() 方法来提交线程任务。</li> <li>当不想提交任何任务时，调用 ThreadPoolExecutor 对象的 shutdown() 方法来关闭线程池。</li></ol> <div class="language- extra-class"><pre class="language-text"><code>from concurrent.futures import ThreadPoolExecutor
+import threading
+import time
+
+# 定义一个准备作为线程任务的函数
+def action(max):
+    my_sum = 0
+    for i in range(max):
+        print(threading.current_thread().name + '  ' + str(i))
+        my_sum += i
+    return my_sum
+# 创建一个包含2条线程的线程池
+pool = ThreadPoolExecutor(max_workers=2)
+# 向线程池提交一个task, 50会作为action()函数的参数
+future1 = pool.submit(action, 50)
+# 向线程池再提交一个task, 100会作为action()函数的参数
+future2 = pool.submit(action, 100)
+# 判断future1代表的任务是否结束
+print(future1.done())
+time.sleep(3)
+# 判断future2代表的任务是否结束
+print(future2.done())
+# 查看future1代表的任务返回的结果
+print(future1.result())
+# 查看future2代表的任务返回的结果
+print(future2.result())
+# 关闭线程池
+pool.shutdown()
+</code></pre></div></li></ol> <h3 id="_2-使用线程池实现爬虫的具体实现"><a href="#_2-使用线程池实现爬虫的具体实现" class="header-anchor">#</a> 2.使用线程池实现爬虫的具体实现</h3> <div class="language- extra-class"><pre class="language-text"><code>import time
+
+import requests
+import pymysql
+from concurrent.futures import ThreadPoolExecutor
+
+class Baidu(object):
+    def __init__(self):
+        self.db = pymysql.connect(host=&quot;localhost&quot;, user=&quot;root&quot;, password=&quot;root&quot;, db=&quot;spiders&quot;)
+        self.cursor = self.db.cursor()
+        self.url = 'https://talent.baidu.com/httservice/getPostListNew'
+        self.headers = {
+            'Referer': 'https://talent.baidu.com/jobs/social-list?search=python',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'
+        }
+
+    def get_data(self, page):  # 获取地址和User-Agent
+        data = {
+            'recruitType': 'SOCIAL',
+            'pageSize': 10,
+            'keyWord': '',
+            'curPage': page,
+            'projectType': '',
+        }
+        response = requests.post(url=self.url, headers=self.headers, data=data)
+        return response.json()
+
+    def parse_data(self, response):
+        # print(response)
+        data_list = response[&quot;data&quot;]['list']
+        for node in data_list:
+            education = node['education'] if node['education'] else '空'
+
+            name = node['name']
+            serviceCondition = node['serviceCondition']
+            self.save_data(education, name, serviceCondition)
+
+    def create_table(self):
+        # 使用预处理语句创建表
+        sql = '''
+                    CREATE TABLE IF NOT EXISTS baidu(
+                        id int primary key auto_increment not null,
+                        education VARCHAR(255) NOT NULL, 
+                        name VARCHAR(255) NOT NULL, 
+                        serviceCondition TEXT)
+                    '''
+        try:
+            self.cursor.execute(sql)
+            print(&quot;CREATE TABLE SUCCESS.&quot;)
+        except Exception as ex:
+            print(f&quot;CREATE TABLE FAILED,CASE:{ex}&quot;)
+
+
+    def save_data(self,education, name, serviceCondition):
+        # SQL 插入语句
+        sql = 'INSERT INTO baidu(id, education, name, serviceCondition) values(%s, %s, %s, %s)'
+        # 执行 SQL 语句
+        try:
+            self.cursor.execute(sql, (0, education, name, serviceCondition))
+            # 提交到数据库执行
+            self.db.commit()
+            print('数据插入成功...')
+        except Exception as e:
+            print(f'数据插入失败: {e}')
+            # 如果发生错误就回滚
+            self.db.rollback()
+
+    def run(self):
+        self.create_table()
+        with ThreadPoolExecutor(max_workers=5)as pool:
+            for i in range(1, 6):
+                response = pool.submit(self.get_data, i)
+                self.parse_data(response.result())
+
+        # 关闭数据库连接
+        self.db.close()
+
+if __name__ == '__main__':
+    t1 = time.time()
+    baidu = Baidu()
+    baidu.run()
+    print(&quot;总耗时:&quot;, time.time() - t1)
+</code></pre></div><h2 id="四、多进程爬虫"><a href="#四、多进程爬虫" class="header-anchor">#</a> 四、多进程爬虫</h2> <blockquote><p>前面这种方式由于GIL全局锁的存在，多线程在python3下可能只是个摆设，对应的解释器执行其中的内容的时候仅仅是顺序执行，此时我们可以考虑多进程的方式实现，思路和多线程相似，只是对应的api不相同。</p></blockquote> <h3 id="_1-回顾多进程程的方法使用"><a href="#_1-回顾多进程程的方法使用" class="header-anchor">#</a> 1 回顾多进程程的方法使用</h3> <div class="language- extra-class"><pre class="language-text"><code>from multiprocessing import Process  #导入模块
+t1 = Process(targe=func,args=(,)) #使用一个进程来执行一个函数
+t1.daemon = True  #设置为守护进程
+t1.start() #此时进程才会启动
+</code></pre></div><h3 id="_2-多进程中队列的使用"><a href="#_2-多进程中队列的使用" class="header-anchor">#</a> 2 多进程中队列的使用</h3> <p>多进程中使用普通的队列模块会发生阻塞，对应的需要使用<code>multiprocessing</code>提供的<code>JoinableQueue</code>模块，其使用过程和在线程中使用的queue方法相同</p> <h3 id="_3-具体实现"><a href="#_3-具体实现" class="header-anchor">#</a> 3 具体实现</h3> <p>具体的实现如下:</p> <div class="language- extra-class"><pre class="language-text"><code>#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+
+import requests
+import pymongo
+import time
+from multiprocessing import Process
+from multiprocessing import JoinableQueue as Queue
+
+
+client = pymongo.MongoClient(host='127.0.0.1', port=27017)
+collection = client['spider']['aqy']
+
+class Aqiyi():
+    def __init__(self):
+
+        self.headers = {
+            'referer': 'https://list.iqiyi.com/www/2/15-------------11-1-1-iqiyi--.html?s_source=PCW_SC',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
+            'x-requested-with': 'XMLHttpRequest'
+        }
+        self.url = 'https://pcw-api.iqiyi.com/search/recommend/list?channel_id=2&amp;data_type=1&amp;mode=11&amp;page_id={}&amp;ret_num=48&amp;session=85dd981b69cead4b60f6d980438a5664&amp;three_category_id=15;must'
+        self.url_queue = Queue()
+        self.json_queue = Queue()
+        self.content_list_queue = Queue()
+
+    def get_url(self):
+        for i in range(1, 10):
+            self.url_queue.put(self.url.format(i))
+
+
+    def get_data(self):
+        while True:
+            url = self.url_queue.get()
+            # print(url)
+            response = requests.get(url, headers=self.headers)
+            self.json_queue.put(response.json())
+            self.url_queue.task_done()
+
+    def parse_data(self):
+        while True:
+            data = self.json_queue.get()
+            # print(data)
+            categoryVideos = data['data']['list']
+            for video in categoryVideos:
+                item = {}
+                item['title'] = video['title']
+                item['playUrl'] = video['playUrl']
+                item['description'] = video['description']
+                self.content_list_queue.put(item)
+            self.json_queue.task_done()
+
+    def save_data(self):
+
+        while True:
+            item = self.content_list_queue.get()
+            print(item)
+            collection.insert_one(item)
+            self.content_list_queue.task_done()
+
+    def main(self):
+        process_list = []
+        # 1. url_list
+        t_url = Process(target=self.get_url)
+        process_list.append(t_url)
+        # 2. 遍历，发送请求
+        for i in range(5):  # 创建5个子进程
+            t_parse = Process(target=self.get_data)
+            process_list.append(t_parse)
+        # 3. 提取数据
+        t_content = Process(target=self.parse_data)
+        process_list.append(t_content)
+        # 4. 保存
+        for i in range(3):
+            t_save = Process(target=self.save_data)
+            process_list.append(t_save)
+        for t in process_list:
+            # print(t)
+            t.daemon = True  # 把进程设置为守护线程，主进程结束，子进程结束
+            t.start()
+            time.sleep(0.2)
+
+        for q in [self.url_queue, self.json_queue, self.content_list_queue]:
+            print(q)
+            q.join()  # 让主线程阻塞，等待队列的计数为0，
+
+
+        print(&quot;主进程结束&quot;)
+
+if __name__ == '__main__':
+    t1 = time.time()
+    yk = Aqiyi()
+    yk.main()
+    print(&quot;total cost:&quot;, time.time() - t1)
+</code></pre></div><p><strong>注意：</strong></p> <div class="language- extra-class"><pre><code>上述多进程实现的代码中，multiprocessing提供的JoinableQueue可以创建可连接的共享进程队列。和普通的Queue对象一样，队列允许项目的使用者通知生产者项目已经被成功处理。通知进程是使用共享的信号和条件变量来实现的。 对应的该队列能够和普通队列一样能够调用task_done和join方法
+</code></pre></div><p>初始化mongo可能会引起：TypeError: cannot pickle '_thread.lock' object</p> <h2 id="五、异步协程爬虫"><a href="#五、异步协程爬虫" class="header-anchor">#</a> 五、异步协程爬虫</h2> <p>我们知道爬虫是 IO 密集型任务，比如如果我们使用 requests 库来爬取某个站点的话，发出一个请求之后，程序必须要等待网站返回响应之后才能接着运行，而在等待响应的过程中，整个爬虫程序是一直在等待的，实际上没有做任何的事情。对于这种情况我们有没有优化方案呢？</p> <h3 id="_1-基本概念"><a href="#_1-基本概念" class="header-anchor">#</a> 1.基本概念</h3> <p><strong>异步</strong></p> <p>为完成某个任务，不同程序单元之间过程中无需通信协调，也能完成任务的方式，不相关的程序单元之间可以是异步的。</p> <p>例如，爬虫下载网页。调度程序调用下载程序后，即可调度其他任务，而无需与该下载任务保持通信以协调行为。不同网页的下载、保存等操作都是无关的，也无需相互通知协调。这些异步操作的完成时刻并不确定。</p> <p><strong>同步</strong></p> <p>不同程序单元为了完成某个任务，在执行过程中需靠某种通信方式以协调一致，我们称这些程序单元是同步执行的。</p> <p><strong>阻塞</strong></p> <p>阻塞状态指程序未得到所需计算资源时被挂起的状态。程序在等待某个操作完成期间，自身无法继续处理其他的事情，则称该程序在该操作上是阻塞的。</p> <p><strong>非阻塞</strong></p> <p>程序在等待某操作过程中，自身不被阻塞，可以继续处理其他的事情，则称该程序在该操作上是非阻塞的。</p> <p>同步/异步关注的是消息通信机制 (synchronous communication/ asynchronouscommunication) 。</p> <p>阻塞/非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态.</p> <h3 id="_2-协程异步实现方法"><a href="#_2-协程异步实现方法" class="header-anchor">#</a> 2.协程异步实现方法</h3> <div class="language- extra-class"><pre class="language-text"><code>pip install aiohttp
+</code></pre></div><p>aiohttp是一个为Python提供异步HTTP 客户端/服务端编程，基于asyncio(Python用于支持异步编程的标准库)的异步库。asyncio可以实现单线程并发IO操作，其实现了TCP、UDP、SSL等协议，aiohttp就是基于asyncio实现的http框架。</p> <p>async 用来声明一个函数为异步函数</p> <p>await 用来声明程序挂起，比如异步程序执行到某一步时需要等待的时间很长，就将此挂起，去执行其他的异步程序</p> <h3 id="_2-1-aiohttp的使用"><a href="#_2-1-aiohttp的使用" class="header-anchor">#</a> 2.1 aiohttp的使用</h3> <ul><li>使用方式和requests基本保持一致</li> <li>requests使用代理是proxies，aiohttp是proxy</li> <li>aiohttp获取进制数据是read()</li> <li>文档：<a href="https://aiohttp.readthedocs.io/" target="_blank" rel="noopener noreferrer">https://aiohttp.readthedocs.io/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h3 id="_3-同步异步对比"><a href="#_3-同步异步对比" class="header-anchor">#</a> 3.同步异步对比</h3> <p><strong>同步</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import time
+import requests
+def main():
+    for i in range(30):
+        res = requests.get('https://www.baidu.com')
+        print(f'第{i + 1}次请求，status_code = {res.status_code}')
+
+if __name__ == '__main__':
+    start = time.time()
+    main()
+    end = time.time()
+    print(f'同步发送30次请求，耗时：{end - start}')
+</code></pre></div><p><strong>异步</strong></p> <div class="language- extra-class"><pre class="language-text"><code>import asyncio
+import aiohttp
+
+
+async def requests_data(client,i):
+    res = await client.get('https://www.baidu.com')
+    print(f'第{i + 1}次请求，status_code = {res.status}')
+    # await asyncio.sleep(1)
+    return res
+
+
+async def main():
+    # 生明一个异步的上下文管理器，能帮助我们自己的分配和释放资源
+    # aiohttp.ClientSession()   类似requests的sessi()
+    async with aiohttp.ClientSession() as client:
+        task_list = []
+        for i in range(30):
+            # 获取到协程对象
+            res = requests_data(client, i)
+            # 创建task对象
+            task = asyncio.create_task(res)
+            task_list.append(task)
+            # 直接执行异步对象任务，会阻塞
+            # await requests_data(client, i)
+        # 等待执行的异步 将task对象交有event_loop来控制
+        done, pending = await asyncio.wait(task_list)
+        print(done, pending)
+        for item in done:
+            print(item.result())
+
+
+
+
+if __name__ == '__main__':
+    start = time.time()
+    # 开启事件循环对象
+    loop = asyncio.get_event_loop()
+    # 用事件循环对象开启协程异步对象
+    loop.run_until_complete(main())
+    end = time.time()
+    print(f'同步发送30次请求，耗时：{end - start}')
+
+</code></pre></div><h3 id="_4-异步爬虫实战"><a href="#_4-异步爬虫实战" class="header-anchor">#</a> 4.异步爬虫实战</h3> <p><strong>需求：</strong></p> <div class="language- extra-class"><pre><code>采集王者荣耀官网里面所有的图片信息
+
+网址：https://pvp.qq.com/web201605/herolist.shtml
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+# @File  :   异步图片爬虫案列.py
+# Author :   柏汌
+import os
+
+import requests
+import asyncio  # asyncio是Python3.4引入的一个标准库，直接内置了对异步IO的支持。asyncio模块提供了使用协程构建并发应用的工具
+import aiohttp  # 异步请求库aiohttp 加快图片 url 的网页请求
+import time
+
+class Crawl_Image:
+    def __init__(self):
+        self.skin_url = 'https://game.gtimg.cn/images/yxzj/img201606/skin/hero-info/{}/{}-bigskin-{}.jpg'
+        self.url = 'https://pvp.qq.com/web201605/js/herolist.json'
+        self.headers = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36',
+        }
+
+    async def download_image(self, session, ename, cname):
+        for i in range(1, 10):
+            response = await session.get(self.skin_url.format(ename, ename, i), headers=self.headers)
+            # status获取到状态码
+            if response.status == 200:
+                # read 获取到进制数据
+                content = await response.read()
+                with open(&quot;图片/&quot; + cname + &quot;-&quot; + str(i) + '.jpg', 'wb') as f:
+                    f.write(content)
+                print('下载{}第{}张图片成功'.format(cname, str(i)))
+            else:
+                break
+
+
+    async def run(self):
+
+        async with aiohttp.ClientSession() as session:
+            response = await session.get(self.url, headers=self.headers)
+            wzry_data = await response.json(content_type=None)
+            tasks = []
+            for i in wzry_data:
+                ename = i['ename']
+                cname = i['cname']
+                # 获取协程对象
+                res = self.download_image(session, ename, cname)
+                # 将协程对象转换成task对象 才能做到异步
+                task = asyncio.create_task(res)
+                tasks.append(task)
+            # 等待执行的异步 将task对象交由event_loop来控制
+            await asyncio.wait(tasks)
+
+
+if __name__ == '__main__':
+    if not os.path.exists('图片'):
+        os.mkdir('图片')
+    start = time.time()
+    crawl_image = Crawl_Image()
+    # 获取事件循环 Eventloop 我们想运用协程，首先要生成一个loop对象，然后loop.run_xxx()就可以运行协程了，而如何创建这个loop, 方法有两种：对于主线程是loop=get_event_loop().
+    loop = asyncio.get_event_loop()
+    # 执行协程
+    loop.run_until_complete(crawl_image.run())
+    print('运行时间{}'.format(time.time() - start))
+</code></pre></div><h3 id="_4-1-aiomysql使用"><a href="#_4-1-aiomysql使用" class="header-anchor">#</a> 4.1 aiomysql使用</h3> <p><strong>安装：</strong></p> <div class="language-python extra-class"><pre class="language-python"><code>pip3 install aiomysql
+</code></pre></div><p>利用python3中新加入的异步关键词 async/await , 我们使用各种异步操作为来执行各种异步的操作，如使用 aiohttp 来代替 requests 来执行异步的网络请求操作，使用 motor 来代替同步的 pymongo 库来操作mongo数据库，同样，我们在开发同步的python程序时，我们会使用PyMySQL来操作mysql数据库，同样，我们会使用aiomysql来异步操作mysql 数据库。
+<strong>使用方式：</strong></p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> asyncio
+<span class="token keyword">import</span> aiomysql
+
+loop <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>get_event_loop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">test_example</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    conn <span class="token operator">=</span> <span class="token keyword">await</span> aiomysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">3306</span><span class="token punctuation">,</span>
+                                       user<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">,</span> db<span class="token operator">=</span><span class="token string">'spiders'</span><span class="token punctuation">,</span>
+                                       loop<span class="token operator">=</span>loop<span class="token punctuation">)</span>
+
+    cur <span class="token operator">=</span> <span class="token keyword">await</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">await</span> cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span><span class="token string">&quot;SELECT * from tx&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>description<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> <span class="token keyword">await</span> cur<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+    <span class="token keyword">await</span> cur<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+loop<span class="token punctuation">.</span>run_until_complete<span class="token punctuation">(</span>test_example<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre></div><p><strong>需求：</strong></p> <div class="language- extra-class"><pre><code>通过异步的方式获取到Scrape | Book里面30个页的书籍信息
+
+网址：https://spa5.scrape.center/page/3
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> random
+<span class="token keyword">import</span> time
+
+<span class="token keyword">import</span> aiohttp
+<span class="token keyword">import</span> asyncio
+<span class="token keyword">import</span> aiomysql
+
+
+
+<span class="token keyword">class</span> <span class="token class-name">Scrape_spider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>url <span class="token operator">=</span> <span class="token string">'https://spa5.scrape.center/api/book/?limit=18&amp;offset={}'</span>
+        self<span class="token punctuation">.</span>headers <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">'User-Agent'</span><span class="token punctuation">:</span> <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36'</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">get_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> page<span class="token punctuation">,</span> client<span class="token punctuation">,</span> conn<span class="token punctuation">,</span> cursor<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        response <span class="token operator">=</span> <span class="token keyword">await</span> client<span class="token punctuation">.</span>get<span class="token punctuation">(</span>self<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>page <span class="token operator">*</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment"># print(response.r)</span>
+        json_data <span class="token operator">=</span> <span class="token keyword">await</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> data <span class="token keyword">in</span> json_data<span class="token punctuation">[</span><span class="token string">'results'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            item <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+            item<span class="token punctuation">[</span><span class="token string">'authors'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">','</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>x<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> i<span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> data<span class="token punctuation">[</span><span class="token string">'authors'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            item<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span>
+            item<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span>
+            <span class="token comment"># print(item)</span>
+            <span class="token comment"># time.sleep(1)</span>
+            <span class="token keyword">await</span> self<span class="token punctuation">.</span>save_data<span class="token punctuation">(</span>item<span class="token punctuation">,</span> conn<span class="token punctuation">,</span> cursor<span class="token punctuation">)</span>
+
+    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">save_data</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> item<span class="token punctuation">,</span> conn<span class="token punctuation">,</span> cursor<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># sql插入语法</span>
+        sql <span class="token operator">=</span> <span class="token string">'INSERT INTO books(id, authors, title, score) values(%s, %s, %s, %s)'</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            <span class="token comment"># print(sql, (0, item['authors'], item['title'], item['score']))</span>
+            <span class="token keyword">await</span> cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> item<span class="token punctuation">[</span><span class="token string">'authors'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> item<span class="token punctuation">[</span><span class="token string">'title'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> item<span class="token punctuation">[</span><span class="token string">'score'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token comment"># 提交到数据库执行</span>
+            <span class="token keyword">await</span> conn<span class="token punctuation">.</span>commit<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'数据插入成功...'</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'数据插入失败: </span><span class="token interpolation"><span class="token punctuation">{</span>e<span class="token punctuation">}</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+            <span class="token comment"># 如果发生错误就回滚</span>
+            <span class="token keyword">await</span> conn<span class="token punctuation">.</span>rollback<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">&quot;&quot;&quot;
+        # 异步创建连接池
+        pool = await aiomysql.create_pool(host='127.0.0.1', port=3306, user='root', password='root', db='spiders',
+                                          minsize=1, maxsize=2, loop=loop)
+        # 连接mysql
+        async with pool.acquire() as conn:
+            # 创建游标
+            async with conn.cursor() as cursor:
+
+        :return:
+        &quot;&quot;&quot;</span>
+        <span class="token comment"># 异步创建连接池</span>
+        conn <span class="token operator">=</span> <span class="token keyword">await</span> aiomysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>host<span class="token operator">=</span><span class="token string">'127.0.0.1'</span><span class="token punctuation">,</span> port<span class="token operator">=</span><span class="token number">3306</span><span class="token punctuation">,</span> user<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">,</span> password<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">,</span> db<span class="token operator">=</span><span class="token string">'spiders'</span><span class="token punctuation">,</span>
+                                          loop<span class="token operator">=</span>loop<span class="token punctuation">)</span>
+        cursor <span class="token operator">=</span> <span class="token keyword">await</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># 使用预处理语句创建表</span>
+        create_sql <span class="token operator">=</span> <span class="token triple-quoted-string string">'''
+                    CREATE TABLE IF NOT EXISTS books(
+                        id int primary key auto_increment not null,
+                        authors VARCHAR(255) NOT NULL, 
+                        title VARCHAR(255) NOT NULL, 
+                        score VARCHAR(255) NOT NULL
+                        );
+                    '''</span>
+        <span class="token comment"># 执行sql</span>
+        <span class="token keyword">await</span> cursor<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>create_sql<span class="token punctuation">)</span>
+        <span class="token keyword">async</span> <span class="token keyword">with</span> aiohttp<span class="token punctuation">.</span>ClientSession<span class="token punctuation">(</span>headers<span class="token operator">=</span>self<span class="token punctuation">.</span>headers<span class="token punctuation">)</span> <span class="token keyword">as</span> client<span class="token punctuation">:</span>
+            tasks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+            <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                res <span class="token operator">=</span> self<span class="token punctuation">.</span>get_data<span class="token punctuation">(</span>i<span class="token punctuation">,</span> client<span class="token punctuation">,</span> conn<span class="token punctuation">,</span> cursor<span class="token punctuation">)</span>
+                task <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>create_task<span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+                tasks<span class="token punctuation">.</span>append<span class="token punctuation">(</span>task<span class="token punctuation">)</span>
+                <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">800</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+            <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>wait<span class="token punctuation">(</span>tasks<span class="token punctuation">)</span>
+        <span class="token keyword">await</span> cursor<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        conn<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    start <span class="token operator">=</span> time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    crawl_book <span class="token operator">=</span> Scrape_spider<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># 获取事件循环 Eventloop 我们想运用协程，首先要生成一个loop对象，然后loop.run_xxx()就可以运行协程了，而如何创建这个loop, 方法有两种：对于主线程是loop=get_event_loop().</span>
+    loop <span class="token operator">=</span> asyncio<span class="token punctuation">.</span>get_event_loop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment"># 执行协程</span>
+    loop<span class="token punctuation">.</span>run_until_complete<span class="token punctuation">(</span>crawl_book<span class="token punctuation">.</span>main<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'运行时间{}'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+</code></pre></div><h2 id="六、课后作业"><a href="#六、课后作业" class="header-anchor">#</a> 六、课后作业</h2> <p>要求：通过异步的方式获取到英雄联盟官网的英雄皮肤图片</p> <p>网址：https://101.qq.com/#/hero</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-4ec3c486><li class="level-2" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#一、单线程爬虫实现" class="sidebar-link" data-v-4ec3c486>一、单线程爬虫实现</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#二、多线程爬虫实现" class="sidebar-link" data-v-4ec3c486>二、多线程爬虫实现</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_1-回顾多线程的方法使用" class="sidebar-link" data-v-4ec3c486>1.回顾多线程的方法使用</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_2-回顾队列模块的使用" class="sidebar-link" data-v-4ec3c486>2.回顾队列模块的使用</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_3-多线程实现思路剖析" class="sidebar-link" data-v-4ec3c486>3.多线程实现思路剖析</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_4-具体代码实现" class="sidebar-link" data-v-4ec3c486>4.具体代码实现</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#三、线程池实现爬虫" class="sidebar-link" data-v-4ec3c486>三、线程池实现爬虫</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_1-线程池使用方法介绍" class="sidebar-link" data-v-4ec3c486>1.线程池使用方法介绍</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_2-使用线程池实现爬虫的具体实现" class="sidebar-link" data-v-4ec3c486>2.使用线程池实现爬虫的具体实现</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#四、多进程爬虫" class="sidebar-link" data-v-4ec3c486>四、多进程爬虫</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_1-回顾多进程程的方法使用" class="sidebar-link" data-v-4ec3c486>1 回顾多进程程的方法使用</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_2-多进程中队列的使用" class="sidebar-link" data-v-4ec3c486>2 多进程中队列的使用</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_3-具体实现" class="sidebar-link" data-v-4ec3c486>3 具体实现</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#五、异步协程爬虫" class="sidebar-link" data-v-4ec3c486>五、异步协程爬虫</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_1-基本概念" class="sidebar-link" data-v-4ec3c486>1.基本概念</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_2-协程异步实现方法" class="sidebar-link" data-v-4ec3c486>2.协程异步实现方法</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_2-1-aiohttp的使用" class="sidebar-link" data-v-4ec3c486>2.1 aiohttp的使用</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_3-同步异步对比" class="sidebar-link" data-v-4ec3c486>3.同步异步对比</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_4-异步爬虫实战" class="sidebar-link" data-v-4ec3c486>4.异步爬虫实战</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#_4-1-aiomysql使用" class="sidebar-link" data-v-4ec3c486>4.1 aiomysql使用</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/python/2023-03-03-spider.html#六、课后作业" class="sidebar-link" data-v-4ec3c486>六、课后作业</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.2802de7f.js" defer></script><script src="/assets/js/3.fd724599.js" defer></script><script src="/assets/js/1.0af14d1f.js" defer></script><script src="/assets/js/122.9dedd265.js" defer></script>
+  </body>
+</html>

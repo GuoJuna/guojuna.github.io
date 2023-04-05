@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Java常见安全算法 | 说传</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/img/favicon.ico">
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = 'https://hm.baidu.com/hm.js?43353c326536410d4dfbfb2b18c31a9a';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    <meta name="description" content="路漫漫其修远兮，吾将上下而求索">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.66de3528.css" as="style"><link rel="preload" href="/assets/js/app.2802de7f.js" as="script"><link rel="preload" href="/assets/js/3.fd724599.js" as="script"><link rel="preload" href="/assets/js/1.0af14d1f.js" as="script"><link rel="preload" href="/assets/js/51.360faa16.js" as="script"><link rel="prefetch" href="/assets/js/10.5a64835b.js"><link rel="prefetch" href="/assets/js/100.5eaeb0f0.js"><link rel="prefetch" href="/assets/js/101.2182827c.js"><link rel="prefetch" href="/assets/js/102.540ebd42.js"><link rel="prefetch" href="/assets/js/103.03ddbce1.js"><link rel="prefetch" href="/assets/js/104.08776b7a.js"><link rel="prefetch" href="/assets/js/105.9f849480.js"><link rel="prefetch" href="/assets/js/106.4c818c59.js"><link rel="prefetch" href="/assets/js/107.222bb2a4.js"><link rel="prefetch" href="/assets/js/108.7f2246f8.js"><link rel="prefetch" href="/assets/js/109.e182451d.js"><link rel="prefetch" href="/assets/js/11.487916de.js"><link rel="prefetch" href="/assets/js/110.8b4037c8.js"><link rel="prefetch" href="/assets/js/111.270bd234.js"><link rel="prefetch" href="/assets/js/112.5defa6ad.js"><link rel="prefetch" href="/assets/js/113.f7263b53.js"><link rel="prefetch" href="/assets/js/114.4834677c.js"><link rel="prefetch" href="/assets/js/115.bd4b0626.js"><link rel="prefetch" href="/assets/js/116.9ce20827.js"><link rel="prefetch" href="/assets/js/117.863392d2.js"><link rel="prefetch" href="/assets/js/118.1a9b51e5.js"><link rel="prefetch" href="/assets/js/119.5e1441ed.js"><link rel="prefetch" href="/assets/js/12.9be43492.js"><link rel="prefetch" href="/assets/js/120.92ebe296.js"><link rel="prefetch" href="/assets/js/121.8e4692cf.js"><link rel="prefetch" href="/assets/js/122.9dedd265.js"><link rel="prefetch" href="/assets/js/123.2b9a0444.js"><link rel="prefetch" href="/assets/js/124.b48e689f.js"><link rel="prefetch" href="/assets/js/125.68eb8aaf.js"><link rel="prefetch" href="/assets/js/126.66994e05.js"><link rel="prefetch" href="/assets/js/127.90378248.js"><link rel="prefetch" href="/assets/js/128.69b68fae.js"><link rel="prefetch" href="/assets/js/129.a1eb49be.js"><link rel="prefetch" href="/assets/js/13.4229ddd0.js"><link rel="prefetch" href="/assets/js/130.2d295299.js"><link rel="prefetch" href="/assets/js/131.f01bb6f0.js"><link rel="prefetch" href="/assets/js/132.17d49e3d.js"><link rel="prefetch" href="/assets/js/133.ba5ecd9f.js"><link rel="prefetch" href="/assets/js/134.b9d0dd55.js"><link rel="prefetch" href="/assets/js/135.b18f709f.js"><link rel="prefetch" href="/assets/js/136.6d5acd5a.js"><link rel="prefetch" href="/assets/js/137.4855022c.js"><link rel="prefetch" href="/assets/js/138.0ac3e571.js"><link rel="prefetch" href="/assets/js/139.7a5f0a1b.js"><link rel="prefetch" href="/assets/js/14.859631c8.js"><link rel="prefetch" href="/assets/js/140.376abda2.js"><link rel="prefetch" href="/assets/js/141.11439496.js"><link rel="prefetch" href="/assets/js/142.fa128a93.js"><link rel="prefetch" href="/assets/js/143.54098c91.js"><link rel="prefetch" href="/assets/js/144.775667c2.js"><link rel="prefetch" href="/assets/js/145.37382bf5.js"><link rel="prefetch" href="/assets/js/146.5a7cec5f.js"><link rel="prefetch" href="/assets/js/147.8b2511b6.js"><link rel="prefetch" href="/assets/js/148.091a7f5d.js"><link rel="prefetch" href="/assets/js/149.22a96232.js"><link rel="prefetch" href="/assets/js/15.2c0a2fc9.js"><link rel="prefetch" href="/assets/js/150.edb85c8a.js"><link rel="prefetch" href="/assets/js/151.51ff8d2a.js"><link rel="prefetch" href="/assets/js/152.6ea8823d.js"><link rel="prefetch" href="/assets/js/153.8fa08dc2.js"><link rel="prefetch" href="/assets/js/154.10f0a7fe.js"><link rel="prefetch" href="/assets/js/155.fac7fcb9.js"><link rel="prefetch" href="/assets/js/156.54b11ea8.js"><link rel="prefetch" href="/assets/js/157.a16c749e.js"><link rel="prefetch" href="/assets/js/158.febe26e7.js"><link rel="prefetch" href="/assets/js/159.a1245f91.js"><link rel="prefetch" href="/assets/js/16.dbe37e8f.js"><link rel="prefetch" href="/assets/js/160.8fdb86d8.js"><link rel="prefetch" href="/assets/js/161.1a884642.js"><link rel="prefetch" href="/assets/js/162.54ce17b7.js"><link rel="prefetch" href="/assets/js/163.4c9e62b5.js"><link rel="prefetch" href="/assets/js/164.437a9240.js"><link rel="prefetch" href="/assets/js/165.c43f7d12.js"><link rel="prefetch" href="/assets/js/166.ed026d82.js"><link rel="prefetch" href="/assets/js/167.10f63809.js"><link rel="prefetch" href="/assets/js/168.3a76752d.js"><link rel="prefetch" href="/assets/js/169.ecbef1c2.js"><link rel="prefetch" href="/assets/js/17.610e8bc7.js"><link rel="prefetch" href="/assets/js/170.c3d9f9f4.js"><link rel="prefetch" href="/assets/js/171.1fb6cff5.js"><link rel="prefetch" href="/assets/js/172.d3600211.js"><link rel="prefetch" href="/assets/js/173.cfcfede9.js"><link rel="prefetch" href="/assets/js/174.3a96e901.js"><link rel="prefetch" href="/assets/js/175.7e5ad73d.js"><link rel="prefetch" href="/assets/js/176.cdd44a3e.js"><link rel="prefetch" href="/assets/js/177.d220b7de.js"><link rel="prefetch" href="/assets/js/178.3a169790.js"><link rel="prefetch" href="/assets/js/179.ceefa0a4.js"><link rel="prefetch" href="/assets/js/18.3b5e5736.js"><link rel="prefetch" href="/assets/js/180.ebc78c1b.js"><link rel="prefetch" href="/assets/js/181.8c9cde06.js"><link rel="prefetch" href="/assets/js/182.cbfd63e3.js"><link rel="prefetch" href="/assets/js/183.e7335f79.js"><link rel="prefetch" href="/assets/js/184.aa9b67bf.js"><link rel="prefetch" href="/assets/js/185.70bf0e06.js"><link rel="prefetch" href="/assets/js/186.48bf1759.js"><link rel="prefetch" href="/assets/js/187.8eb020bb.js"><link rel="prefetch" href="/assets/js/188.26ffbc60.js"><link rel="prefetch" href="/assets/js/189.aa04b02e.js"><link rel="prefetch" href="/assets/js/19.ea56ba6b.js"><link rel="prefetch" href="/assets/js/190.48b6bb53.js"><link rel="prefetch" href="/assets/js/191.5dbd87c4.js"><link rel="prefetch" href="/assets/js/192.a94c4e2a.js"><link rel="prefetch" href="/assets/js/193.35e0bac5.js"><link rel="prefetch" href="/assets/js/194.d25207ee.js"><link rel="prefetch" href="/assets/js/195.2664cdf8.js"><link rel="prefetch" href="/assets/js/196.8392953a.js"><link rel="prefetch" href="/assets/js/197.22908854.js"><link rel="prefetch" href="/assets/js/198.4d668b40.js"><link rel="prefetch" href="/assets/js/199.c38cfa72.js"><link rel="prefetch" href="/assets/js/20.fed1596b.js"><link rel="prefetch" href="/assets/js/200.f040bff6.js"><link rel="prefetch" href="/assets/js/201.eda0c453.js"><link rel="prefetch" href="/assets/js/202.d33092cc.js"><link rel="prefetch" href="/assets/js/203.375e83b5.js"><link rel="prefetch" href="/assets/js/204.db44a902.js"><link rel="prefetch" href="/assets/js/205.f9c1d90b.js"><link rel="prefetch" href="/assets/js/206.41b05d8f.js"><link rel="prefetch" href="/assets/js/207.8e367da9.js"><link rel="prefetch" href="/assets/js/208.800e5099.js"><link rel="prefetch" href="/assets/js/209.1647c1ee.js"><link rel="prefetch" href="/assets/js/21.128d8911.js"><link rel="prefetch" href="/assets/js/210.0240e182.js"><link rel="prefetch" href="/assets/js/211.abd45502.js"><link rel="prefetch" href="/assets/js/212.098c2f63.js"><link rel="prefetch" href="/assets/js/213.2adf383e.js"><link rel="prefetch" href="/assets/js/214.0c3f6c4a.js"><link rel="prefetch" href="/assets/js/215.7d7d7c3b.js"><link rel="prefetch" href="/assets/js/216.8be227b6.js"><link rel="prefetch" href="/assets/js/217.c05636fd.js"><link rel="prefetch" href="/assets/js/22.4ed59c00.js"><link rel="prefetch" href="/assets/js/23.2ee6d40f.js"><link rel="prefetch" href="/assets/js/24.134fb639.js"><link rel="prefetch" href="/assets/js/25.03fbae3f.js"><link rel="prefetch" href="/assets/js/26.2896df2f.js"><link rel="prefetch" href="/assets/js/27.9459fe1b.js"><link rel="prefetch" href="/assets/js/28.0381e701.js"><link rel="prefetch" href="/assets/js/29.05690783.js"><link rel="prefetch" href="/assets/js/30.03831ad6.js"><link rel="prefetch" href="/assets/js/31.bf70bc53.js"><link rel="prefetch" href="/assets/js/32.3ad8d777.js"><link rel="prefetch" href="/assets/js/33.4dca64e8.js"><link rel="prefetch" href="/assets/js/34.b3a2988f.js"><link rel="prefetch" href="/assets/js/35.48544f26.js"><link rel="prefetch" href="/assets/js/36.7cbb23f5.js"><link rel="prefetch" href="/assets/js/37.ef3055d1.js"><link rel="prefetch" href="/assets/js/38.e202c1d9.js"><link rel="prefetch" href="/assets/js/39.98ed3f60.js"><link rel="prefetch" href="/assets/js/4.2987042c.js"><link rel="prefetch" href="/assets/js/40.00d0398b.js"><link rel="prefetch" href="/assets/js/41.8a4dfdd9.js"><link rel="prefetch" href="/assets/js/42.e4391f90.js"><link rel="prefetch" href="/assets/js/43.d60722ed.js"><link rel="prefetch" href="/assets/js/44.844ba2dd.js"><link rel="prefetch" href="/assets/js/45.19abe1fa.js"><link rel="prefetch" href="/assets/js/46.e7cf22ed.js"><link rel="prefetch" href="/assets/js/47.0097c49a.js"><link rel="prefetch" href="/assets/js/48.644217ec.js"><link rel="prefetch" href="/assets/js/49.d2ed3d93.js"><link rel="prefetch" href="/assets/js/5.543482dc.js"><link rel="prefetch" href="/assets/js/50.035f07d3.js"><link rel="prefetch" href="/assets/js/52.6332f8a6.js"><link rel="prefetch" href="/assets/js/53.a13097d4.js"><link rel="prefetch" href="/assets/js/54.d35b05b3.js"><link rel="prefetch" href="/assets/js/55.7f6be7ac.js"><link rel="prefetch" href="/assets/js/56.643522ab.js"><link rel="prefetch" href="/assets/js/57.07005b3a.js"><link rel="prefetch" href="/assets/js/58.e1e03853.js"><link rel="prefetch" href="/assets/js/59.6f80e8ef.js"><link rel="prefetch" href="/assets/js/6.26a015ea.js"><link rel="prefetch" href="/assets/js/60.b3f964e3.js"><link rel="prefetch" href="/assets/js/61.df8cbb4a.js"><link rel="prefetch" href="/assets/js/62.0f65108f.js"><link rel="prefetch" href="/assets/js/63.1e27e7b4.js"><link rel="prefetch" href="/assets/js/64.f95b4e8f.js"><link rel="prefetch" href="/assets/js/65.229fe8fe.js"><link rel="prefetch" href="/assets/js/66.5526c510.js"><link rel="prefetch" href="/assets/js/67.745ba079.js"><link rel="prefetch" href="/assets/js/68.1c388e80.js"><link rel="prefetch" href="/assets/js/69.991ed696.js"><link rel="prefetch" href="/assets/js/7.8d3f9ec4.js"><link rel="prefetch" href="/assets/js/70.ab660e4e.js"><link rel="prefetch" href="/assets/js/71.97a52e92.js"><link rel="prefetch" href="/assets/js/72.a350275b.js"><link rel="prefetch" href="/assets/js/73.d5241652.js"><link rel="prefetch" href="/assets/js/74.ff77c6de.js"><link rel="prefetch" href="/assets/js/75.9d407007.js"><link rel="prefetch" href="/assets/js/76.6cefa69f.js"><link rel="prefetch" href="/assets/js/77.285db2e5.js"><link rel="prefetch" href="/assets/js/78.818d48ff.js"><link rel="prefetch" href="/assets/js/79.1e3a8f9c.js"><link rel="prefetch" href="/assets/js/8.59b18b65.js"><link rel="prefetch" href="/assets/js/80.bfc203a9.js"><link rel="prefetch" href="/assets/js/81.a861a67f.js"><link rel="prefetch" href="/assets/js/82.c969e1c2.js"><link rel="prefetch" href="/assets/js/83.d724118c.js"><link rel="prefetch" href="/assets/js/84.c2632755.js"><link rel="prefetch" href="/assets/js/85.6374caab.js"><link rel="prefetch" href="/assets/js/86.93037213.js"><link rel="prefetch" href="/assets/js/87.5e1e7b4a.js"><link rel="prefetch" href="/assets/js/88.660d87af.js"><link rel="prefetch" href="/assets/js/89.abc87472.js"><link rel="prefetch" href="/assets/js/9.765d24b9.js"><link rel="prefetch" href="/assets/js/90.1728981a.js"><link rel="prefetch" href="/assets/js/91.aa19ce0f.js"><link rel="prefetch" href="/assets/js/92.d6a8f6d6.js"><link rel="prefetch" href="/assets/js/93.acf746bb.js"><link rel="prefetch" href="/assets/js/94.eab8a652.js"><link rel="prefetch" href="/assets/js/95.60197c4d.js"><link rel="prefetch" href="/assets/js/96.60d660d2.js"><link rel="prefetch" href="/assets/js/97.de1f986d.js"><link rel="prefetch" href="/assets/js/98.43b9d954.js"><link rel="prefetch" href="/assets/js/99.ed18a021.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.66de3528.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-8c445ae8><div data-v-8c445ae8><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-8c445ae8 data-v-8c445ae8><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-5cb9a64e data-v-8c445ae8 data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>说传</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2023
+        </a></span></div></div> <div class="hide" data-v-8c445ae8><header class="navbar" data-v-8c445ae8><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_p.png" alt="说传" class="logo"> <span class="site-name">说传</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-8c445ae8></div> <aside class="sidebar" data-v-8c445ae8><div class="personal-info-wrapper" data-v-03833281 data-v-8c445ae8><img src="/img/avatar.png" alt="author-avatar" class="personal-img" data-v-03833281> <h3 class="name" data-v-03833281>
+    GuoJun
+  </h3> <div class="num" data-v-03833281><div data-v-03833281><h3 data-v-03833281>176</h3> <h6 data-v-03833281>Article</h6></div> <div data-v-03833281><h3 data-v-03833281>58</h3> <h6 data-v-03833281>Tag</h6></div></div> <hr data-v-03833281></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-5cb9a64e data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>Java常见安全算法</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2023
+        </a></span></div></div> <div data-v-8c445ae8><main class="page"><div class="page-title" style="display:none;"><h1>Java常见安全算法</h1> <hr> <div data-v-2f089fa6><i class="iconfont reco-account" data-v-2f089fa6><span data-v-2f089fa6>GuoJun</span></i> <i class="iconfont reco-date" data-v-2f089fa6><span data-v-2f089fa6>2018-05-04</span></i> <!----> <i class="iconfont reco-tag tags" data-v-2f089fa6><span class="tag-item" data-v-2f089fa6>Java</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><p>本文整理了常见的安全算法，包括MD5、SHA、DES、AES、RSA等，并写了完整的工具类（Java 版），工具类包含测试。</p> <h2 id="一、数字摘要算法"><a href="#一、数字摘要算法" class="header-anchor">#</a> 一、数字摘要算法</h2> <blockquote><p>数字摘要也称为消息摘要，它是一个唯一对应一个消息或文本的固定长度的值，它由一个单向Hash函数对消息进行计算而产生。如果消息在传递的途中改变了，接收者通过对收到消息采用相同的Hash重新计算，新产生的摘要与原摘要进行比较，就可知道消息是否被篡改了，因此消息摘要能够验证消息的完整性。消息摘要采用单向Hash函数将需要计算的内容&quot;摘要&quot;成固定长度的串，这个串亦称为数字指纹。这个串有固定的长度，且不同的明文摘要成密文，其结果总是不同的(相对的)，而同样的明文其摘要必定一致。这样这串摘要便可成为验证明文是否是&quot;真身&quot;的&quot;指纹&quot;了。</p></blockquote> <h3 id="_1-md5"><a href="#_1-md5" class="header-anchor">#</a> 1. Md5</h3> <p>MD5即Message Digest Algorithm 5(信息摘要算法5)，是数字摘要算法一种实现，用于确保信息传输完整性和一致性，摘要长度为128位。 MD5由MD4、 MD3、 MD2改进而来，主要增强算法复杂度和不可逆性，该算法因其普遍、稳定、快速的特点，在产业界得到了极为广泛的使用，目前主流的编程语言普遍都已有MD5算法实现。</p> <div class="language- extra-class"><pre class="language-text"><code>import Java.security.MessageDigest;
+import Java.security.NoSuchAlgorithmException;
+
+/**
+ * Message Digest Algorithm 5(信息摘要算法5)
+ */
+public class MD5Util {
+	/**
+	 * Constructs the MD5Util object and sets the string whose MD5Util is to be
+	 * computed.
+	 * 
+	 * @param inStr
+	 *    the &lt;code&gt;String&lt;/code&gt; whose MD5Util is to be computed
+	 */
+	
+	
+	public final static String COMMON_KEY=&quot;zhongzhuoxin#@!321&quot;;
+	public MD5Util() {
+
+	}
+
+	public final static String str2MD5(String inStr) {
+		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+				'a', 'b', 'c', 'd', 'e', 'f' };
+		try {
+			byte[] strTemp = inStr.getBytes(&quot;UTF-8&quot;);
+			MessageDigest mdTemp = MessageDigest.getInstance(&quot;MD5&quot;);
+			mdTemp.update(strTemp);
+			byte[] md = mdTemp.digest();
+			int j = md.length;
+			char str[] = new char[j * 2];
+			int k = 0;
+			for (int i = 0; i &lt; j; i++) {
+				byte byte0 = md[i];
+				str[k++] = hexDigits[byte0 &gt;&gt;&gt; 4 &amp; 0xf];
+				str[k++] = hexDigits[byte0 &amp; 0xf];
+			}
+			return new String(str);
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
+	
+	
+
+	//--MD5Util
+	private static final char HEX_DIGITS[] = { '0', '1', '2', '3', '4', '5',
+			'6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+
+	public static String toHexString(byte[] b) { // String to byte
+		StringBuilder sb = new StringBuilder(b.length * 2);
+		for (int i = 0; i &lt; b.length; i++) {
+			sb.append(HEX_DIGITS[(b[i] &amp; 0xf0) &gt;&gt;&gt; 4]);
+			sb.append(HEX_DIGITS[b[i] &amp; 0x0f]);
+		}
+		return sb.toString();
+	}
+
+	public static String AndroidMd5(String s) {
+		try {
+			// Create MD5Util Hash
+			MessageDigest digest = MessageDigest
+					.getInstance(&quot;MD5&quot;);
+			digest.update(s.getBytes());
+			byte messageDigest[] = digest.digest();
+
+			return toHexString(messageDigest);
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+
+		return &quot;&quot;;
+	}
+
+	public static void main(String[] args) {
+
+		String m = MD5Util.str2MD5(&quot;swwwwwwwwwwdkinner&quot;);
+
+		System.out.print(m.length() + &quot;    &quot;);
+		System.out.println(m);
+
+	}
+}
+
+</code></pre></div><p>###2.SHA</p> <p>SHA的全称是Secure Hash Algorithm，即安全散列算法。 1993年，安全散列算法(SHA)由美国国家标准和技术协会（NIST)提出，并作为联邦信息处理标准(FIPS PUB 180)公布， 1995年又发布了一个修订版FIPS PUB 180-1，通常称之为SHA-1。 SHA-1是基于MD4算法的，现在已成为公认的最安全的散列算法之一，并被广泛使用。SHA-1算法生成的摘要信息的长度为160位，由于生成的摘要信息更长，运算的过程更加复杂，在相同的硬件上， SHA-1的运行速度比MD5更慢，但是也更为安全。</p> <div class="language- extra-class"><pre class="language-text"><code>
+
+import com.google.common.base.Strings;
+
+import Java.security.MessageDigest;
+
+/**
+ * SHA的全称是Secure Hash Algorithm，即安全散列算法
+ * Created by guojun on 2017/3/21.
+ */
+public class SHAUtil {
+
+    /**
+     * 定义加密方式
+     */
+    private final static String KEY_SHA = &quot;SHA&quot;;
+    private final static String KEY_SHA1 = &quot;SHA-1&quot;;
+    /**
+     * 全局数组
+     */
+    private final static String[] hexDigits = { &quot;0&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;,
+            &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot; };
+
+    /**
+     * 构造函数
+     */
+    public SHAUtil() {
+
+    }
+
+    /**
+     * SHA 加密
+     * @param data 需要加密的字节数组
+     * @return 加密之后的字节数组
+     * @throws Exception
+     */
+    public static byte[] encryptSHA(byte[] data) throws Exception {
+        // 创建具有指定算法名称的信息摘要
+//        MessageDigest sha = MessageDigest.getInstance(KEY_SHA);
+        MessageDigest sha = MessageDigest.getInstance(KEY_SHA1);
+        // 使用指定的字节数组对摘要进行最后更新
+        sha.update(data);
+        // 完成摘要计算并返回
+        return sha.digest();
+    }
+
+    /**
+     * SHA 加密
+     * @param data 需要加密的字符串
+     * @return 加密之后的字符串
+     * @throws Exception
+     */
+    public static String encryptSHA(String data) throws Exception {
+        // 验证传入的字符串
+        if (Strings.isNullOrEmpty(data)) {
+            return &quot;&quot;;
+        }
+        // 创建具有指定算法名称的信息摘要
+        MessageDigest sha = MessageDigest.getInstance(KEY_SHA);
+        // 使用指定的字节数组对摘要进行最后更新
+        sha.update(data.getBytes());
+        // 完成摘要计算
+        byte[] bytes = sha.digest();
+        // 将得到的字节数组变成字符串返回
+        return byteArrayToHexString(bytes);
+    }
+
+    /**
+     * 将一个字节转化成十六进制形式的字符串
+     * @param b 字节数组
+     * @return 字符串
+     */
+    private static String byteToHexString(byte b) {
+        int ret = b;
+        //System.out.println(&quot;ret = &quot; + ret);
+        if (ret &lt; 0) {
+            ret += 256;
+        }
+        int m = ret / 16;
+        int n = ret % 16;
+        return hexDigits[m] + hexDigits[n];
+    }
+
+    /**
+     * 转换字节数组为十六进制字符串
+     * @param bytes 字节数组
+     * @return 十六进制字符串
+     */
+    private static String byteArrayToHexString(byte[] bytes) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i &lt; bytes.length; i++) {
+            sb.append(byteToHexString(bytes[i]));
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 测试方法
+     * @param args
+     */
+    public static void main(String[] args) throws Exception {
+        String key = &quot;123&quot;;
+        System.out.println(encryptSHA(key));
+    }
+}
+
+</code></pre></div><h2 id="二、对称加密"><a href="#二、对称加密" class="header-anchor">#</a> 二、对称加密</h2> <blockquote><p>对称加密算法是应用较早的加密算法，技术成熟。在对称加密算法中，数据发送方将明文(原始数据)和加密密钥一起经过特殊加密算法处理后，生成复杂的加密密文进行发送，数据接收方收到密文后，若想读取原文，则需要使用加密使用的密钥及相同算法的逆算法对加密的密文进行解密，才能使其恢复成可读明文。在对称加密算法中，使用的密钥只有一个，发送和接收双方都使用这个密钥对数据进行加密和解密，这就要求加密和解密方事先都必须知道加密的密钥。</p></blockquote> <h3 id="_1-des算法"><a href="#_1-des算法" class="header-anchor">#</a> 1. DES算法</h3> <p>1973 年，美国国家标准局(NBS)在认识到建立数据保护标准既明显又急迫的情况下，开始征集联邦数据加密标准的方案。 1975 年3月17日， NBS公布了IBM公司提供的密码算法，以标准建议的形式在全国范围内征求意见。经过两年多的公开讨论之后， 1977 年7月15日， NBS宣布接受这建议，作为联邦信息处理标准46 号数据加密标准(Data Encryptin Standard)，即DES正式颁布，供商业界和非国防性政府部门使用。DES算法属于对称加密算法，明文按64位进行分组，密钥长64位，但事实上只有56位参与DES
+运算(第8、 16、 24、 32、 40、 48、 56、 64位是校验位，使得每个密钥都有奇数个1),分组后的明文和56位的密钥按位替代或交换的方法形成密文。由于计算机运算能力的增强，原版DES密码的密钥长度变得容易被暴力破解，因此演变出了3DES算法。 3DES是DES向AES过渡的加密算法，它使用3条56位的密钥对数据进行三次加密，是DES的一个更安全的变形</p> <div class="language- extra-class"><pre class="language-text"><code>
+
+import Java.io.IOException;
+import Java.security.SecureRandom;
+
+import Javax.crypto.Cipher;
+import Javax.crypto.SecretKey;
+import Javax.crypto.SecretKeyFactory;
+import Javax.crypto.spec.DESKeySpec;
+
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+/**
+ * Data Encryptin Standard
+ * 数据加密标准
+ */
+public class DESUtil {
+
+
+    private final static String DES = &quot;DES&quot;;
+
+    /**
+     * Description 根据键值进行加密
+     *
+     * @param data
+     * @param key  加密键byte数组
+     * @return
+     * @throws Exception
+     */
+    public static String encrypt(String data, String key) throws Exception {
+        byte[] bt = encrypt(data.getBytes(), key.getBytes());
+        String strs = new BASE64Encoder().encode(bt);
+        return strs;
+    }
+
+    /**
+     * Description 根据键值进行解密
+     *
+     * @param data
+     * @param key  加密键byte数组
+     * @return
+     * @throws IOException
+     * @throws Exception
+     */
+    public static String decrypt(String data, String key) throws Exception,
+            Exception {
+        if (data == null)
+            return null;
+        BASE64Decoder decoder = new BASE64Decoder();
+        byte[] buf = decoder.decodeBuffer(data);
+        byte[] bt = decrypt(buf, key.getBytes());
+        return new String(bt);
+    }
+
+    /**
+     * Description 根据键值进行加密
+     *
+     * @param data
+     * @param key  加密键byte数组
+     * @return
+     * @throws Exception
+     */
+    private static byte[] encrypt(byte[] data, byte[] key) throws Exception {
+        // 生成一个可信任的随机数源
+        SecureRandom sr = new SecureRandom();
+
+        // 从原始密钥数据创建DESKeySpec对象
+        DESKeySpec dks = new DESKeySpec(key);
+
+        // 创建一个密钥工厂，然后用它把DESKeySpec转换成SecretKey对象
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(DES);
+        SecretKey securekey = keyFactory.generateSecret(dks);
+
+        // Cipher对象实际完成加密操作
+        Cipher cipher = Cipher.getInstance(DES);
+
+        // 用密钥初始化Cipher对象
+        cipher.init(Cipher.ENCRYPT_MODE, securekey, sr);
+
+        return cipher.doFinal(data);
+    }
+
+
+    /**
+     * Description 根据键值进行解密
+     *
+     * @param data
+     * @param key  加密键byte数组
+     * @return
+     * @throws Exception
+     */
+    private static byte[] decrypt(byte[] data, byte[] key) throws Exception {
+        // 生成一个可信任的随机数源
+        SecureRandom sr = new SecureRandom();
+
+        // 从原始密钥数据创建DESKeySpec对象
+        DESKeySpec dks = new DESKeySpec(key);
+
+        // 创建一个密钥工厂，然后用它把DESKeySpec转换成SecretKey对象
+        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(DES);
+        SecretKey securekey = keyFactory.generateSecret(dks);
+
+        // Cipher对象实际完成解密操作
+        Cipher cipher = Cipher.getInstance(DES);
+
+        // 用密钥初始化Cipher对象
+        cipher.init(Cipher.DECRYPT_MODE, securekey, sr);
+
+        return cipher.doFinal(data);
+    }
+
+    public static void main(String[]args)throws Exception{
+       String  sStr=encrypt(&quot;122222112222:12343232323:jajwwwwslwskwkkwksk&quot;,&quot;wew2323w233321ws233w&quot;);
+       System.out.println(sStr);
+       String mStr=decrypt(sStr,&quot;wew2323w233321ws233w&quot;);
+       System.out.println(mStr);
+    }
+}
+
+</code></pre></div><h3 id="_2-aes"><a href="#_2-aes" class="header-anchor">#</a> 2. AES</h3> <p>AES的全称是Advanced Encryption Standard，即高级加密标准，该算法由比利时密码学家Joan Daemen和Vincent Rijmen所设计，结合两位作者的名字，又称Rijndael加密算法，是美国联邦政府采用的一种对称加密标准，这个标准用来替代原先的DES算法，已经广为全世界所使用，已然成为对称加密算法中最流行的算法之一。AES算法作为新一代的数据加密标准汇聚了强安全性、高性能、高效率、易用和灵活等优
+点，设计有三个密钥长度:128,192,256位，比DES算法的加密强度更高，更为安全。</p> <div class="language- extra-class"><pre class="language-text"><code>
+import Java.io.IOException;
+import Java.io.UnsupportedEncodingException;
+import Java.security.InvalidKeyException;
+import Java.security.NoSuchAlgorithmException;
+import Java.security.SecureRandom;
+import Java.util.Base64;
+import Java.util.Scanner;
+
+import Javax.crypto.BadPaddingException;
+import Javax.crypto.Cipher;
+import Javax.crypto.IllegalBlockSizeException;
+import Javax.crypto.KeyGenerator;
+import Javax.crypto.NoSuchPaddingException;
+import Javax.crypto.SecretKey;
+import Javax.crypto.spec.SecretKeySpec;
+
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
+
+/**
+ * Created by guojun on 2017/3/21.
+ */
+public class AESUtil {
+
+    static  byte[]  key = &quot;w@#$4@#$s^&amp;3*&amp;^4&quot;.getBytes();
+    final static String algorithm=&quot;AES&quot;;
+
+    public static String encrypt(String data){
+
+        byte[] dataToSend = data.getBytes();
+        Cipher c = null;
+        try {
+            c = Cipher.getInstance(algorithm);
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        SecretKeySpec k =  new SecretKeySpec(key, algorithm);
+        try {
+            c.init(Cipher.ENCRYPT_MODE, k);
+        } catch (InvalidKeyException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        byte[] encryptedData = &quot;&quot;.getBytes();
+        try {
+            encryptedData = c.doFinal(dataToSend);
+        } catch (IllegalBlockSizeException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        byte[] encryptedByteValue =     Base64.getEncoder().encode(encryptedData);
+        return  new String(encryptedByteValue);//.toString();
+    }
+
+    public static String decrypt(String data){
+
+        byte[] encryptedData  =  Base64.getDecoder().decode(data);
+        Cipher c = null;
+        try {
+            c = Cipher.getInstance(algorithm);
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        SecretKeySpec k =
+                new SecretKeySpec(key, algorithm);
+        try {
+            c.init(Cipher.DECRYPT_MODE, k);
+        } catch (InvalidKeyException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        byte[] decrypted = null;
+        try {
+            decrypted = c.doFinal(encryptedData);
+        } catch (IllegalBlockSizeException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return new String(decrypted);
+    }
+
+    public static void main(String[] args){
+        String password=encrypt(&quot;12233440988:1239874389888:dd333&quot;);
+        System.out.println(password);
+        System.out.println(decrypt(password));
+    }
+}
+
+
+</code></pre></div><p>##三、非对称加密</p> <blockquote><p>非对称加密算法又称为公开密钥加密算法，它需要两个密钥，一个称为公开密钥(public key)，即公钥，另一个称为私有密钥(private key)，即私钥。公钥与私钥需要配对使用，如果用公钥对数据进行加密，只有用对应的私钥才能进行解密，而如果使用私钥对数据进行加密，那么只有用对应的公钥才能进行解密。因为加密和解密使用的是两个不同的密钥，所以这种算法称为非对称加密算法。非对称加密算法实现机密信息交换的基本过程是：甲方生成一对密钥并将其中的一把作为公钥向其它人公开，得到该公钥的乙方使用该密钥对机密信息进行加密后再发送给甲方，甲方再使用自己保存的另一把专用密钥，即私钥，对加密后的信息进行解密。</p></blockquote> <h3 id="rsa"><a href="#rsa" class="header-anchor">#</a> RSA</h3> <p>RSA非对称加密算法是1977年由Ron Rivest、 Adi Shamirh和LenAdleman开发的， RSA取名来自开发他们三者的名字。 RSA是目前最有影响力的非对称加密算法，它能够抵抗到目前为止已知的所有密码攻击，已被ISO推荐为公钥数据加密标准。 RSA算法基于一个十分简单的数论事实：将两个大素数相乘十分容易，但反过来想要对其乘积进行因式分解却极其困难，因此可以将乘积公开作为加密密钥。</p> <div class="language- extra-class"><pre class="language-text"><code>
+/**
+ * Created by guojun on 2017/3/21.
+ * RSA ：RSA非对称加密算法是1977年由Ron Rivest、 Adi Shamirh和LenAdleman开发   *  的， RSA取名来
+ *  自开发他们三者的名字。
+ * 参考：http://blog.csdn.net/wangqiuyun/article/details/42143957
+ */
+
+import Java.io.*;
+import Java.security.InvalidKeyException;
+import Java.security.KeyFactory;
+import Java.security.KeyPair;
+import Java.security.KeyPairGenerator;
+import Java.security.NoSuchAlgorithmException;
+import Java.security.SecureRandom;
+
+import Java.security.interfaces.RSAPrivateKey;
+import Java.security.interfaces.RSAPublicKey;
+import Java.security.spec.InvalidKeySpecException;
+import Java.security.spec.PKCS8EncodedKeySpec;
+import Java.security.spec.X509EncodedKeySpec;
+import Java.util.Base64;
+
+import Javax.crypto.BadPaddingException;
+import Javax.crypto.Cipher;
+import Javax.crypto.IllegalBlockSizeException;
+import Javax.crypto.NoSuchPaddingException;
+public class RSAUtil {
+
+
+    /**
+     * 字节数据转字符串专用集合
+     */
+    private static final char[] HEX_CHAR = { '0', '1', '2', '3', '4', '5', '6',
+            '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+
+    /**
+     * 随机生成密钥对
+     */
+    public static void genKeyPair(String filePath) {
+        // KeyPairGenerator类用于生成公钥和私钥对，基于RSA算法生成对象
+        KeyPairGenerator keyPairGen = null;
+        try {
+            keyPairGen = KeyPairGenerator.getInstance(&quot;RSA&quot;);
+        } catch (NoSuchAlgorithmException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        // 初始化密钥对生成器，密钥大小为96-1024位
+        keyPairGen.initialize(1024,new SecureRandom());
+        // 生成一个密钥对，保存在keyPair中
+        KeyPair keyPair = keyPairGen.generateKeyPair();
+        // 得到私钥
+        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
+        // 得到公钥
+        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+        try {
+            // 得到公钥字符串
+            // 得到私钥字符串
+            String privateKeyString =new String( Base64.getEncoder().encode(privateKey.getEncoded()));
+            String publicKeyString =new String( Base64.getEncoder().encode(publicKey.getEncoded()));
+            // 将密钥对写入到文件
+
+            File file1=new File(filePath + &quot;publicKey.keystore&quot;);
+            File file2=new File(filePath + &quot;privateKey.keystore&quot;);
+            if(!file1.exists()) {
+                file1.createNewFile();
+            }
+            if(!file2.exists()) {
+                file2.createNewFile();
+            }
+            FileWriter pubfw = new FileWriter(filePath + &quot;/publicKey.keystore&quot;);
+            FileWriter prifw = new FileWriter(filePath + &quot;/privateKey.keystore&quot;);
+            BufferedWriter pubbw = new BufferedWriter(pubfw);
+            BufferedWriter pribw = new BufferedWriter(prifw);
+            pubbw.write(publicKeyString);
+            pribw.write(privateKeyString);
+            pubbw.flush();
+            pubbw.close();
+            pubfw.close();
+            pribw.flush();
+            pribw.close();
+            prifw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 从文件中输入流中加载公钥
+     *
+     * @param
+     *
+     * @throws Exception
+     *             加载公钥时产生的异常
+     */
+    public static String loadPublicKeyByFile(String path) throws Exception {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(path
+                    + &quot;/publicKey.keystore&quot;));
+            String readLine = null;
+            StringBuilder sb = new StringBuilder();
+            while ((readLine = br.readLine()) != null) {
+                sb.append(readLine);
+            }
+            br.close();
+            return sb.toString();
+        } catch (IOException e) {
+            throw new Exception(&quot;公钥数据流读取错误&quot;);
+        } catch (NullPointerException e) {
+            throw new Exception(&quot;公钥输入流为空&quot;);
+        }
+    }
+
+    /**
+     * 从字符串中加载公钥
+     *
+     * @param publicKeyStr
+     *            公钥数据字符串
+     * @throws Exception
+     *             加载公钥时产生的异常
+     */
+    public static RSAPublicKey loadPublicKeyByStr(String publicKeyStr)
+            throws Exception {
+        try {
+            byte[] buffer = Base64.getDecoder().decode(publicKeyStr);
+            KeyFactory keyFactory = KeyFactory.getInstance(&quot;RSA&quot;);
+            X509EncodedKeySpec keySpec = new X509EncodedKeySpec(buffer);
+            return (RSAPublicKey) keyFactory.generatePublic(keySpec);
+        } catch (NoSuchAlgorithmException e) {
+            throw new Exception(&quot;无此算法&quot;);
+        } catch (InvalidKeySpecException e) {
+            throw new Exception(&quot;公钥非法&quot;);
+        } catch (NullPointerException e) {
+            throw new Exception(&quot;公钥数据为空&quot;);
+        }
+    }
+
+    /**
+     * 从文件中加载私钥
+     *
+     * @param
+     *
+     * @return 是否成功
+     * @throws Exception
+     */
+    public static String loadPrivateKeyByFile(String path) throws Exception {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(path
+                    + &quot;/privateKey.keystore&quot;));
+            String readLine = null;
+            StringBuilder sb = new StringBuilder();
+            while ((readLine = br.readLine()) != null) {
+                sb.append(readLine);
+            }
+            br.close();
+            return sb.toString();
+        } catch (IOException e) {
+            throw new Exception(&quot;私钥数据读取错误&quot;);
+        } catch (NullPointerException e) {
+            throw new Exception(&quot;私钥输入流为空&quot;);
+        }
+    }
+
+    public static RSAPrivateKey loadPrivateKeyByStr(String privateKeyStr)
+            throws Exception {
+        try {
+            byte[] buffer = Base64.getDecoder().decode(privateKeyStr);
+            PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(buffer);
+            KeyFactory keyFactory = KeyFactory.getInstance(&quot;RSA&quot;);
+            return (RSAPrivateKey) keyFactory.generatePrivate(keySpec);
+        } catch (NoSuchAlgorithmException e) {
+            throw new Exception(&quot;无此算法&quot;);
+        } catch (InvalidKeySpecException e) {
+            throw new Exception(&quot;私钥非法&quot;);
+        } catch (NullPointerException e) {
+            throw new Exception(&quot;私钥数据为空&quot;);
+        }
+    }
+
+    /**
+     * 公钥加密过程
+     *
+     * @param publicKey
+     *            公钥
+     * @param plainTextData
+     *            明文数据
+     * @return
+     * @throws Exception
+     *             加密过程中的异常信息
+     */
+    public static byte[] encrypt(RSAPublicKey publicKey, byte[] plainTextData)
+            throws Exception {
+        if (publicKey == null) {
+            throw new Exception(&quot;加密公钥为空, 请设置&quot;);
+        }
+        Cipher cipher = null;
+        try {
+            // 使用默认RSA
+            cipher = Cipher.getInstance(&quot;RSA&quot;);
+            // cipher= Cipher.getInstance(&quot;RSA&quot;, new BouncyCastleProvider());
+            cipher.init(Cipher.ENCRYPT_MODE, publicKey);
+            byte[] output = cipher.doFinal(plainTextData);
+            return output;
+        } catch (NoSuchAlgorithmException e) {
+            throw new Exception(&quot;无此加密算法&quot;);
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+            return null;
+        } catch (InvalidKeyException e) {
+            throw new Exception(&quot;加密公钥非法,请检查&quot;);
+        } catch (IllegalBlockSizeException e) {
+            throw new Exception(&quot;明文长度非法&quot;);
+        } catch (BadPaddingException e) {
+            throw new Exception(&quot;明文数据已损坏&quot;);
+        }
+    }
+
+    /**
+     * 私钥加密过程
+     *
+     * @param privateKey
+     *            私钥
+     * @param plainTextData
+     *            明文数据
+     * @return
+     * @throws Exception
+     *             加密过程中的异常信息
+     */
+    public static byte[] encrypt(RSAPrivateKey privateKey, byte[] plainTextData)
+            throws Exception {
+        if (privateKey == null) {
+            throw new Exception(&quot;加密私钥为空, 请设置&quot;);
+        }
+        Cipher cipher = null;
+        try {
+            // 使用默认RSA
+            cipher = Cipher.getInstance(&quot;RSA&quot;);
+            cipher.init(Cipher.ENCRYPT_MODE, privateKey);
+            byte[] output = cipher.doFinal(plainTextData);
+            return output;
+        } catch (NoSuchAlgorithmException e) {
+            throw new Exception(&quot;无此加密算法&quot;);
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+            return null;
+        } catch (InvalidKeyException e) {
+            throw new Exception(&quot;加密私钥非法,请检查&quot;);
+        } catch (IllegalBlockSizeException e) {
+            throw new Exception(&quot;明文长度非法&quot;);
+        } catch (BadPaddingException e) {
+            throw new Exception(&quot;明文数据已损坏&quot;);
+        }
+    }
+
+    /**
+     * 私钥解密过程
+     *
+     * @param privateKey
+     *            私钥
+     * @param cipherData
+     *            密文数据
+     * @return 明文
+     * @throws Exception
+     *             解密过程中的异常信息
+     */
+    public static byte[] decrypt(RSAPrivateKey privateKey, byte[] cipherData)
+            throws Exception {
+        if (privateKey == null) {
+            throw new Exception(&quot;解密私钥为空, 请设置&quot;);
+        }
+        Cipher cipher = null;
+        try {
+            // 使用默认RSA
+            cipher = Cipher.getInstance(&quot;RSA&quot;);
+            // cipher= Cipher.getInstance(&quot;RSA&quot;, new BouncyCastleProvider());
+            cipher.init(Cipher.DECRYPT_MODE, privateKey);
+            byte[] output = cipher.doFinal(cipherData);
+            return output;
+        } catch (NoSuchAlgorithmException e) {
+            throw new Exception(&quot;无此解密算法&quot;);
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+            return null;
+        } catch (InvalidKeyException e) {
+            throw new Exception(&quot;解密私钥非法,请检查&quot;);
+        } catch (IllegalBlockSizeException e) {
+            throw new Exception(&quot;密文长度非法&quot;);
+        } catch (BadPaddingException e) {
+            throw new Exception(&quot;密文数据已损坏&quot;);
+        }
+    }
+
+    /**
+     * 公钥解密过程
+     *
+     * @param publicKey
+     *            公钥
+     * @param cipherData
+     *            密文数据
+     * @return 明文
+     * @throws Exception
+     *             解密过程中的异常信息
+     */
+    public static byte[] decrypt(RSAPublicKey publicKey, byte[] cipherData)
+            throws Exception {
+        if (publicKey == null) {
+            throw new Exception(&quot;解密公钥为空, 请设置&quot;);
+        }
+        Cipher cipher = null;
+        try {
+            // 使用默认RSA
+            cipher = Cipher.getInstance(&quot;RSA&quot;);
+            // cipher= Cipher.getInstance(&quot;RSA&quot;, new BouncyCastleProvider());
+            cipher.init(Cipher.DECRYPT_MODE, publicKey);
+            byte[] output = cipher.doFinal(cipherData);
+            return output;
+        } catch (NoSuchAlgorithmException e) {
+            throw new Exception(&quot;无此解密算法&quot;);
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+            return null;
+        } catch (InvalidKeyException e) {
+            throw new Exception(&quot;解密公钥非法,请检查&quot;);
+        } catch (IllegalBlockSizeException e) {
+            throw new Exception(&quot;密文长度非法&quot;);
+        } catch (BadPaddingException e) {
+            throw new Exception(&quot;密文数据已损坏&quot;);
+        }
+    }
+
+    /**
+     * 字节数据转十六进制字符串
+     *
+     * @param data
+     *            输入数据
+     * @return 十六进制内容
+     */
+    public static String byteArrayToString(byte[] data) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i &lt; data.length; i++) {
+            // 取出字节的高四位 作为索引得到相应的十六进制标识符 注意无符号右移
+            stringBuilder.append(HEX_CHAR[(data[i] &amp; 0xf0) &gt;&gt;&gt; 4]);
+            // 取出字节的低四位 作为索引得到相应的十六进制标识符
+            stringBuilder.append(HEX_CHAR[(data[i] &amp; 0x0f)]);
+            if (i &lt; data.length - 1) {
+                stringBuilder.append(' ');
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+
+
+    public static void main(String[] args) throws Exception {
+        String filepath=&quot;F:/temp/&quot;;
+        File file=new File(filepath);
+        if(!file.exists()){
+            file.mkdir();
+        }
+        genKeyPair(filepath);
+        System.out.println(&quot;--------------公钥加密私钥解密过程-------------------&quot;);
+        String plainText=&quot;1223333323:8783737321232:dewejj28i33e92hhsxxxx&quot;;
+        //公钥加密过程
+        byte[] cipherData=encrypt(loadPublicKeyByStr(loadPublicKeyByFile(filepath)),plainText.getBytes());
+        String cipher=new String(Base64.getEncoder().encode(cipherData));
+        //私钥解密过程
+        byte[] res=decrypt(loadPrivateKeyByStr(loadPrivateKeyByFile(filepath)), Base64.getDecoder().decode(cipher));
+        String restr=new String(res);
+        System.out.println(&quot;原文：&quot;+plainText);
+        System.out.println(&quot;加密密文：&quot;+cipher);
+        System.out.println(&quot;解密：&quot;+restr);
+        System.out.println();
+    }
+}
+
+</code></pre></div><p>注： 文字部分复制了《大型电商分布式系统实践 第一版 讲师 陈康贤》的第三课。代码来源于自己的整理，全部测试通过，应该没有坑。</p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-4ec3c486><li class="level-2" data-v-4ec3c486><a href="/blogs/java/2018-05-04-common-auth.html#一、数字摘要算法" class="sidebar-link" data-v-4ec3c486>一、数字摘要算法</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/java/2018-05-04-common-auth.html#_1-md5" class="sidebar-link" data-v-4ec3c486>1. Md5</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/java/2018-05-04-common-auth.html#二、对称加密" class="sidebar-link" data-v-4ec3c486>二、对称加密</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/java/2018-05-04-common-auth.html#_1-des算法" class="sidebar-link" data-v-4ec3c486>1. DES算法</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/java/2018-05-04-common-auth.html#_2-aes" class="sidebar-link" data-v-4ec3c486>2. AES</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/java/2018-05-04-common-auth.html#rsa" class="sidebar-link" data-v-4ec3c486>RSA</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.2802de7f.js" defer></script><script src="/assets/js/3.fd724599.js" defer></script><script src="/assets/js/1.0af14d1f.js" defer></script><script src="/assets/js/51.360faa16.js" defer></script>
+  </body>
+</html>
