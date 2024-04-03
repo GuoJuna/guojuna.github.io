@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VuePress 插件 | 说传</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/img/favicon.ico">
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = 'https://hm.baidu.com/hm.js?43353c326536410d4dfbfb2b18c31a9a';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    <meta name="description" content="路漫漫其修远兮，吾将上下而求索">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.0b2e2990.css" as="style"><link rel="preload" href="/assets/js/app.f52c46e4.js" as="script"><link rel="preload" href="/assets/js/6.a6d49f11.js" as="script"><link rel="preload" href="/assets/js/2.749a76c0.js" as="script"><link rel="preload" href="/assets/js/1.b4d35e2f.js" as="script"><link rel="preload" href="/assets/js/219.ed2e9168.js" as="script"><link rel="prefetch" href="/assets/js/10.e78d94e7.js"><link rel="prefetch" href="/assets/js/100.603bb561.js"><link rel="prefetch" href="/assets/js/101.56e66ce0.js"><link rel="prefetch" href="/assets/js/102.5528c730.js"><link rel="prefetch" href="/assets/js/103.6aefe097.js"><link rel="prefetch" href="/assets/js/104.0ef11747.js"><link rel="prefetch" href="/assets/js/105.e8540344.js"><link rel="prefetch" href="/assets/js/106.88d9b562.js"><link rel="prefetch" href="/assets/js/107.d56e402f.js"><link rel="prefetch" href="/assets/js/108.976030f5.js"><link rel="prefetch" href="/assets/js/109.6b91262f.js"><link rel="prefetch" href="/assets/js/11.cf689ed1.js"><link rel="prefetch" href="/assets/js/110.764f4902.js"><link rel="prefetch" href="/assets/js/111.8c956f93.js"><link rel="prefetch" href="/assets/js/112.7f95a6a2.js"><link rel="prefetch" href="/assets/js/113.0d61630b.js"><link rel="prefetch" href="/assets/js/114.3f6121d3.js"><link rel="prefetch" href="/assets/js/115.fc3071c3.js"><link rel="prefetch" href="/assets/js/116.d0105981.js"><link rel="prefetch" href="/assets/js/117.6dcc323a.js"><link rel="prefetch" href="/assets/js/118.e3caf9c1.js"><link rel="prefetch" href="/assets/js/119.7cc4f4d8.js"><link rel="prefetch" href="/assets/js/12.3cbecf48.js"><link rel="prefetch" href="/assets/js/120.0bf57efd.js"><link rel="prefetch" href="/assets/js/121.76da52f7.js"><link rel="prefetch" href="/assets/js/122.804b2296.js"><link rel="prefetch" href="/assets/js/123.766199ab.js"><link rel="prefetch" href="/assets/js/124.511a96f5.js"><link rel="prefetch" href="/assets/js/125.9aa6cd77.js"><link rel="prefetch" href="/assets/js/126.ecd90c3b.js"><link rel="prefetch" href="/assets/js/127.28919950.js"><link rel="prefetch" href="/assets/js/128.098b3bd6.js"><link rel="prefetch" href="/assets/js/129.e769aaa6.js"><link rel="prefetch" href="/assets/js/130.1c12eada.js"><link rel="prefetch" href="/assets/js/131.308e4c66.js"><link rel="prefetch" href="/assets/js/132.4f864bd1.js"><link rel="prefetch" href="/assets/js/133.49abf648.js"><link rel="prefetch" href="/assets/js/134.7bfb7082.js"><link rel="prefetch" href="/assets/js/135.a6e7ef63.js"><link rel="prefetch" href="/assets/js/136.185a6fb5.js"><link rel="prefetch" href="/assets/js/137.f919da63.js"><link rel="prefetch" href="/assets/js/138.5c8ed275.js"><link rel="prefetch" href="/assets/js/139.2b4a92b0.js"><link rel="prefetch" href="/assets/js/140.1aabaeda.js"><link rel="prefetch" href="/assets/js/141.c1ed3061.js"><link rel="prefetch" href="/assets/js/142.87892f62.js"><link rel="prefetch" href="/assets/js/143.5f903f71.js"><link rel="prefetch" href="/assets/js/144.96911f66.js"><link rel="prefetch" href="/assets/js/145.5293d591.js"><link rel="prefetch" href="/assets/js/146.ce55f248.js"><link rel="prefetch" href="/assets/js/147.a466e4cd.js"><link rel="prefetch" href="/assets/js/148.2622a26b.js"><link rel="prefetch" href="/assets/js/149.fc7f5e36.js"><link rel="prefetch" href="/assets/js/15.c75e1e0e.js"><link rel="prefetch" href="/assets/js/150.99ce9747.js"><link rel="prefetch" href="/assets/js/151.7fffdef7.js"><link rel="prefetch" href="/assets/js/152.f8c52b6b.js"><link rel="prefetch" href="/assets/js/153.970c997e.js"><link rel="prefetch" href="/assets/js/154.9572a155.js"><link rel="prefetch" href="/assets/js/155.4ffa8c2b.js"><link rel="prefetch" href="/assets/js/156.103a22cc.js"><link rel="prefetch" href="/assets/js/157.95a4e170.js"><link rel="prefetch" href="/assets/js/158.13f9c43a.js"><link rel="prefetch" href="/assets/js/159.c9941f4a.js"><link rel="prefetch" href="/assets/js/16.48de5833.js"><link rel="prefetch" href="/assets/js/160.18e2d76e.js"><link rel="prefetch" href="/assets/js/161.073e76a5.js"><link rel="prefetch" href="/assets/js/162.033523df.js"><link rel="prefetch" href="/assets/js/163.2f626dd1.js"><link rel="prefetch" href="/assets/js/164.6ef971b0.js"><link rel="prefetch" href="/assets/js/165.5cd982bf.js"><link rel="prefetch" href="/assets/js/166.af769d67.js"><link rel="prefetch" href="/assets/js/167.9cfd6db7.js"><link rel="prefetch" href="/assets/js/168.641bb2eb.js"><link rel="prefetch" href="/assets/js/169.bc678ae9.js"><link rel="prefetch" href="/assets/js/17.6c3f3847.js"><link rel="prefetch" href="/assets/js/170.b5611477.js"><link rel="prefetch" href="/assets/js/171.460c774b.js"><link rel="prefetch" href="/assets/js/172.0ce5fce2.js"><link rel="prefetch" href="/assets/js/173.30ebd9c7.js"><link rel="prefetch" href="/assets/js/174.5dc7825d.js"><link rel="prefetch" href="/assets/js/175.579819dd.js"><link rel="prefetch" href="/assets/js/176.1c9583cf.js"><link rel="prefetch" href="/assets/js/177.3de9e052.js"><link rel="prefetch" href="/assets/js/178.63917834.js"><link rel="prefetch" href="/assets/js/179.1ed51b14.js"><link rel="prefetch" href="/assets/js/18.2ac13f8f.js"><link rel="prefetch" href="/assets/js/180.7168bcc4.js"><link rel="prefetch" href="/assets/js/181.a3905942.js"><link rel="prefetch" href="/assets/js/182.533db991.js"><link rel="prefetch" href="/assets/js/183.68674e4b.js"><link rel="prefetch" href="/assets/js/184.5d819489.js"><link rel="prefetch" href="/assets/js/185.2a1764e1.js"><link rel="prefetch" href="/assets/js/186.93066366.js"><link rel="prefetch" href="/assets/js/187.aa9a65c9.js"><link rel="prefetch" href="/assets/js/188.d778e089.js"><link rel="prefetch" href="/assets/js/189.56b6d57b.js"><link rel="prefetch" href="/assets/js/19.9baede1a.js"><link rel="prefetch" href="/assets/js/190.417051af.js"><link rel="prefetch" href="/assets/js/191.328a5b09.js"><link rel="prefetch" href="/assets/js/192.78cf7a6b.js"><link rel="prefetch" href="/assets/js/193.3f08b3e8.js"><link rel="prefetch" href="/assets/js/194.c1b8133c.js"><link rel="prefetch" href="/assets/js/195.0b8266e0.js"><link rel="prefetch" href="/assets/js/196.f5d4265b.js"><link rel="prefetch" href="/assets/js/197.83a90289.js"><link rel="prefetch" href="/assets/js/198.13e2a370.js"><link rel="prefetch" href="/assets/js/199.6d3f7661.js"><link rel="prefetch" href="/assets/js/20.559ce8a4.js"><link rel="prefetch" href="/assets/js/200.9d8a43c5.js"><link rel="prefetch" href="/assets/js/201.2fc73fb9.js"><link rel="prefetch" href="/assets/js/202.a394e77a.js"><link rel="prefetch" href="/assets/js/203.f3a3c6ab.js"><link rel="prefetch" href="/assets/js/204.1ef7099f.js"><link rel="prefetch" href="/assets/js/205.eb660973.js"><link rel="prefetch" href="/assets/js/206.ce6032a6.js"><link rel="prefetch" href="/assets/js/207.277bdf3c.js"><link rel="prefetch" href="/assets/js/208.66a9b36f.js"><link rel="prefetch" href="/assets/js/209.2509c9f5.js"><link rel="prefetch" href="/assets/js/21.48c1b50c.js"><link rel="prefetch" href="/assets/js/210.53a6f850.js"><link rel="prefetch" href="/assets/js/211.5c52326f.js"><link rel="prefetch" href="/assets/js/212.52e4f4c8.js"><link rel="prefetch" href="/assets/js/213.669cbb29.js"><link rel="prefetch" href="/assets/js/214.013fa1f7.js"><link rel="prefetch" href="/assets/js/215.66930ca6.js"><link rel="prefetch" href="/assets/js/216.301884fd.js"><link rel="prefetch" href="/assets/js/217.ab452e7a.js"><link rel="prefetch" href="/assets/js/218.b219e985.js"><link rel="prefetch" href="/assets/js/22.46e360e2.js"><link rel="prefetch" href="/assets/js/220.30873cd0.js"><link rel="prefetch" href="/assets/js/221.d8752dff.js"><link rel="prefetch" href="/assets/js/222.f69accca.js"><link rel="prefetch" href="/assets/js/223.69480bae.js"><link rel="prefetch" href="/assets/js/224.55f29688.js"><link rel="prefetch" href="/assets/js/225.94a39d84.js"><link rel="prefetch" href="/assets/js/226.89ce18c3.js"><link rel="prefetch" href="/assets/js/227.7845a6ce.js"><link rel="prefetch" href="/assets/js/228.796e5481.js"><link rel="prefetch" href="/assets/js/229.3de58243.js"><link rel="prefetch" href="/assets/js/23.260b90c8.js"><link rel="prefetch" href="/assets/js/230.b32065f2.js"><link rel="prefetch" href="/assets/js/231.b6da5b6e.js"><link rel="prefetch" href="/assets/js/232.9a29cd67.js"><link rel="prefetch" href="/assets/js/233.b0c44e9b.js"><link rel="prefetch" href="/assets/js/234.9495ad8c.js"><link rel="prefetch" href="/assets/js/235.5901a8e7.js"><link rel="prefetch" href="/assets/js/236.337703ed.js"><link rel="prefetch" href="/assets/js/237.5e4c391a.js"><link rel="prefetch" href="/assets/js/238.942b6fbe.js"><link rel="prefetch" href="/assets/js/239.d7e4cf2a.js"><link rel="prefetch" href="/assets/js/24.bcbb0b56.js"><link rel="prefetch" href="/assets/js/240.27a81dfe.js"><link rel="prefetch" href="/assets/js/241.a4eda9e4.js"><link rel="prefetch" href="/assets/js/242.4f479833.js"><link rel="prefetch" href="/assets/js/243.98377fad.js"><link rel="prefetch" href="/assets/js/244.2667a5e3.js"><link rel="prefetch" href="/assets/js/245.7aeb75c6.js"><link rel="prefetch" href="/assets/js/246.07547436.js"><link rel="prefetch" href="/assets/js/247.18bde783.js"><link rel="prefetch" href="/assets/js/248.f95d1446.js"><link rel="prefetch" href="/assets/js/249.feb037e6.js"><link rel="prefetch" href="/assets/js/25.6d990221.js"><link rel="prefetch" href="/assets/js/250.1d73e59e.js"><link rel="prefetch" href="/assets/js/251.31a350cf.js"><link rel="prefetch" href="/assets/js/252.66f4f5c3.js"><link rel="prefetch" href="/assets/js/253.7a547aeb.js"><link rel="prefetch" href="/assets/js/26.45667516.js"><link rel="prefetch" href="/assets/js/27.f094f947.js"><link rel="prefetch" href="/assets/js/28.4dd0d16e.js"><link rel="prefetch" href="/assets/js/29.ded5c639.js"><link rel="prefetch" href="/assets/js/3.2a090d29.js"><link rel="prefetch" href="/assets/js/30.e1e95338.js"><link rel="prefetch" href="/assets/js/31.521b7b58.js"><link rel="prefetch" href="/assets/js/32.431b4a06.js"><link rel="prefetch" href="/assets/js/33.667b03f6.js"><link rel="prefetch" href="/assets/js/34.51d43f95.js"><link rel="prefetch" href="/assets/js/35.79e20a85.js"><link rel="prefetch" href="/assets/js/36.2f828a5c.js"><link rel="prefetch" href="/assets/js/37.f600bd00.js"><link rel="prefetch" href="/assets/js/38.ab755d83.js"><link rel="prefetch" href="/assets/js/39.3259302f.js"><link rel="prefetch" href="/assets/js/4.f6400a6d.js"><link rel="prefetch" href="/assets/js/40.1aa03239.js"><link rel="prefetch" href="/assets/js/41.fe782b5a.js"><link rel="prefetch" href="/assets/js/42.55baeb68.js"><link rel="prefetch" href="/assets/js/43.929480c8.js"><link rel="prefetch" href="/assets/js/44.61128ef0.js"><link rel="prefetch" href="/assets/js/45.2ccb7d3b.js"><link rel="prefetch" href="/assets/js/46.7357ad06.js"><link rel="prefetch" href="/assets/js/47.4e76b5a8.js"><link rel="prefetch" href="/assets/js/48.dbb06b0e.js"><link rel="prefetch" href="/assets/js/49.7cabbd14.js"><link rel="prefetch" href="/assets/js/5.09527ee5.js"><link rel="prefetch" href="/assets/js/50.d90ba865.js"><link rel="prefetch" href="/assets/js/51.48dd4449.js"><link rel="prefetch" href="/assets/js/52.1ad2e399.js"><link rel="prefetch" href="/assets/js/53.9f37bb29.js"><link rel="prefetch" href="/assets/js/54.9c2665c1.js"><link rel="prefetch" href="/assets/js/55.7e510aae.js"><link rel="prefetch" href="/assets/js/56.69c754d3.js"><link rel="prefetch" href="/assets/js/57.5a65ad78.js"><link rel="prefetch" href="/assets/js/58.128fc24c.js"><link rel="prefetch" href="/assets/js/59.4148e144.js"><link rel="prefetch" href="/assets/js/60.c66f89fb.js"><link rel="prefetch" href="/assets/js/61.d14275ef.js"><link rel="prefetch" href="/assets/js/62.f88416a2.js"><link rel="prefetch" href="/assets/js/63.91fa5c3e.js"><link rel="prefetch" href="/assets/js/64.5ffcd082.js"><link rel="prefetch" href="/assets/js/65.80893a2c.js"><link rel="prefetch" href="/assets/js/66.1333a57d.js"><link rel="prefetch" href="/assets/js/67.8f1daba5.js"><link rel="prefetch" href="/assets/js/68.03b157e6.js"><link rel="prefetch" href="/assets/js/69.d8e94720.js"><link rel="prefetch" href="/assets/js/7.6e3260b9.js"><link rel="prefetch" href="/assets/js/70.799f8719.js"><link rel="prefetch" href="/assets/js/71.33ab93f1.js"><link rel="prefetch" href="/assets/js/72.32c4343a.js"><link rel="prefetch" href="/assets/js/73.258beb9f.js"><link rel="prefetch" href="/assets/js/74.1db57ef0.js"><link rel="prefetch" href="/assets/js/75.c884b5d2.js"><link rel="prefetch" href="/assets/js/76.47d95870.js"><link rel="prefetch" href="/assets/js/77.43daad15.js"><link rel="prefetch" href="/assets/js/78.7399d94c.js"><link rel="prefetch" href="/assets/js/79.6ebdd381.js"><link rel="prefetch" href="/assets/js/8.1af8d3e1.js"><link rel="prefetch" href="/assets/js/80.b61d5788.js"><link rel="prefetch" href="/assets/js/81.299b3a7b.js"><link rel="prefetch" href="/assets/js/82.adc59745.js"><link rel="prefetch" href="/assets/js/83.eec81985.js"><link rel="prefetch" href="/assets/js/84.3d216dc6.js"><link rel="prefetch" href="/assets/js/85.a9eb7c0b.js"><link rel="prefetch" href="/assets/js/86.f5caa480.js"><link rel="prefetch" href="/assets/js/87.6e2c8fe2.js"><link rel="prefetch" href="/assets/js/88.3cffcc44.js"><link rel="prefetch" href="/assets/js/89.575a96e9.js"><link rel="prefetch" href="/assets/js/9.4cf21e34.js"><link rel="prefetch" href="/assets/js/90.4c685f72.js"><link rel="prefetch" href="/assets/js/91.d8d3f0d2.js"><link rel="prefetch" href="/assets/js/92.4b5a923d.js"><link rel="prefetch" href="/assets/js/93.7d5b6eeb.js"><link rel="prefetch" href="/assets/js/94.14be9969.js"><link rel="prefetch" href="/assets/js/95.5006c0ed.js"><link rel="prefetch" href="/assets/js/96.74c8a2da.js"><link rel="prefetch" href="/assets/js/97.745c845e.js"><link rel="prefetch" href="/assets/js/98.f0b214d4.js"><link rel="prefetch" href="/assets/js/99.eda0dae9.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.9dde865b.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.0b2e2990.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-8c445ae8><div data-v-8c445ae8><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-8c445ae8 data-v-8c445ae8><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-5cb9a64e data-v-8c445ae8 data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>说传</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2024
+        </a></span></div></div> <div class="hide" data-v-8c445ae8><header class="navbar" data-v-8c445ae8><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_p.png" alt="说传" class="logo"> <span class="site-name">说传</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-8c445ae8></div> <aside class="sidebar" data-v-8c445ae8><div class="personal-info-wrapper" data-v-03833281 data-v-8c445ae8><img src="/img/avatar.png" alt="author-avatar" class="personal-img" data-v-03833281> <h3 class="name" data-v-03833281>
+    GuoJun
+  </h3> <div class="num" data-v-03833281><div data-v-03833281><h3 data-v-03833281>183</h3> <h6 data-v-03833281>Article</h6></div> <div data-v-03833281><h3 data-v-03833281>59</h3> <h6 data-v-03833281>Tag</h6></div></div> <hr data-v-03833281></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-5cb9a64e data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>VuePress 插件</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2024
+        </a></span></div></div> <div data-v-8c445ae8><main class="page"><div class="page-title" style="display:none;"><h1>VuePress 插件</h1> <hr> <div data-v-2f089fa6><i class="iconfont reco-account" data-v-2f089fa6><span data-v-2f089fa6>GuoJun</span></i> <i class="iconfont reco-date" data-v-2f089fa6><span data-v-2f089fa6>2020-07-25</span></i> <!----> <i class="iconfont reco-tag tags" data-v-2f089fa6><span class="tag-item" data-v-2f089fa6>VuePress</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="vuepress-plugin-meting音乐插件"><a href="#vuepress-plugin-meting音乐插件" class="header-anchor">#</a> vuepress-plugin-meting音乐插件</h2> <ul><li>安装</li></ul> <div class="language-shell script extra-class"><pre class="language-shell"><code><span class="token function">yarn</span> <span class="token function">add</span> vuepress-plugin-meting <span class="token parameter variable">-D</span>
+<span class="token comment"># or use npm</span>
+<span class="token function">npm</span> i vuepress-plugin-meting <span class="token parameter variable">-D</span>
+</code></pre></div><ul><li>配置</li></ul> <div class="language-shell script extra-class"><pre class="language-shell"><code><span class="token comment">## .vuepress/config.js</span>
+plugins: <span class="token punctuation">[</span>
+      <span class="token punctuation">[</span><span class="token string">&quot;vuepress-plugin-boxx&quot;</span><span class="token punctuation">]</span>,
+      <span class="token punctuation">[</span><span class="token string">'meting'</span>, <span class="token punctuation">{</span>
+        //metingApi: <span class="token string">&quot;https://meting.sigure.xyz/api/music&quot;</span>,
+        meting: <span class="token punctuation">{</span>
+          // <span class="token string">&quot;netease&quot;</span> <span class="token operator">|</span> <span class="token string">&quot;tencent&quot;</span> <span class="token operator">|</span> <span class="token string">&quot;xiami&quot;</span>
+          server: <span class="token string">&quot;tencent&quot;</span>,
+          // 读取歌单
+          type: <span class="token string">&quot;playlist&quot;</span>,
+          mid: <span class="token string">&quot;2006719587&quot;</span>,
+        <span class="token punctuation">}</span>,
+        // 不配置该项的话不会出现全局播放器
+        aplayer: <span class="token punctuation">{</span>
+          // 吸底模式
+          fixed: true,
+          mini: false,
+          // 自动播放
+          autoplay: true,
+          // 歌曲栏折叠
+          listFolded:true,
+          // 颜色
+          theme: <span class="token string">'#000000'</span>,
+          // 播放顺序为随机
+          order: <span class="token string">'random'</span>,
+          // 初始音量
+          volume: <span class="token number">0.1</span>,
+          // 关闭歌词显示
+          lrcType: <span class="token number">0</span>
+        <span class="token punctuation">}</span>,
+        mobile :<span class="token punctuation">{</span>
+          // 手机端去掉cover图
+          cover: false,
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">]</span>
+</code></pre></div><h2 id="vuepress-plugin-boxx"><a href="#vuepress-plugin-boxx" class="header-anchor">#</a> vuepress-plugin-boxx</h2> <p>可以为博客文章自动随机添加名人名言或其他，可自定义样式和内容</p> <ul><li>配置</li></ul> <div class="language-shell script extra-class"><pre class="language-shell"><code>plugins: <span class="token punctuation">[</span>
+    <span class="token punctuation">[</span><span class="token string">&quot;vuepress-plugin-boxx&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">]</span>,
+</code></pre></div><ul><li>使用</li></ul> <blockquote><p>只需在你想要插入的地方加入<div id="boxx" data-v-f4ca0dac><div data-v-f4ca0dac><p v-if="true" class="custom-block-title" data-v-f4ca0dac></p> <p v-if="true" data-v-f4ca0dac></p></div></div>即可</p></blockquote></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-4ec3c486><li class="level-2" data-v-4ec3c486><a href="/blogs/web/2020-07-25-vuepress-plugs.html#vuepress-plugin-meting音乐插件" class="sidebar-link" data-v-4ec3c486>vuepress-plugin-meting音乐插件</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/web/2020-07-25-vuepress-plugs.html#vuepress-plugin-boxx" class="sidebar-link" data-v-4ec3c486>vuepress-plugin-boxx</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.f52c46e4.js" defer></script><script src="/assets/js/6.a6d49f11.js" defer></script><script src="/assets/js/2.749a76c0.js" defer></script><script src="/assets/js/1.b4d35e2f.js" defer></script><script src="/assets/js/219.ed2e9168.js" defer></script>
+  </body>
+</html>
