@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Mysql sql执行流程 | 说传</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/img/favicon.ico">
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = 'https://hm.baidu.com/hm.js?43353c326536410d4dfbfb2b18c31a9a';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    <meta name="description" content="路漫漫其修远兮，吾将上下而求索">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.101e8e69.css" as="style"><link rel="preload" href="/assets/js/app.7d7949bd.js" as="script"><link rel="preload" href="/assets/js/7.5e0da391.js" as="script"><link rel="preload" href="/assets/js/2.f56828a8.js" as="script"><link rel="preload" href="/assets/js/1.aab36c06.js" as="script"><link rel="preload" href="/assets/js/134.ede7d465.js" as="script"><link rel="prefetch" href="/assets/js/10.c929f046.js"><link rel="prefetch" href="/assets/js/100.f9385056.js"><link rel="prefetch" href="/assets/js/101.1d731b1a.js"><link rel="prefetch" href="/assets/js/102.a830c939.js"><link rel="prefetch" href="/assets/js/103.481dd5cb.js"><link rel="prefetch" href="/assets/js/104.f1d3ea33.js"><link rel="prefetch" href="/assets/js/105.f6f649ce.js"><link rel="prefetch" href="/assets/js/106.acfe8b3e.js"><link rel="prefetch" href="/assets/js/107.9b76aed7.js"><link rel="prefetch" href="/assets/js/108.5187354c.js"><link rel="prefetch" href="/assets/js/109.7c5f05fb.js"><link rel="prefetch" href="/assets/js/11.c70cadb9.js"><link rel="prefetch" href="/assets/js/110.417a1984.js"><link rel="prefetch" href="/assets/js/111.9e0a2625.js"><link rel="prefetch" href="/assets/js/112.a454527b.js"><link rel="prefetch" href="/assets/js/113.8e477121.js"><link rel="prefetch" href="/assets/js/114.a17e48ae.js"><link rel="prefetch" href="/assets/js/115.8a16a7b6.js"><link rel="prefetch" href="/assets/js/116.663c2fa2.js"><link rel="prefetch" href="/assets/js/117.eb2afd9b.js"><link rel="prefetch" href="/assets/js/118.e7064666.js"><link rel="prefetch" href="/assets/js/119.7876937d.js"><link rel="prefetch" href="/assets/js/12.06dc8909.js"><link rel="prefetch" href="/assets/js/120.9eb46549.js"><link rel="prefetch" href="/assets/js/121.eebdf686.js"><link rel="prefetch" href="/assets/js/122.959ba717.js"><link rel="prefetch" href="/assets/js/123.80ddabf8.js"><link rel="prefetch" href="/assets/js/124.499ee67c.js"><link rel="prefetch" href="/assets/js/125.daa08530.js"><link rel="prefetch" href="/assets/js/126.7a2aff03.js"><link rel="prefetch" href="/assets/js/127.7fdf9dd4.js"><link rel="prefetch" href="/assets/js/128.223b5c37.js"><link rel="prefetch" href="/assets/js/129.d7a9f573.js"><link rel="prefetch" href="/assets/js/130.ad1f7bd9.js"><link rel="prefetch" href="/assets/js/131.9b247c79.js"><link rel="prefetch" href="/assets/js/132.148dc117.js"><link rel="prefetch" href="/assets/js/133.934799c6.js"><link rel="prefetch" href="/assets/js/135.793440b3.js"><link rel="prefetch" href="/assets/js/136.fb1e278d.js"><link rel="prefetch" href="/assets/js/137.1c8b26ed.js"><link rel="prefetch" href="/assets/js/138.a3025d3c.js"><link rel="prefetch" href="/assets/js/139.abca7e0e.js"><link rel="prefetch" href="/assets/js/140.5c5e9b5d.js"><link rel="prefetch" href="/assets/js/141.24536700.js"><link rel="prefetch" href="/assets/js/142.1643f6c9.js"><link rel="prefetch" href="/assets/js/143.dc03af74.js"><link rel="prefetch" href="/assets/js/144.aabd0bfe.js"><link rel="prefetch" href="/assets/js/145.eb4aaf70.js"><link rel="prefetch" href="/assets/js/146.16887dfd.js"><link rel="prefetch" href="/assets/js/147.552c6c35.js"><link rel="prefetch" href="/assets/js/148.6562108d.js"><link rel="prefetch" href="/assets/js/149.9502d72e.js"><link rel="prefetch" href="/assets/js/15.b69af0b8.js"><link rel="prefetch" href="/assets/js/150.0af9ae1f.js"><link rel="prefetch" href="/assets/js/151.35ed1644.js"><link rel="prefetch" href="/assets/js/152.83ac53b0.js"><link rel="prefetch" href="/assets/js/153.3a2495e3.js"><link rel="prefetch" href="/assets/js/154.cb5972fd.js"><link rel="prefetch" href="/assets/js/155.a67ba2cd.js"><link rel="prefetch" href="/assets/js/156.5f171b12.js"><link rel="prefetch" href="/assets/js/157.918ab950.js"><link rel="prefetch" href="/assets/js/158.21c0c80d.js"><link rel="prefetch" href="/assets/js/159.9b571e3f.js"><link rel="prefetch" href="/assets/js/16.eb090b02.js"><link rel="prefetch" href="/assets/js/160.73a0044b.js"><link rel="prefetch" href="/assets/js/161.86f6bd48.js"><link rel="prefetch" href="/assets/js/162.3bd13735.js"><link rel="prefetch" href="/assets/js/163.ff7cf040.js"><link rel="prefetch" href="/assets/js/164.15ae302f.js"><link rel="prefetch" href="/assets/js/165.34295cbe.js"><link rel="prefetch" href="/assets/js/166.e4a27d5e.js"><link rel="prefetch" href="/assets/js/167.53725ed0.js"><link rel="prefetch" href="/assets/js/168.575db755.js"><link rel="prefetch" href="/assets/js/169.b692f664.js"><link rel="prefetch" href="/assets/js/17.abb1fa4a.js"><link rel="prefetch" href="/assets/js/170.c5290ba6.js"><link rel="prefetch" href="/assets/js/171.e06fc019.js"><link rel="prefetch" href="/assets/js/172.5ef2dd60.js"><link rel="prefetch" href="/assets/js/173.8928c0d8.js"><link rel="prefetch" href="/assets/js/174.5c09ccf5.js"><link rel="prefetch" href="/assets/js/175.462caead.js"><link rel="prefetch" href="/assets/js/176.d1318709.js"><link rel="prefetch" href="/assets/js/177.412a9844.js"><link rel="prefetch" href="/assets/js/178.7a28bba9.js"><link rel="prefetch" href="/assets/js/179.102d84ff.js"><link rel="prefetch" href="/assets/js/18.2caaa97f.js"><link rel="prefetch" href="/assets/js/180.6c2c8e55.js"><link rel="prefetch" href="/assets/js/181.57143f2e.js"><link rel="prefetch" href="/assets/js/182.1be5f2cf.js"><link rel="prefetch" href="/assets/js/183.9a114a67.js"><link rel="prefetch" href="/assets/js/184.be1a6ad0.js"><link rel="prefetch" href="/assets/js/185.a1969b4f.js"><link rel="prefetch" href="/assets/js/186.b07d71c3.js"><link rel="prefetch" href="/assets/js/187.ea5d1c80.js"><link rel="prefetch" href="/assets/js/188.d37e6aeb.js"><link rel="prefetch" href="/assets/js/189.5c98d0e7.js"><link rel="prefetch" href="/assets/js/19.279828c6.js"><link rel="prefetch" href="/assets/js/190.d807d0f7.js"><link rel="prefetch" href="/assets/js/191.f7224929.js"><link rel="prefetch" href="/assets/js/192.bdb6ba7c.js"><link rel="prefetch" href="/assets/js/193.a7cf4449.js"><link rel="prefetch" href="/assets/js/194.4a9ecb8c.js"><link rel="prefetch" href="/assets/js/195.284eab12.js"><link rel="prefetch" href="/assets/js/196.a42c44f0.js"><link rel="prefetch" href="/assets/js/197.d92de79d.js"><link rel="prefetch" href="/assets/js/198.1d205f8c.js"><link rel="prefetch" href="/assets/js/199.b9a41432.js"><link rel="prefetch" href="/assets/js/20.03245c5f.js"><link rel="prefetch" href="/assets/js/200.6e376ff8.js"><link rel="prefetch" href="/assets/js/201.1b3289ed.js"><link rel="prefetch" href="/assets/js/202.7eb560fe.js"><link rel="prefetch" href="/assets/js/203.ba1abf6c.js"><link rel="prefetch" href="/assets/js/204.93eb06d1.js"><link rel="prefetch" href="/assets/js/205.e98f280b.js"><link rel="prefetch" href="/assets/js/206.974df7cb.js"><link rel="prefetch" href="/assets/js/207.600d7d74.js"><link rel="prefetch" href="/assets/js/208.540ef650.js"><link rel="prefetch" href="/assets/js/209.1f53adbb.js"><link rel="prefetch" href="/assets/js/21.565a27f5.js"><link rel="prefetch" href="/assets/js/210.79456aec.js"><link rel="prefetch" href="/assets/js/211.042396a9.js"><link rel="prefetch" href="/assets/js/212.b768617c.js"><link rel="prefetch" href="/assets/js/213.faf97936.js"><link rel="prefetch" href="/assets/js/214.1846f768.js"><link rel="prefetch" href="/assets/js/215.ca9a2414.js"><link rel="prefetch" href="/assets/js/216.0dd4577b.js"><link rel="prefetch" href="/assets/js/217.085968bc.js"><link rel="prefetch" href="/assets/js/218.d715df9d.js"><link rel="prefetch" href="/assets/js/219.f5a0f45a.js"><link rel="prefetch" href="/assets/js/22.aeeb099e.js"><link rel="prefetch" href="/assets/js/220.9e982117.js"><link rel="prefetch" href="/assets/js/221.cec1d836.js"><link rel="prefetch" href="/assets/js/222.bdfa9c51.js"><link rel="prefetch" href="/assets/js/223.b410e6cd.js"><link rel="prefetch" href="/assets/js/224.01c9f5d5.js"><link rel="prefetch" href="/assets/js/225.eb4d64bf.js"><link rel="prefetch" href="/assets/js/226.70d9fb80.js"><link rel="prefetch" href="/assets/js/227.549d52db.js"><link rel="prefetch" href="/assets/js/228.ecd92b19.js"><link rel="prefetch" href="/assets/js/229.786794aa.js"><link rel="prefetch" href="/assets/js/23.b0d66b29.js"><link rel="prefetch" href="/assets/js/230.1e45c594.js"><link rel="prefetch" href="/assets/js/231.abb89763.js"><link rel="prefetch" href="/assets/js/232.3426ff91.js"><link rel="prefetch" href="/assets/js/233.80e5272b.js"><link rel="prefetch" href="/assets/js/234.e3b120d6.js"><link rel="prefetch" href="/assets/js/235.d0fdb2c0.js"><link rel="prefetch" href="/assets/js/236.9da2df83.js"><link rel="prefetch" href="/assets/js/237.4fc2db9c.js"><link rel="prefetch" href="/assets/js/238.db8d889f.js"><link rel="prefetch" href="/assets/js/239.62a15754.js"><link rel="prefetch" href="/assets/js/24.676f5399.js"><link rel="prefetch" href="/assets/js/240.d3e4e826.js"><link rel="prefetch" href="/assets/js/241.fe0b745b.js"><link rel="prefetch" href="/assets/js/242.b4f0cf75.js"><link rel="prefetch" href="/assets/js/243.a7b7ea69.js"><link rel="prefetch" href="/assets/js/244.df6689a9.js"><link rel="prefetch" href="/assets/js/245.6d274e91.js"><link rel="prefetch" href="/assets/js/246.51906a34.js"><link rel="prefetch" href="/assets/js/247.a5c096f4.js"><link rel="prefetch" href="/assets/js/248.c956ca5d.js"><link rel="prefetch" href="/assets/js/249.7fbab7dc.js"><link rel="prefetch" href="/assets/js/25.1b2f1da0.js"><link rel="prefetch" href="/assets/js/250.a2fa80f2.js"><link rel="prefetch" href="/assets/js/251.328d6015.js"><link rel="prefetch" href="/assets/js/252.4b8d163c.js"><link rel="prefetch" href="/assets/js/253.e9ffa2e9.js"><link rel="prefetch" href="/assets/js/26.29a1e38c.js"><link rel="prefetch" href="/assets/js/27.5f8143ce.js"><link rel="prefetch" href="/assets/js/28.44a99b4d.js"><link rel="prefetch" href="/assets/js/29.a7f3211a.js"><link rel="prefetch" href="/assets/js/3.99431f34.js"><link rel="prefetch" href="/assets/js/30.95bf1e55.js"><link rel="prefetch" href="/assets/js/31.22833c6a.js"><link rel="prefetch" href="/assets/js/32.b5508619.js"><link rel="prefetch" href="/assets/js/33.5afadc2c.js"><link rel="prefetch" href="/assets/js/34.7a55b3dc.js"><link rel="prefetch" href="/assets/js/35.77d3559b.js"><link rel="prefetch" href="/assets/js/36.489a7856.js"><link rel="prefetch" href="/assets/js/37.0d74cfab.js"><link rel="prefetch" href="/assets/js/38.b323fbd1.js"><link rel="prefetch" href="/assets/js/39.e54c92b9.js"><link rel="prefetch" href="/assets/js/4.9df1fc66.js"><link rel="prefetch" href="/assets/js/40.a48d2055.js"><link rel="prefetch" href="/assets/js/41.94a7d1e0.js"><link rel="prefetch" href="/assets/js/42.b12dd438.js"><link rel="prefetch" href="/assets/js/43.306f167f.js"><link rel="prefetch" href="/assets/js/44.9aa76180.js"><link rel="prefetch" href="/assets/js/45.584b44fe.js"><link rel="prefetch" href="/assets/js/46.1a9ece88.js"><link rel="prefetch" href="/assets/js/47.3481e322.js"><link rel="prefetch" href="/assets/js/48.e3edd8da.js"><link rel="prefetch" href="/assets/js/49.7ca435de.js"><link rel="prefetch" href="/assets/js/5.36593239.js"><link rel="prefetch" href="/assets/js/50.159874d7.js"><link rel="prefetch" href="/assets/js/51.7c7e7d78.js"><link rel="prefetch" href="/assets/js/52.c276fbea.js"><link rel="prefetch" href="/assets/js/53.e863af3c.js"><link rel="prefetch" href="/assets/js/54.57b71042.js"><link rel="prefetch" href="/assets/js/55.19839c1b.js"><link rel="prefetch" href="/assets/js/56.f31a1827.js"><link rel="prefetch" href="/assets/js/57.3c9d438a.js"><link rel="prefetch" href="/assets/js/58.29c3c6dd.js"><link rel="prefetch" href="/assets/js/59.dd1faf34.js"><link rel="prefetch" href="/assets/js/6.92debfa8.js"><link rel="prefetch" href="/assets/js/60.cc15355b.js"><link rel="prefetch" href="/assets/js/61.5380ddb3.js"><link rel="prefetch" href="/assets/js/62.52dff282.js"><link rel="prefetch" href="/assets/js/63.f016e8cd.js"><link rel="prefetch" href="/assets/js/64.e588e8f9.js"><link rel="prefetch" href="/assets/js/65.535ae3c6.js"><link rel="prefetch" href="/assets/js/66.64230a50.js"><link rel="prefetch" href="/assets/js/67.6ac4aea2.js"><link rel="prefetch" href="/assets/js/68.8fccdea0.js"><link rel="prefetch" href="/assets/js/69.f90d111d.js"><link rel="prefetch" href="/assets/js/70.0376a024.js"><link rel="prefetch" href="/assets/js/71.09d82ca5.js"><link rel="prefetch" href="/assets/js/72.78a93981.js"><link rel="prefetch" href="/assets/js/73.2303f2fc.js"><link rel="prefetch" href="/assets/js/74.eab14338.js"><link rel="prefetch" href="/assets/js/75.0046480c.js"><link rel="prefetch" href="/assets/js/76.745b7358.js"><link rel="prefetch" href="/assets/js/77.a279f7a4.js"><link rel="prefetch" href="/assets/js/78.e67c15c3.js"><link rel="prefetch" href="/assets/js/79.85679cc2.js"><link rel="prefetch" href="/assets/js/8.c132ed80.js"><link rel="prefetch" href="/assets/js/80.a4a6f108.js"><link rel="prefetch" href="/assets/js/81.7f01f402.js"><link rel="prefetch" href="/assets/js/82.37eae972.js"><link rel="prefetch" href="/assets/js/83.bbf6f29f.js"><link rel="prefetch" href="/assets/js/84.776b5f63.js"><link rel="prefetch" href="/assets/js/85.cc7a4a6b.js"><link rel="prefetch" href="/assets/js/86.a355eb0f.js"><link rel="prefetch" href="/assets/js/87.e73726f0.js"><link rel="prefetch" href="/assets/js/88.d03c417d.js"><link rel="prefetch" href="/assets/js/89.4d507f43.js"><link rel="prefetch" href="/assets/js/9.dc378b8e.js"><link rel="prefetch" href="/assets/js/90.d1f991b1.js"><link rel="prefetch" href="/assets/js/91.258d0b90.js"><link rel="prefetch" href="/assets/js/92.19135793.js"><link rel="prefetch" href="/assets/js/93.bf91bb11.js"><link rel="prefetch" href="/assets/js/94.f3fd8029.js"><link rel="prefetch" href="/assets/js/95.9af91c8e.js"><link rel="prefetch" href="/assets/js/96.960d643a.js"><link rel="prefetch" href="/assets/js/97.a5f0137d.js"><link rel="prefetch" href="/assets/js/98.a4c6c677.js"><link rel="prefetch" href="/assets/js/99.720ff7f9.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.01811cf3.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.101e8e69.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-8c445ae8><div data-v-8c445ae8><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-8c445ae8 data-v-8c445ae8><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-5cb9a64e data-v-8c445ae8 data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>说传</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2026
+        </a></span></div></div> <div class="hide" data-v-8c445ae8><header class="navbar" data-v-8c445ae8><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_p.png" alt="说传" class="logo"> <span class="site-name">说传</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-8c445ae8></div> <aside class="sidebar" data-v-8c445ae8><div class="personal-info-wrapper" data-v-03833281 data-v-8c445ae8><img src="/img/avatar.png" alt="author-avatar" class="personal-img" data-v-03833281> <h3 class="name" data-v-03833281>
+    GuoJun
+  </h3> <div class="num" data-v-03833281><div data-v-03833281><h3 data-v-03833281>183</h3> <h6 data-v-03833281>Article</h6></div> <div data-v-03833281><h3 data-v-03833281>59</h3> <h6 data-v-03833281>Tag</h6></div></div> <hr data-v-03833281></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-5cb9a64e data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>Mysql sql执行流程</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2026
+        </a></span></div></div> <div data-v-8c445ae8><main class="page"><div class="page-title" style="display:none;"><h1>Mysql sql执行流程</h1> <hr> <div data-v-2f089fa6><i class="iconfont reco-account" data-v-2f089fa6><span data-v-2f089fa6>GuoJun</span></i> <i class="iconfont reco-date" data-v-2f089fa6><span data-v-2f089fa6>2020-03-12</span></i> <!----> <i class="iconfont reco-tag tags" data-v-2f089fa6><span class="tag-item" data-v-2f089fa6>Mysql</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="一-sql执行流程"><a href="#一-sql执行流程" class="header-anchor">#</a> 一. sql执行流程</h2> <p>1.当客户端连接到MySQL服务器时，服务器对其进行认证。可以通过用户名与密码认证，也可以通过SSL证书进行认证。登录认证后，服务器还会验证客户端是否有执行某个查询的操作权限。<br>
+2.在正式查询之前，服务器会检查查询缓存，如果能找到对应的查询，则不必进行查询解析，优化，执行等过程，直接返回缓存中的结果集。
+3.MySQL的解析器会根据查询语句，构造出一个解析树，主要用于根据语法规则来验证语句是否正确，比如SQL的关键字是否正确，关键字的顺序是否正确。而预处理器主要是进一步校验，比如表名，字段名是否正确等<br>
+4.查询优化器将解析树转化为查询计划，一般情况下，一条查询可以有很多种执行方式，最终返回相同的结果，优化器就是根据成本找到这其中最优的执行计划
+5.执行计划调用查询执行引擎，而查询引擎通过一系列API接口查询到数据
+6.得到数据之后，在返回给客户端的同时，会将数据存在查询缓存中</p> <p>登陆认证 -&gt; 权限认证 -&gt; 查询缓存 -&gt; 如果无缓存 -&gt; 解析器构造解析树 -&gt; 验证语法 -&gt; 查询优化器将解析树转换为查询计划并选择最优的执行计划 -&gt; 执行计划调用查询执行引擎 -&gt; 通过API接口查询数据 -&gt; 返回给客户端,并保存在缓存中
+简化过程即 : 解析 -&gt; 优化 -&gt; 执行</p> <h2 id="二-缓存"><a href="#二-缓存" class="header-anchor">#</a> 二. 缓存</h2> <p>我们先通过show variables like '%query_cache%'来看一下默认的数据库配置，此为本地数据库的配置。</p> <h3 id="_2-1-概览"><a href="#_2-1-概览" class="header-anchor">#</a> 2.1 概览</h3> <p>have_query_cache:当前的MYSQL版本是否支持“查询缓存”功能。
+query_cache_limit:MySQL能够缓存的最大查询结果，查询结果大于该值时不会被缓存。默认值是1048576(1MB)
+query_cache_min_res_unit:查询缓存分配的最小块（字节）。默认值是4096（4KB）。当查询进行时，MySQL把查询结果保存在query cache，但是如果保存的结果比较大，超过了query_cache_min_res_unit的值，这时候MySQL将一边检索结果，一边进行保存结果。他保存结果也是按默认大小先分配一块空间，如果不够，又要申请新的空间给他。如果查询结果比较小，默认的query_cache_min_res_unit可能造成大量的内存碎片，如果查询结果比较大，默认的query_cache_min_res_unit又不够，导致一直分配块空间，所以可以根据实际需求，调节query_cache_min_res_unit的大小。注：如果上面说的内容有点弯弯绕，那举个现实生活中的例子，比如咱现在要给运动员送水，默认的是500ml的瓶子，如果过来的是少年运动员，可能500ml太大了，他们喝不完，造成了浪费，那我们就可以选择300ml的瓶子，如果过来的是成年运动员，可能500ml不够，那他们一瓶喝完了，又开一瓶，直接不渴为止。那么那样开瓶子也要时间，我们就可以选择1000ml的瓶子。
+query_cache_size:为缓存查询结果分配的总内存。
+query_cache_type:默认为on，可以缓存除了以select sql_no_cache开头的所有查询结果。
+query_cache_wlock_invalidate:如果该表被锁住，是否返回缓存中的数据，默认是关闭的</p> <h3 id="_2-2-原理"><a href="#_2-2-原理" class="header-anchor">#</a> 2.2 原理</h3> <p>MYSQL的查询缓存实质上是缓存SQL的hash值和该SQL的查询结果，如果运行相同的SQL,服务器直接从缓存中去掉结果，而不再去解析，优化，寻找最低成本的执行计划等一系列操作，大大提升了查询速度。
+问题一 : 第一个弊端就是如果表的数据有一条发生变化，那么缓存好的结果将全部不再有效。这对于频繁更新的表，查询缓存是不适合的。
+问题二 : 第二个弊端就是缓存机制是通过对SQL的hash，得出的值为key，查询结果为value来存放的，那么就意味着SQL必须完完全全一模一样，否则就命不中缓存。</p> <h2 id="三-索引"><a href="#三-索引" class="header-anchor">#</a> 三.索引</h2> <p>聚簇索引（主键索引）<br>
+他包含两个特点：
+1.使用记录主键值的大小来进行记录和页的排序。
+页内的记录是按照主键的大小顺序排成一个单项链表。
+各个存放用户记录的页也是根据页中用户记录的主键大小顺序排成一个双向链表。
+2.叶子节点存储的是完整的用户记录。</p> <p>非聚簇索引（二级索引）<br>
+1.叶子节点内部使用name字段排序，叶子节点之间也是使用name字段排序。
+2.叶子节点不再是完整的数据记录，而是name和主键值。</p> <p>为什么不再是完整信息？<br>
+MySQL只让聚簇索引的叶子节点存放完整的记录信息，因为如果有好几个非聚簇索引，他们的叶子节点也存放完整的记录绩效，那就不浪费空间啦。
+如果我搜索条件是基于name，需要查询所有字段的信息，那查询过程是啥？<br>
+1.根据查询条件，采用name的非聚簇索引，先定位到该非聚簇索引某些记录行。<br>
+2.根据记录行找到相应的id，再根据id到聚簇索引中找到相关记录。这个过程叫做回表</p> <h3 id="_3-1-一些原则"><a href="#_3-1-一些原则" class="header-anchor">#</a> 3.1 一些原则</h3> <p>1.最左前缀原则。一个联合索引（a,b,c）,如果有一个查询条件有a，有b，那么他则走索引，如果有一个查询条件没有a，那么他则不走索引。<br>
+2.使用唯一索引。具有多个重复值的列，其索引效果最差。例如，存放姓名的列具有不同值，很容易区分每行。而用来记录性别的列，只含有“男”，“女”，不管搜索哪个值，都会得出大约一半的行，这样的索引对性能的提升不够高。<br>
+3.不要过度索引。每个额外的索引都要占用额外的磁盘空间，并降低写操作的性能。在修改表的内容时，索引必须进行更新，有时可能需要重构，因此，索引越多，所花的时间越长。<br>
+4、索引列不能参与计算，保持列“干净”，比如from_unixtime(create_time) = ’2014-05-29’就不能使用到索引，原因很简单，b+树中存的都是数据表中的字段值，但进行检索时，需要把所有元素都应用函数才能比较，显然成本太大。所以语句应该写成create_time = unix_timestamp(’2014-05-29’);5.一定要设置一个主键。前面聚簇索引说到如果不指定主键，InnoDB会自动为其指定主键，这个我们是看不见的。反正都要生成一个主键的，还不如我们设置，以后在某些搜索条件时还能用到主键的聚簇索引。<br>
+6.主键推荐用自增id，而不是uuid。上面的聚簇索引说到每页数据都是排序的，并且页之间也是排序的，如果是uuid，那么其肯定是随机的，其可能从中间插入，导致页的分裂，产生很多表碎片。如果是自增的，那么其有从小到大自增的，有顺序，那么在插入的时候就添加到当前索引的后续位置。当一页写满，就会自动开辟一个新的页。</p> <blockquote><p>注：如果自增id用完了，那将字段类型改为bigint，就算每秒1万条数据，跑100年，也没达到bigint的最大值</p></blockquote> <p>为什么索引用B+树）<br>
+1、B+树的磁盘读写代价更低：B+树的内部节点并没有指向关键字具体信息的指针，因此其内部节点相对B树更小，如果把所有同一内部节点的关键字存放在同一盘块中，那么盘块所能容纳的关键字数量也越多，一次性读入内存的需要查找的关键字也就越多，相对IO读写次数就降低了。
+2、由于B+树的数据都存储在叶子结点中，分支结点均为索引，方便扫库，只需要扫一遍叶子结点即可，但是B树因为其分支结点同样存储着数据，我们要找到具体的数据，需要进行一次中序遍历按序来扫，所以B+树更加适合在区间查询的情况，所以通常B+树用于数据库索引。</p> <p>B树
+每个节点都存储key和data，所有节点组成这棵树，并且叶子节点指针为null。
+B+树
+只有叶子节点存储data，叶子节点包含了这棵树的所有键值，叶子节点不存储指针。</p> <h2 id="四-explain"><a href="#四-explain" class="header-anchor">#</a> 四. Explain</h2> <p>一般来说一个select一个唯一id，如果是子查询，就有两个select，id是不一样的，但是凡事有例外，有些子查询的，他们id是一样的。</p> <h2 id="_4-1-概念"><a href="#_4-1-概念" class="header-anchor">#</a> 4.1 概念</h2> <p>select_type</p> <ul><li>simple：不包括union和子查询的查询都算simple类型。</li> <li>primary：包括union，union all，其中最左边的查询即为primary。</li> <li>union：包括union，union all，除了最左边的查询，其他的查询类型都为union。</li></ul> <p>table</p> <ul><li>显示这一行是关于哪张表的。</li></ul> <p>type：访问方法</p> <ul><li>all — 扫描全表数据</li> <li>index — 遍历索引</li> <li>range — 索引范围查找</li> <li>index_subquery — 在子查询中使用 ref</li> <li>unique_subquery — 在子查询中使用 eq_ref</li> <li>ref_or_null — 对 null 进行索引的优化的 ref</li> <li>fulltext — 使用全文索引</li> <li>ref — 使用非唯一索引查找数据</li> <li>eq_ref — 在 join 查询中使用主键或唯一索引关联</li> <li>const — 将一个主键放置到 where 后面作为条件查询， MySQL 优化器就能把这次查询优化转化为一个常量，如何转化以及何时转化，这个取决于优化器，这个比 eq_ref 效率高一点</li></ul> <p>possible_keys</p> <ul><li>对某表进行单表查询时可能用到的索引</li></ul> <p>key</p> <ul><li>经过查询优化器计算不同索引的成本，最终选择成本最低的索引</li></ul> <p>rows</p> <ul><li>如果使用全表扫描，那么rows就代表需要扫描的行数</li> <li>如果使用索引，那么rows就代表预计扫描的行数</li></ul> <p>filtered</p> <ul><li>如果全表扫描，那么filtered就代表满足搜索条件的记录的满分比</li> <li>如果是索引，那么filtered就代表除去索引对应的搜索，其他搜索条件的百分比</li></ul> <h2 id="五-事务"><a href="#五-事务" class="header-anchor">#</a> 五. 事务</h2> <p>事务中有一个隔离性特征，理论上在某个事务对某个数据进行访问时，其他事务应该排序，当该事务提交之后，其他事务才能继续访问这个数据。但是这样子对性能影响太大，我们既想保持事务的隔离性，又想让服务器在出来多个事务时性能尽量高些，所以只能舍弃一部分隔离性而去性能。<br>
+事务并发执行的问题</p> <ul><li>脏写（这个太严重了，任何隔离级别都不允许发生）<br>
+sessionA：修改了一条数据，回滚掉<br>
+sessionB：修改了同一条数据，提交掉对于 sessionB来说，明明数据更新了也提交了事务，不能说自己啥都没干</li> <li>脏读：一个事务读到另一个未提交事务修改的数据<br>
+session A：查询，得到某条数据
+session B：修改某条数据，但是最后回滚掉啦<br>
+session A：在sessionB修改某条数据之后，在回滚之前，读取了该条记录<br>
+对于session A来说，读到了session回滚之前的脏数据</li> <li>不可重复读：前后多次读取，同一个数据内容不一样<br>
+session A：查询某条记录<br>
+session B : 修改该条记录，并提交事务<br>
+session A : 再次查询该条记录，发现前后查询不一致</li> <li>幻读：前后多次读取，数据总量不一致
+session A：查询表内所有记录<br>
+session B : 新增一条记录，并查询表内所有记录<br>
+session A : 再次查询该条记录，发现前后查询不一致</li></ul> <p>四种隔离级别<br>
+数据库都有的四种隔离级别，MySQL事务默认的隔离级别是可重复读，而且MySQL可以解决了幻读的问题。</p> <ul><li>未提交读：脏读，不可重复读，幻读都有可能发生</li> <li>已提交读：不可重复读，幻读可能发生</li> <li>可重复读：幻读可能发生</li> <li>可串行化：都不可能发生</li></ul></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-4ec3c486><li class="level-2" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#一-sql执行流程" class="sidebar-link" data-v-4ec3c486>一. sql执行流程</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#二-缓存" class="sidebar-link" data-v-4ec3c486>二. 缓存</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#_2-1-概览" class="sidebar-link" data-v-4ec3c486>2.1 概览</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#_2-2-原理" class="sidebar-link" data-v-4ec3c486>2.2 原理</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#三-索引" class="sidebar-link" data-v-4ec3c486>三.索引</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#_3-1-一些原则" class="sidebar-link" data-v-4ec3c486>3.1 一些原则</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#四-explain" class="sidebar-link" data-v-4ec3c486>四. Explain</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#_4-1-概念" class="sidebar-link" data-v-4ec3c486>4.1 概念</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/mysql/2020-03-12-mysql-advance.html#五-事务" class="sidebar-link" data-v-4ec3c486>五. 事务</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.7d7949bd.js" defer></script><script src="/assets/js/7.5e0da391.js" defer></script><script src="/assets/js/2.f56828a8.js" defer></script><script src="/assets/js/1.aab36c06.js" defer></script><script src="/assets/js/134.ede7d465.js" defer></script>
+  </body>
+</html>

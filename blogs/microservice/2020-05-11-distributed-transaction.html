@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>分布式事务解决方案 | 说传</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/img/favicon.ico">
+    <script>var _hmt = _hmt || [];(function() {var hm = document.createElement('script');hm.src = 'https://hm.baidu.com/hm.js?43353c326536410d4dfbfb2b18c31a9a';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(hm, s);})();</script>
+    <meta name="description" content="路漫漫其修远兮，吾将上下而求索">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.101e8e69.css" as="style"><link rel="preload" href="/assets/js/app.7d7949bd.js" as="script"><link rel="preload" href="/assets/js/7.5e0da391.js" as="script"><link rel="preload" href="/assets/js/2.f56828a8.js" as="script"><link rel="preload" href="/assets/js/1.aab36c06.js" as="script"><link rel="preload" href="/assets/js/122.959ba717.js" as="script"><link rel="prefetch" href="/assets/js/10.c929f046.js"><link rel="prefetch" href="/assets/js/100.f9385056.js"><link rel="prefetch" href="/assets/js/101.1d731b1a.js"><link rel="prefetch" href="/assets/js/102.a830c939.js"><link rel="prefetch" href="/assets/js/103.481dd5cb.js"><link rel="prefetch" href="/assets/js/104.f1d3ea33.js"><link rel="prefetch" href="/assets/js/105.f6f649ce.js"><link rel="prefetch" href="/assets/js/106.acfe8b3e.js"><link rel="prefetch" href="/assets/js/107.9b76aed7.js"><link rel="prefetch" href="/assets/js/108.5187354c.js"><link rel="prefetch" href="/assets/js/109.7c5f05fb.js"><link rel="prefetch" href="/assets/js/11.c70cadb9.js"><link rel="prefetch" href="/assets/js/110.417a1984.js"><link rel="prefetch" href="/assets/js/111.9e0a2625.js"><link rel="prefetch" href="/assets/js/112.a454527b.js"><link rel="prefetch" href="/assets/js/113.8e477121.js"><link rel="prefetch" href="/assets/js/114.a17e48ae.js"><link rel="prefetch" href="/assets/js/115.8a16a7b6.js"><link rel="prefetch" href="/assets/js/116.663c2fa2.js"><link rel="prefetch" href="/assets/js/117.eb2afd9b.js"><link rel="prefetch" href="/assets/js/118.e7064666.js"><link rel="prefetch" href="/assets/js/119.7876937d.js"><link rel="prefetch" href="/assets/js/12.06dc8909.js"><link rel="prefetch" href="/assets/js/120.9eb46549.js"><link rel="prefetch" href="/assets/js/121.eebdf686.js"><link rel="prefetch" href="/assets/js/123.80ddabf8.js"><link rel="prefetch" href="/assets/js/124.499ee67c.js"><link rel="prefetch" href="/assets/js/125.daa08530.js"><link rel="prefetch" href="/assets/js/126.7a2aff03.js"><link rel="prefetch" href="/assets/js/127.7fdf9dd4.js"><link rel="prefetch" href="/assets/js/128.223b5c37.js"><link rel="prefetch" href="/assets/js/129.d7a9f573.js"><link rel="prefetch" href="/assets/js/130.ad1f7bd9.js"><link rel="prefetch" href="/assets/js/131.9b247c79.js"><link rel="prefetch" href="/assets/js/132.148dc117.js"><link rel="prefetch" href="/assets/js/133.934799c6.js"><link rel="prefetch" href="/assets/js/134.ede7d465.js"><link rel="prefetch" href="/assets/js/135.793440b3.js"><link rel="prefetch" href="/assets/js/136.fb1e278d.js"><link rel="prefetch" href="/assets/js/137.1c8b26ed.js"><link rel="prefetch" href="/assets/js/138.a3025d3c.js"><link rel="prefetch" href="/assets/js/139.abca7e0e.js"><link rel="prefetch" href="/assets/js/140.5c5e9b5d.js"><link rel="prefetch" href="/assets/js/141.24536700.js"><link rel="prefetch" href="/assets/js/142.1643f6c9.js"><link rel="prefetch" href="/assets/js/143.dc03af74.js"><link rel="prefetch" href="/assets/js/144.aabd0bfe.js"><link rel="prefetch" href="/assets/js/145.eb4aaf70.js"><link rel="prefetch" href="/assets/js/146.16887dfd.js"><link rel="prefetch" href="/assets/js/147.552c6c35.js"><link rel="prefetch" href="/assets/js/148.6562108d.js"><link rel="prefetch" href="/assets/js/149.9502d72e.js"><link rel="prefetch" href="/assets/js/15.b69af0b8.js"><link rel="prefetch" href="/assets/js/150.0af9ae1f.js"><link rel="prefetch" href="/assets/js/151.35ed1644.js"><link rel="prefetch" href="/assets/js/152.83ac53b0.js"><link rel="prefetch" href="/assets/js/153.3a2495e3.js"><link rel="prefetch" href="/assets/js/154.cb5972fd.js"><link rel="prefetch" href="/assets/js/155.a67ba2cd.js"><link rel="prefetch" href="/assets/js/156.5f171b12.js"><link rel="prefetch" href="/assets/js/157.918ab950.js"><link rel="prefetch" href="/assets/js/158.21c0c80d.js"><link rel="prefetch" href="/assets/js/159.9b571e3f.js"><link rel="prefetch" href="/assets/js/16.eb090b02.js"><link rel="prefetch" href="/assets/js/160.73a0044b.js"><link rel="prefetch" href="/assets/js/161.86f6bd48.js"><link rel="prefetch" href="/assets/js/162.3bd13735.js"><link rel="prefetch" href="/assets/js/163.ff7cf040.js"><link rel="prefetch" href="/assets/js/164.15ae302f.js"><link rel="prefetch" href="/assets/js/165.34295cbe.js"><link rel="prefetch" href="/assets/js/166.e4a27d5e.js"><link rel="prefetch" href="/assets/js/167.53725ed0.js"><link rel="prefetch" href="/assets/js/168.575db755.js"><link rel="prefetch" href="/assets/js/169.b692f664.js"><link rel="prefetch" href="/assets/js/17.abb1fa4a.js"><link rel="prefetch" href="/assets/js/170.c5290ba6.js"><link rel="prefetch" href="/assets/js/171.e06fc019.js"><link rel="prefetch" href="/assets/js/172.5ef2dd60.js"><link rel="prefetch" href="/assets/js/173.8928c0d8.js"><link rel="prefetch" href="/assets/js/174.5c09ccf5.js"><link rel="prefetch" href="/assets/js/175.462caead.js"><link rel="prefetch" href="/assets/js/176.d1318709.js"><link rel="prefetch" href="/assets/js/177.412a9844.js"><link rel="prefetch" href="/assets/js/178.7a28bba9.js"><link rel="prefetch" href="/assets/js/179.102d84ff.js"><link rel="prefetch" href="/assets/js/18.2caaa97f.js"><link rel="prefetch" href="/assets/js/180.6c2c8e55.js"><link rel="prefetch" href="/assets/js/181.57143f2e.js"><link rel="prefetch" href="/assets/js/182.1be5f2cf.js"><link rel="prefetch" href="/assets/js/183.9a114a67.js"><link rel="prefetch" href="/assets/js/184.be1a6ad0.js"><link rel="prefetch" href="/assets/js/185.a1969b4f.js"><link rel="prefetch" href="/assets/js/186.b07d71c3.js"><link rel="prefetch" href="/assets/js/187.ea5d1c80.js"><link rel="prefetch" href="/assets/js/188.d37e6aeb.js"><link rel="prefetch" href="/assets/js/189.5c98d0e7.js"><link rel="prefetch" href="/assets/js/19.279828c6.js"><link rel="prefetch" href="/assets/js/190.d807d0f7.js"><link rel="prefetch" href="/assets/js/191.f7224929.js"><link rel="prefetch" href="/assets/js/192.bdb6ba7c.js"><link rel="prefetch" href="/assets/js/193.a7cf4449.js"><link rel="prefetch" href="/assets/js/194.4a9ecb8c.js"><link rel="prefetch" href="/assets/js/195.284eab12.js"><link rel="prefetch" href="/assets/js/196.a42c44f0.js"><link rel="prefetch" href="/assets/js/197.d92de79d.js"><link rel="prefetch" href="/assets/js/198.1d205f8c.js"><link rel="prefetch" href="/assets/js/199.b9a41432.js"><link rel="prefetch" href="/assets/js/20.03245c5f.js"><link rel="prefetch" href="/assets/js/200.6e376ff8.js"><link rel="prefetch" href="/assets/js/201.1b3289ed.js"><link rel="prefetch" href="/assets/js/202.7eb560fe.js"><link rel="prefetch" href="/assets/js/203.ba1abf6c.js"><link rel="prefetch" href="/assets/js/204.93eb06d1.js"><link rel="prefetch" href="/assets/js/205.e98f280b.js"><link rel="prefetch" href="/assets/js/206.974df7cb.js"><link rel="prefetch" href="/assets/js/207.600d7d74.js"><link rel="prefetch" href="/assets/js/208.540ef650.js"><link rel="prefetch" href="/assets/js/209.1f53adbb.js"><link rel="prefetch" href="/assets/js/21.565a27f5.js"><link rel="prefetch" href="/assets/js/210.79456aec.js"><link rel="prefetch" href="/assets/js/211.042396a9.js"><link rel="prefetch" href="/assets/js/212.b768617c.js"><link rel="prefetch" href="/assets/js/213.faf97936.js"><link rel="prefetch" href="/assets/js/214.1846f768.js"><link rel="prefetch" href="/assets/js/215.ca9a2414.js"><link rel="prefetch" href="/assets/js/216.0dd4577b.js"><link rel="prefetch" href="/assets/js/217.085968bc.js"><link rel="prefetch" href="/assets/js/218.d715df9d.js"><link rel="prefetch" href="/assets/js/219.f5a0f45a.js"><link rel="prefetch" href="/assets/js/22.aeeb099e.js"><link rel="prefetch" href="/assets/js/220.9e982117.js"><link rel="prefetch" href="/assets/js/221.cec1d836.js"><link rel="prefetch" href="/assets/js/222.bdfa9c51.js"><link rel="prefetch" href="/assets/js/223.b410e6cd.js"><link rel="prefetch" href="/assets/js/224.01c9f5d5.js"><link rel="prefetch" href="/assets/js/225.eb4d64bf.js"><link rel="prefetch" href="/assets/js/226.70d9fb80.js"><link rel="prefetch" href="/assets/js/227.549d52db.js"><link rel="prefetch" href="/assets/js/228.ecd92b19.js"><link rel="prefetch" href="/assets/js/229.786794aa.js"><link rel="prefetch" href="/assets/js/23.b0d66b29.js"><link rel="prefetch" href="/assets/js/230.1e45c594.js"><link rel="prefetch" href="/assets/js/231.abb89763.js"><link rel="prefetch" href="/assets/js/232.3426ff91.js"><link rel="prefetch" href="/assets/js/233.80e5272b.js"><link rel="prefetch" href="/assets/js/234.e3b120d6.js"><link rel="prefetch" href="/assets/js/235.d0fdb2c0.js"><link rel="prefetch" href="/assets/js/236.9da2df83.js"><link rel="prefetch" href="/assets/js/237.4fc2db9c.js"><link rel="prefetch" href="/assets/js/238.db8d889f.js"><link rel="prefetch" href="/assets/js/239.62a15754.js"><link rel="prefetch" href="/assets/js/24.676f5399.js"><link rel="prefetch" href="/assets/js/240.d3e4e826.js"><link rel="prefetch" href="/assets/js/241.fe0b745b.js"><link rel="prefetch" href="/assets/js/242.b4f0cf75.js"><link rel="prefetch" href="/assets/js/243.a7b7ea69.js"><link rel="prefetch" href="/assets/js/244.df6689a9.js"><link rel="prefetch" href="/assets/js/245.6d274e91.js"><link rel="prefetch" href="/assets/js/246.51906a34.js"><link rel="prefetch" href="/assets/js/247.a5c096f4.js"><link rel="prefetch" href="/assets/js/248.c956ca5d.js"><link rel="prefetch" href="/assets/js/249.7fbab7dc.js"><link rel="prefetch" href="/assets/js/25.1b2f1da0.js"><link rel="prefetch" href="/assets/js/250.a2fa80f2.js"><link rel="prefetch" href="/assets/js/251.328d6015.js"><link rel="prefetch" href="/assets/js/252.4b8d163c.js"><link rel="prefetch" href="/assets/js/253.e9ffa2e9.js"><link rel="prefetch" href="/assets/js/26.29a1e38c.js"><link rel="prefetch" href="/assets/js/27.5f8143ce.js"><link rel="prefetch" href="/assets/js/28.44a99b4d.js"><link rel="prefetch" href="/assets/js/29.a7f3211a.js"><link rel="prefetch" href="/assets/js/3.99431f34.js"><link rel="prefetch" href="/assets/js/30.95bf1e55.js"><link rel="prefetch" href="/assets/js/31.22833c6a.js"><link rel="prefetch" href="/assets/js/32.b5508619.js"><link rel="prefetch" href="/assets/js/33.5afadc2c.js"><link rel="prefetch" href="/assets/js/34.7a55b3dc.js"><link rel="prefetch" href="/assets/js/35.77d3559b.js"><link rel="prefetch" href="/assets/js/36.489a7856.js"><link rel="prefetch" href="/assets/js/37.0d74cfab.js"><link rel="prefetch" href="/assets/js/38.b323fbd1.js"><link rel="prefetch" href="/assets/js/39.e54c92b9.js"><link rel="prefetch" href="/assets/js/4.9df1fc66.js"><link rel="prefetch" href="/assets/js/40.a48d2055.js"><link rel="prefetch" href="/assets/js/41.94a7d1e0.js"><link rel="prefetch" href="/assets/js/42.b12dd438.js"><link rel="prefetch" href="/assets/js/43.306f167f.js"><link rel="prefetch" href="/assets/js/44.9aa76180.js"><link rel="prefetch" href="/assets/js/45.584b44fe.js"><link rel="prefetch" href="/assets/js/46.1a9ece88.js"><link rel="prefetch" href="/assets/js/47.3481e322.js"><link rel="prefetch" href="/assets/js/48.e3edd8da.js"><link rel="prefetch" href="/assets/js/49.7ca435de.js"><link rel="prefetch" href="/assets/js/5.36593239.js"><link rel="prefetch" href="/assets/js/50.159874d7.js"><link rel="prefetch" href="/assets/js/51.7c7e7d78.js"><link rel="prefetch" href="/assets/js/52.c276fbea.js"><link rel="prefetch" href="/assets/js/53.e863af3c.js"><link rel="prefetch" href="/assets/js/54.57b71042.js"><link rel="prefetch" href="/assets/js/55.19839c1b.js"><link rel="prefetch" href="/assets/js/56.f31a1827.js"><link rel="prefetch" href="/assets/js/57.3c9d438a.js"><link rel="prefetch" href="/assets/js/58.29c3c6dd.js"><link rel="prefetch" href="/assets/js/59.dd1faf34.js"><link rel="prefetch" href="/assets/js/6.92debfa8.js"><link rel="prefetch" href="/assets/js/60.cc15355b.js"><link rel="prefetch" href="/assets/js/61.5380ddb3.js"><link rel="prefetch" href="/assets/js/62.52dff282.js"><link rel="prefetch" href="/assets/js/63.f016e8cd.js"><link rel="prefetch" href="/assets/js/64.e588e8f9.js"><link rel="prefetch" href="/assets/js/65.535ae3c6.js"><link rel="prefetch" href="/assets/js/66.64230a50.js"><link rel="prefetch" href="/assets/js/67.6ac4aea2.js"><link rel="prefetch" href="/assets/js/68.8fccdea0.js"><link rel="prefetch" href="/assets/js/69.f90d111d.js"><link rel="prefetch" href="/assets/js/70.0376a024.js"><link rel="prefetch" href="/assets/js/71.09d82ca5.js"><link rel="prefetch" href="/assets/js/72.78a93981.js"><link rel="prefetch" href="/assets/js/73.2303f2fc.js"><link rel="prefetch" href="/assets/js/74.eab14338.js"><link rel="prefetch" href="/assets/js/75.0046480c.js"><link rel="prefetch" href="/assets/js/76.745b7358.js"><link rel="prefetch" href="/assets/js/77.a279f7a4.js"><link rel="prefetch" href="/assets/js/78.e67c15c3.js"><link rel="prefetch" href="/assets/js/79.85679cc2.js"><link rel="prefetch" href="/assets/js/8.c132ed80.js"><link rel="prefetch" href="/assets/js/80.a4a6f108.js"><link rel="prefetch" href="/assets/js/81.7f01f402.js"><link rel="prefetch" href="/assets/js/82.37eae972.js"><link rel="prefetch" href="/assets/js/83.bbf6f29f.js"><link rel="prefetch" href="/assets/js/84.776b5f63.js"><link rel="prefetch" href="/assets/js/85.cc7a4a6b.js"><link rel="prefetch" href="/assets/js/86.a355eb0f.js"><link rel="prefetch" href="/assets/js/87.e73726f0.js"><link rel="prefetch" href="/assets/js/88.d03c417d.js"><link rel="prefetch" href="/assets/js/89.4d507f43.js"><link rel="prefetch" href="/assets/js/9.dc378b8e.js"><link rel="prefetch" href="/assets/js/90.d1f991b1.js"><link rel="prefetch" href="/assets/js/91.258d0b90.js"><link rel="prefetch" href="/assets/js/92.19135793.js"><link rel="prefetch" href="/assets/js/93.bf91bb11.js"><link rel="prefetch" href="/assets/js/94.f3fd8029.js"><link rel="prefetch" href="/assets/js/95.9af91c8e.js"><link rel="prefetch" href="/assets/js/96.960d643a.js"><link rel="prefetch" href="/assets/js/97.a5f0137d.js"><link rel="prefetch" href="/assets/js/98.a4c6c677.js"><link rel="prefetch" href="/assets/js/99.720ff7f9.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.01811cf3.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.101e8e69.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-8c445ae8><div data-v-8c445ae8><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-8c445ae8 data-v-8c445ae8><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-5cb9a64e data-v-8c445ae8 data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>说传</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2026
+        </a></span></div></div> <div class="hide" data-v-8c445ae8><header class="navbar" data-v-8c445ae8><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/img/logo_p.png" alt="说传" class="logo"> <span class="site-name">说传</span></a> <div class="links"><!----> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-8c445ae8></div> <aside class="sidebar" data-v-8c445ae8><div class="personal-info-wrapper" data-v-03833281 data-v-8c445ae8><img src="/img/avatar.png" alt="author-avatar" class="personal-img" data-v-03833281> <h3 class="name" data-v-03833281>
+    GuoJun
+  </h3> <div class="num" data-v-03833281><div data-v-03833281><h3 data-v-03833281>183</h3> <h6 data-v-03833281>Article</h6></div> <div data-v-03833281><h3 data-v-03833281>59</h3> <h6 data-v-03833281>Tag</h6></div></div> <hr data-v-03833281></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/设计模式/" class="nav-link"><i class="iconfont undefined"></i>
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Docker/" class="nav-link"><i class="iconfont undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Dubbo/" class="nav-link"><i class="iconfont undefined"></i>
+  Dubbo
+</a></li><li class="dropdown-item"><!----> <a href="/categories/IDEA/" class="nav-link"><i class="iconfont undefined"></i>
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Java/" class="nav-link"><i class="iconfont undefined"></i>
+  Java
+</a></li><li class="dropdown-item"><!----> <a href="/categories/JVM/" class="nav-link"><i class="iconfont undefined"></i>
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Life/" class="nav-link"><i class="iconfont undefined"></i>
+  Life
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Linux/" class="nav-link"><i class="iconfont undefined"></i>
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringCloud/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringCloud
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  Mysql
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Python/" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/categories/SpringBoot/" class="nav-link"><i class="iconfont undefined"></i>
+  SpringBoot
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Tools/" class="nav-link"><i class="iconfont undefined"></i>
+  Tools
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Windows/" class="nav-link"><i class="iconfont undefined"></i>
+  Windows
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Android/" class="nav-link"><i class="iconfont undefined"></i>
+  Android
+</a></li><li class="dropdown-item"><!----> <a href="/categories/Web/" class="nav-link"><i class="iconfont undefined"></i>
+  Web
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/favorites/" class="nav-link"><i class="iconfont undefined"></i>
+  收藏夹
+</a></li><li class="dropdown-item"><!----> <a href="/docs/guild/" class="nav-link"><i class="iconfont undefined"></i>
+  编程规约
+</a></li><li class="dropdown-item"><!----> <a href="/docs/mysql/" class="nav-link"><i class="iconfont undefined"></i>
+  数据库设计
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间线
+</a></div><div class="nav-item"><a href="/horoscope/" class="nav-link"><i class="iconfont reco-eye"></i>
+  星座
+</a></div><div class="nav-item"><a href="/about/about.html" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-5cb9a64e data-v-8c445ae8><h3 class="title" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e>分布式事务解决方案</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><input type="password" value="" data-v-5cb9a64e> <span data-v-5cb9a64e>Konck! Knock!</span> <button data-v-5cb9a64e>OK</button></label> <div class="footer" style="display:none;" data-v-5cb9a64e data-v-5cb9a64e><span data-v-5cb9a64e><i class="iconfont reco-theme" data-v-5cb9a64e></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-5cb9a64e>vuePress-theme-reco</a></span> <span data-v-5cb9a64e><i class="iconfont reco-copyright" data-v-5cb9a64e></i> <a data-v-5cb9a64e><span data-v-5cb9a64e>GuoJun</span>
+            
+          <span data-v-5cb9a64e>2017 - </span>
+          2026
+        </a></span></div></div> <div data-v-8c445ae8><main class="page"><div class="page-title" style="display:none;"><h1>分布式事务解决方案</h1> <hr> <div data-v-2f089fa6><i class="iconfont reco-account" data-v-2f089fa6><span data-v-2f089fa6>GuoJun</span></i> <i class="iconfont reco-date" data-v-2f089fa6><span data-v-2f089fa6>2020-05-11</span></i> <!----> <i class="iconfont reco-tag tags" data-v-2f089fa6><span class="tag-item" data-v-2f089fa6>Java</span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="一-分布式事务产生的场景"><a href="#一-分布式事务产生的场景" class="header-anchor">#</a> 一.分布式事务产生的场景</h2> <ul><li><p>微服务之间通过远程调用完成事务操作
+<img src="https://gj-blog.oss-cn-hangzhou.aliyuncs.com/blog-img/2020/06/20200609173848.png" alt=""></p></li> <li><p>单体系统访问多个数据库实例
+<img src="https://gj-blog.oss-cn-hangzhou.aliyuncs.com/blog-img/2020/06/20200609173856.png" alt=""></p></li> <li><p>多服务访问同一个数据库实例
+<img src="https://gj-blog.oss-cn-hangzhou.aliyuncs.com/blog-img/2020/06/20200609173859.png" alt=""></p></li></ul> <h2 id="二-分布式事务理论基础"><a href="#二-分布式事务理论基础" class="header-anchor">#</a> 二.分布式事务理论基础</h2> <h3 id="_2-1-cap理论"><a href="#_2-1-cap理论" class="header-anchor">#</a> 2.1 CAP理论</h3> <p>CAP是Consistency、Availability、Partition tolerance三个词语的缩写，分别表示一致性、可用性、分区容忍
+性。
+<img src="https://gj-blog.oss-cn-hangzhou.aliyuncs.com/blog-img/2020/06/20200609174033.png" alt="">
+整体执行流程如下：
+1、商品服务请求主数据库写入商品信息（添加商品、修改商品、删除商品）
+2、主数据库向商品服务响应写入成功。
+3、商品服务请求从数据库读取商品信息。</p> <p>C - Consistency：
+一致性是指写操作后的读操作可以读取到最新的数据状态，当数据分布在多个节点上，从任意结点读取到的数据都
+是最新的状态。
+分布式系统一致性的特点：
+1、由于存在数据同步的过程，写操作的响应会有一定的延迟。
+2、为了保证数据一致性会对资源暂时锁定，待数据同步完成释放锁定资源。
+3、如果请求数据同步失败的结点则会返回错误信息，一定不会返回旧数据。</p> <p>A - Availability ：
+可用性是指任何事务操作都可以得到响应结果，且不会出现响应超时或响应错误。
+分布式系统可用性的特点：
+1、所有请求都有响应，且不会出现响应超时或响应错误。</p> <p>P - Partition tolerance
+通常分布式系统的各各结点部署在不同的子网，这就是网络分区，不可避免的会出现由于网络问题而导致结点之间
+通信失败，此时仍可对外提供服务，这叫分区容忍性。
+分布式分区容忍性的特点：
+1、分区容忍性分是布式系统具备的基本能力。</p> <p>CAP是一个已经被证实的理论：一个分布式系统最多只能同时满足
+一致性（Consistency）、可用性（Availability）和分区容忍性（Partition tolerance）这三项中的两项。它可以作
+为我们进行架构设计、技术选型的考量标准。对于多数大型互联网应用的场景，结点众多、部署分散，而且现在的
+集群规模越来越大，所以节点故障、网络故障是常态，而且要保证服务可用性达到N个9（99.99..%），并要达到良
+好的响应性能来提高用户体验，因此一般都会做出如下选择：保证P和A，舍弃C强一致，保证最终一致性。</p> <h3 id="_2-2-base理论"><a href="#_2-2-base理论" class="header-anchor">#</a> 2.2 BASE理论</h3> <p>BASE 是Basically Available(基本可用)、Soft state(软状态)和Eventually consistent (最终一致性)三个短语的缩
+写。BASE理论是对CAP中AP的一个扩展，通过牺牲强一致性来获得可用性，当出现故障允许部分不可用但要保证
+核心功能可用，允许数据在一段时间内是不一致的，但最终达到一致状态。满足BASE理论的事务，我们称之为“柔
+性事务”。</p> <ul><li>基本可用:分布式系统在出现故障时，允许损失部分可用功能，保证核心功能可用。如，电商网站交易付款出
+现问题了，商品依然可以正常浏览。</li> <li>软状态:由于不要求强一致性，所以BASE允许系统中存在中间状态（也叫软状态），这个状态不影响系统可用
+性，如订单的&quot;支付中&quot;、“数据同步中”等状态，待数据最终一致后状态改为“成功”状态。</li> <li>最终一致:最终一致是指经过一段时间后，所有节点数据都将会达到一致。如订单的&quot;支付中&quot;状态，最终会变
+为“支付成功”或者&quot;支付失败&quot;，使订单状态与实际交易结果达成一致，但需要一定时间的延迟、等待。</li></ul> <h3 id="分布式id生成"><a href="#分布式id生成" class="header-anchor">#</a> 分布式Id生成</h3> <ul><li><p>数据库自增</p></li> <li><p>uuid</p></li> <li><p>借助全局redis</p></li> <li><p>雪花算法</p> <p><img src="https://gj-blog.oss-cn-hangzhou.aliyuncs.com/blog-img/2020/06/20200615114815.png" alt="image-20200615114808886"></p></li></ul> <h4 id="可靠消息一致性"><a href="#可靠消息一致性" class="header-anchor">#</a> 可靠消息一致性</h4> <p>1.分布式场景系统中数据一致性问题如何解决 .
+2.分布式事务的设计思路分析.
+3.两阶段提交协议、三阶段提交协议。
+4.组合存储组件，分布式事务如何解决？
+5.TCC（Try Confirm Cancel）解决方案。
+6.消息队列+本地事件表+定时任务方案。
+7.自定义可靠消息服务方案。
+8.最大努力通知方案。</p> <p><img src="https://gj-blog.oss-cn-hangzhou.aliyuncs.com/blog-img/2021/10/20211025212345.png" alt="image-20211025212345629"></p> <p><img src="https://gj-blog.oss-cn-hangzhou.aliyuncs.com/blog-img/2021/10/20211025213404.png" alt="image-20211025213404041"></p></div> <footer class="page-edit" style="display:none;"><!----> <!----></footer> <!----> <!----> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-4ec3c486><li class="level-2" data-v-4ec3c486><a href="/blogs/microservice/2020-05-11-distributed-transaction.html#一-分布式事务产生的场景" class="sidebar-link" data-v-4ec3c486>一.分布式事务产生的场景</a></li><li class="level-2" data-v-4ec3c486><a href="/blogs/microservice/2020-05-11-distributed-transaction.html#二-分布式事务理论基础" class="sidebar-link" data-v-4ec3c486>二.分布式事务理论基础</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/microservice/2020-05-11-distributed-transaction.html#_2-1-cap理论" class="sidebar-link" data-v-4ec3c486>2.1 CAP理论</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/microservice/2020-05-11-distributed-transaction.html#_2-2-base理论" class="sidebar-link" data-v-4ec3c486>2.2 BASE理论</a></li><li class="level-3" data-v-4ec3c486><a href="/blogs/microservice/2020-05-11-distributed-transaction.html#分布式id生成" class="sidebar-link" data-v-4ec3c486>分布式Id生成</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div></div></div>
+    <script src="/assets/js/app.7d7949bd.js" defer></script><script src="/assets/js/7.5e0da391.js" defer></script><script src="/assets/js/2.f56828a8.js" defer></script><script src="/assets/js/1.aab36c06.js" defer></script><script src="/assets/js/122.959ba717.js" defer></script>
+  </body>
+</html>
